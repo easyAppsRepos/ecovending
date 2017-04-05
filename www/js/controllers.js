@@ -75,23 +75,7 @@ angular.module('starter.controllers', [])
 
 })
 
-   .directive('keyboardHandler', function ($window, $timeout) {
-    return {
-        restrict: 'A',
-        link: function postLink(scope, element, attrs) {
-            angular.element($window).bind('native.keyboardshow', function() {
-                element.addClass('tabs-item-hide'); // tries to hide tab but becomes blank space instead
-                $timeout(function() {
-                    element.addClass('tabs-item-hide'); //remove blank space quickly
-                 }, 0);
-            });
 
-            angular.element($window).bind('native.keyboardhide', function() {
-                element.removeClass('tabs-item-hide');
-            });
-        }
-    };
-})
 .controller('AccountCtrl', function($scope, $ionicModal) {
 
 

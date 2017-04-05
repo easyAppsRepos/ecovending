@@ -247,3 +247,13 @@ background-color: #1cb382 !important;
         line-height: 29px;
         
 }
+
+
+
+.keyboard-open .tabs{
+  display:none !important;
+  }
+.keyboard-open .has-tabs{
+ bottom:0 !important;
+ }
+
