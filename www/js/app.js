@@ -11,7 +11,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    ionic.Platform.isFullScreen = true;
 
 /*    window.addEventListener('native.keyboardshow', function () {
 document.querySelector('div.tabs').style.display = 'none';
