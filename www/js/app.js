@@ -11,6 +11,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+
+
+    window.addEventListener('native.keyboardshow', function () {
+document.querySelector('div.tabs').style.display = 'none';
+angular.element(document.querySelector('ion-content.has-tabs')).css('bottom', 0);
+});
+window.addEventListener('native.keyboardhide', function () {
+var tabs = document.querySelectorAll('div.tabs');
+angular.element(tabs[0]).css('display', '');
+});
+
+
+
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
