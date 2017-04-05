@@ -1,0 +1,96 @@
+<ion-view hide-nav-bar="true" view-title="Chats">
+  <ion-content style='    background-color: #fafafa;'>
+
+
+<!--     <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <img ng-src="{{chat.face}}">
+        <h2>{{chat.name}}</h2>
+        <p>{{chat.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list> -->
+<div class="background-image">
+    <i ng-controller='menuButtonCtrl' ng-click='openModal("menu.html", "fade-in-right")' class="ion-android-more-vertical" style="
+position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 24px;
+    margin-top: 6px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    color: white;
+"></i>
+
+
+</div>
+
+
+
+<div class="content" style="
+ font-family: Ubuntu;
+ background-color: transparent;
+ color: white;
+ /*
+ background-color: #2ed09c;
+ color:  #fafafa
+*/
+ margin-top: 45%;
+ /* padding-bottom: 3px; */
+ border: solid 4px lightcyan;
+ ">
+      
+
+      <div style="
+    text-align: center;
+    padding-top: 25px;
+    /* color: lightcyan !important; */
+">
+        <p style="
+    
+     font-size: 23px;
+    font-family: UbuntuM;
+">INGRESA TU CODIGO</p>
+        
+        
+      </div>
+
+      <div style="
+    text-align: center;
+    margin-top: 20px;
+    /* border-bottom: solid 1px; */
+    padding-bottom: 33px;
+">
+
+<input style="
+padding-left: 15px;
+    width: 90%;
+    margin-left: 5%;
+    border: solid  2px #2ed09c;
+    border-radius: 8px;
+    " type="text" name="" placeholder="0000000">
+<button class="button button-light" style="
+       margin-top: 27px;
+    width: 135px;
+    color: #1cb382;
+    height: 32px;
+    background-color: white;
+    line-height: 1;
+    min-height: 20px; font-family: UbuntuM;
+">
+  Activar
+</button>
+
+
+      </div>
+
+    </div>
+
+
+  </ion-content>
+</ion-view>

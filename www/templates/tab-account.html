@@ -1,0 +1,297 @@
+<ion-view hide-nav-bar="true" view-title="Account">
+  <ion-content style='    background: #E1F1F1;' > 
+
+
+
+
+<div>
+<div  class="perfilHead " style="
+    background-image: url(img/fondo.png);
+    background-size: cover;
+    color: white;
+    text-align: center;
+">
+  	<i   style='    position: absolute;
+    right: 0;
+    margin-right: 13px;
+    margin-top: 6px;
+    font-size: 24px;
+    color: white;' class="ion-edit"></i>
+
+
+    <i ng-controller='menuButtonCtrl' ng-click='openModal("menu.html", "fade-in-right")' class="ion-android-more-vertical" style="
+       position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 24px;
+    margin-top: 6px;
+    width: 40px;
+    height: 40px;
+"></i>
+  	<img style="
+    height: 80px;
+    border: solid 2px white;
+    border-radius: 100px;
+    margin-top: 25px;
+    " src="img/ben.png">
+
+    <p style="
+    color: white;
+    font-family: UbuntuM;
+    font-size: 19px;
+    margin-bottom: 1px;
+">Federico Zapata</p>
+    <p style="
+    color: #444;
+    font-size: 13px;
+    font-family: UbuntuL;
+">Universidad Americana UAM</p>
+    <p style="    font-family: UbuntuM;
+    color: white;
+    font-size: 22px;
+    padding-bottom: 20px;
+    margin-bottom: 0px !important;
+"> <img style='    vertical-align: sub;
+    height: 40px;' src="img/cerdo1.png"> 1850 puntos</p>
+  </div>
+
+
+    <div class="row" style="
+    background-color: white;
+    font-family: Ubuntu;text-align:center">
+  <div class="col col-50">
+  	
+  	
+  	<img src="img/maquina2.png" style="
+    vertical-align: top;height: 35px
+">
+  	<div style="
+    display: inline-block;
+"><a style="
+    font-size: 14px;
+    color: #666;
+">Descubiertas</a><br>
+  	<a style="
+    font-size: 20px;
+    color: #888;
+    font-family: UbuntuM;
+">4</a>
+  	</div>
+
+
+  </div>
+  <div  style='    border-left: solid 1px rgba(211, 211, 211, 0.44);'  class="col col-50">
+  	
+
+  	<img src="img/canje.png" style="
+    vertical-align: top;height: 35px
+">
+  	<div style="
+    display: inline-block;
+"><a style="
+    font-size: 14px;
+    color: #666;
+">Canjes</a><br>
+  	<a style="
+   font-size: 20px;
+    color: #888;
+    font-family: UbuntuM;
+">16</a>
+  	</div>
+
+  </div>
+
+</div>
+
+
+<!-- 
+  <div class="row" style="     background-color: lightslategrey;
+    color: white;
+    text-align: center;
+    border-bottom: solid 1px;
+    font-size: 15px;
+    font-family: UbuntuL;
+    line-height: 0.9;">
+  <div class="col col-33"><span style="font-family: UbuntuM;font-size: 19px;">3300</span><br><span>Puntos acumulados</span></div>
+  <div class="col col-33"><span style="font-family: UbuntuM;font-size: 19px;">7 </span><br> <span>Productos canjeados</span></div>
+  <div class="col col-33"><span style="font-family: UbuntuM;font-size: 19px;">3 </span><br> <span>Maquinas visitadas</span></div>
+</div> -->
+<!--         <div class="tabs tabs-dark tabs-icon-top static">
+
+            <a   ng-class="{active: tipoTab == 'info'}" class="tab-item active" ng-click="tipoTab = 'info'">
+                <i class="icon ion-ios-information"></i> Contactar
+            </a>
+
+
+            <a  ng-class="{active: tipoTab == 'video'}"  class="tab-item" ng-click="tipoTab = 'video'">
+                <i class="icon ion-social-youtube"></i> Multimedia
+            </a>
+
+            <a   ng-class="{active: tipoTab == 'fotos'}" class="tab-item" ng-click="tipoTab = 'fotos'">
+                <i class="icon ion-images"></i> Comentarios
+            </a>
+
+
+
+
+        </div>
+ -->
+        </div>
+
+<!-- <div  ng-if="tipoTab == 'info'">
+</div>
+
+<div  ng-if="tipoTab == 'video'">
+
+
+
+</div>
+
+<div  ng-if="tipoTab == 'fotos'">
+ 
+
+    </div>
+ -->
+ <div class="activity">
+ 	
+ 	<div style="    margin-left: 10px;
+    font-size: 20px;
+    font-family: UbuntuM;
+    color: darkgrey;
+    margin-top: 20px;
+    margin-bottom: 30px;">Actividad</div>
+
+
+
+<div style="
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    border-bottom: solid 1px rgba(211, 211, 211, 0.56);
+">
+	
+	<img src="img/car.png" style="
+    height: 37px;    opacity: 0.7;
+">
+	<div style="
+    display: inline-block;
+    width: calc(100% - 55px);
+    margin-left: 7px;
+    font-size: 14px;
+    font-family: UbuntuL;
+">
+	<p style="color: #777;">Haz canjeado un producto, <strong>tu saldo es de 1850 puntos</strong>
+	</p>
+
+	<p style="
+    color: darkgray;
+    font-size: 12px;
+    /* margin-bottom: 0px; */
+    float: right;
+    margin-right: 13px;
+    margin-top: -28px;
+    ">Hace 3 horas</p>
+	</div>
+
+
+
+</div>
+
+
+
+<div style="
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    border-bottom: solid 1px rgba(211, 211, 211, 0.56);
+">
+	
+	<img src="img/che.png" style="
+    height: 37px;    opacity: 0.7;
+">
+	<div style="
+    display: inline-block;
+    width: calc(100% - 55px);
+    margin-left: 7px;
+    font-size: 14px;
+    font-family: UbuntuL;
+">
+	<p style="color: #777;">Haz activado un codigo, <strong>tu saldo es de 2250 puntos</strong>
+	</p>
+
+	<p style="
+    color: darkgray;
+    font-size: 12px;
+    /* margin-bottom: 0px; */
+    float: right;
+    margin-right: 13px;
+    margin-top: -28px;
+    ">Hace 3 horas</p>
+	</div>
+
+
+
+</div>
+
+
+
+
+<div style="
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    border-bottom: solid 1px rgba(211, 211, 211, 0.56);
+">
+	
+	<img src="img/maquina.png" style="
+    height: 37px;    opacity: 0.7;
+">
+	<div style="
+    display: inline-block;
+    width: calc(100% - 55px);
+    margin-left: 7px;
+    font-size: 14px;
+    font-family: UbuntuL;
+">
+	<p style="color: #777;">Enhorabuena! Haz descubierto una maquina en <strong> Universidad Americana</strong>
+	</p>
+
+	<p style="
+    color: darkgray;
+    font-size: 12px;
+    /* margin-bottom: 0px; */
+    float: right;
+    margin-right: 13px;
+    margin-top: -28px;
+    ">Hace 2 dias</p>
+	</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+ </div>
+
+
+
+
+
+
+
+
+
+  </ion-content>
+</ion-view>
