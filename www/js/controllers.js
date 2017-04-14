@@ -122,20 +122,45 @@ if(tipo==1){
 
 cordova.plugins.barcodeScanner.scan(
       function (result) {
-          alert("We got a barcode\n" +
+       $ionicLoading.show();
+if(result.cancelled == 0){
+
+
+            api.activarCodigo(result.text, $scope.usuarioInfo.idUsuario).then(function(response){
+
+          
+          $ionicLoading.hide();
+
+          if(response.status== -1){mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+
+          if(response.data.error == false){
+
+            mensajeAlerta(2,'Codigo activado! Se te han acreditado 100 puntos');   
+
+
+          }
+          else{ mensajeAlerta(1,'Codigo invalido');}
+          });
+
+}
+
+
+/*          alert("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
+*/
+
       },
       function (error) {
-          alert("Scanning failed: " + error);
+          mensajeAlerta(1,'Ha ocurrido un error intentando escanear el codigo QR');
       },
       {
-          preferFrontCamera : true, // iOS and Android 
+          preferFrontCamera : false, // iOS and Android 
           showFlipCameraButton : true, // iOS and Android 
           showTorchButton : true, // iOS and Android 
           torchOn: true, // Android, launch with the torch switched on (if available) 
-          prompt : "Place a barcode inside the scan area", // Android 
+          prompt : "Pon el codigo QR dentro del recuadro", // Android 
           resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500 
           formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED 
           orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device 
