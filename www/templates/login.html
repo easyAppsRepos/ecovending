@@ -1,6 +1,53 @@
 <ion-view hide-nav-bar="true">
 
 
+
+      <script id="nuevoUsuario.html" type="text/ng-template">
+  <ion-modal-view class="ion-nifty-modal2">
+    <div  class="ion-modal-content-custom2">
+      <ion-content class="padding">
+  <i ng-click='closeModal()' style='    color: #1cb382;
+    font-size: 35px;' class=" ion-android-cancel"></i>
+      <div class='' style="    margin-left: 3%;margin-right: 3%;font-family: Ubuntu;    margin-top: 3%;">
+                    <div  style='      color: #1cb382;
+   border-bottom: solid 1px #1cb382;    margin-top: 15px;font-size: 17px !important;    padding-bottom: 13px;' >Crear Usuario</div>
+                    <div class="list" >
+
+                        <div style="margin-top:13px"><label style="    color: darkgray;
+    font-size: 17px !important;">Email *</label></div>
+                        <input   ng-model='usuario.email' style='' placeholder='' type="text" class="inputRegistrar md-input">
+
+                      <div style="margin-top:13px"><label style="    color: darkgray;
+    font-size: 17px !important;">Nombre *</label></div>
+                        <input ng-model='usuario.nombre' placeholder='' type="text" class="inputRegistrar md-input">
+
+                      <div style="margin-top:13px"><label style="    color: darkgray;
+    font-size: 17px !important;">Lugar / Institucion</label></div>
+                        <input ng-model='usuario.lugar' placeholder='' type="text" class="inputRegistrar md-input">
+                      <div style="margin-top:13px"><label style="    color: darkgray;
+    font-size: 17px !important;">Contraseña *</label></div>
+                        <input ng-model='usuario.contra' placeholder='' type="text" class="inputRegistrar md-input">
+
+            
+                        <input  ng-model='usuario.contra2'  style='margin-top: 4px !important' placeholder='repetir contraseña' type="text" class="inputRegistrar md-input">
+
+
+
+
+                    </div>
+
+                         
+            <button ng-click='registrarUsuario(usuario)' style="margin-bottom: 55px; background-color: #1cb382!important;color: white !important; font-family:UbuntuM"  class="button button-full  ink" >Registrar</button>
+        
+      </div> 
+      <!--   <button class="button button-full button-positive" ng-click="closeModal()">Close Modal</button> -->
+      </ion-content>
+    </div>
+  </ion-modal-view>
+</script>
+
+
+
 <ion-content style="background-color: #1cb382; font-family:Ubuntu" >
 
 
@@ -16,20 +63,20 @@
     margin-top: 30px;">
 
 
-            <input placeholder='email' type="text" class="md-input">
+            <input ng-model='login.email' placeholder='email' type="text" class="md-input">
 
-           <input placeholder='password' type="password" class="md-input">
+           <input ng-model='login.password' placeholder='contraseña' type="password" class="md-input">
         </div>
 
         <div class="padding">
-            <button style="color: #1cb382!important; font-family:UbuntuM" ui-sref="tab.dash" class="button button-full  ink" href="#/app/inicio">Login</button>
+            <button style="color: #1cb382!important; font-family:UbuntuM" ng-click='doLogin(login)'  class="button button-full  ink" href="#/app/inicio">Login</button>
         </div>
 
         <div style="text-align: center;
     font-size: 17px;
     color: #fafafa;
     margin-top:5px">
-        <a style="color:white">¿Aun no eres usuario? <bold> Registrate </bold> </a><br><br>
+        <a ng-click='openModal("nuevoUsuario.html", "slide-in-up")' style="color:white">¿Aun no eres usuario? <bold> Registrate </bold> </a><br><br>
 
         <a style="color:white" >¿Olvidaste tu contraseña?</a>
 

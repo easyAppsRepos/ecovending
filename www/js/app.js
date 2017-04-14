@@ -35,10 +35,26 @@ angular.element(tabs[0]).css('display', '');
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+
+
+ .constant("serverConfig", {
+        //"url": "http://localhost:80",
+        "url": "http://ecoven.cl/app/v1/index.php",
+        "imageStorageURL" : 'http://ecoven.cl/app/images'
+        //"port": "80"
+    })
+
+
+.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider, $httpProvider) {
 
 
  $ionicConfigProvider.tabs.position('bottom'); //
+
+      $httpProvider.defaults.headers.common = {};
+  $httpProvider.defaults.headers.post = {};
+  $httpProvider.defaults.headers.put = {};
+  $httpProvider.defaults.headers.patch = {};
+
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -49,7 +65,7 @@ angular.element(tabs[0]).css('display', '');
     .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',
-      controller: 'DashCtrl'
+      controller: 'loginCtrl'
     })
 
   .state('misTickets', {
@@ -83,6 +99,17 @@ angular.element(tabs[0]).css('display', '');
 
   // Each tab has its own nav history stack:
 
+  .state('tab.account', {
+    url: '/account',
+    views: {
+      'tab-account': {
+        templateUrl: 'templates/tab-account.html',
+        controller: 'AccountCtrl'
+      }
+    }
+  })
+
+
   .state('tab.dash', {
     url: '/dash',
     views: {
@@ -97,7 +124,7 @@ angular.element(tabs[0]).css('display', '');
     views: {
       'tab-products': {
         templateUrl: 'templates/tab-products.html',
-        controller: 'DashCtrl'
+        controller: 'productsCtrl'
       }
     }
   })
@@ -108,7 +135,7 @@ angular.element(tabs[0]).css('display', '');
       views: {
         'tab-chats': {
           templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+          controller: 'activarCodigoCtrl'
         }
       }
     })
@@ -117,22 +144,28 @@ angular.element(tabs[0]).css('display', '');
       views: {
         'tab-chats': {
           templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+          controller: 'activarCodigoCtrl'
         }
       }
-    })
+    });
 
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+
+          if(localStorage.getItem('userInfoEV') == null || 
+            localStorage.getItem('userInfoEV') == 'null' || 
+            localStorage.getItem('userInfoEV') == 'undefined' || 
+            localStorage.getItem('userInfoEV') == undefined){
+
+        //console.log(localStorage.getItem('userInfoTS'));
+      $urlRouterProvider.otherwise('/login');
+
+        }
+        else{
+           // console.log(localStorage.getItem('userInfoTS'));
+       $urlRouterProvider.otherwise('/tab/account');
+        // $urlRouterProvider.otherwise("/login");
+        }
+
+
 
 });

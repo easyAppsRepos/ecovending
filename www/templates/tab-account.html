@@ -40,19 +40,19 @@
     font-family: UbuntuM;
     font-size: 19px;
     margin-bottom: 1px;
-">Federico Zapata</p>
+">{{usuarioInfo.nombre}}</p>
     <p style="
     color: #444;
     font-size: 13px;
     font-family: UbuntuL;
-">Universidad Americana UAM</p>
+">{{usuarioInfo.institucion}}</p>
     <p style="    font-family: UbuntuM;
     color: white;
     font-size: 22px;
     padding-bottom: 20px;
     margin-bottom: 0px !important;
 "> <img style='    vertical-align: sub;
-    height: 40px;' src="img/cerdo1.png"> 1850 puntos</p>
+    height: 40px;' src="img/cerdo1.png"> {{puntos}} puntos</p>
   </div>
 
 
@@ -62,7 +62,7 @@
   <div class="col col-50">
   	
   	
-  	<img src="img/maquina2.png" style="
+  	<img src="img/gree.png" style="
     vertical-align: top;height: 35px
 ">
   	<div style="
@@ -70,12 +70,12 @@
 "><a style="
     font-size: 14px;
     color: #666;
-">Descubiertas</a><br>
+">Huella Verde</a><br>
   	<a style="
     font-size: 20px;
     color: #888;
     font-family: UbuntuM;
-">4</a>
+">40</a>
   	</div>
 
 
@@ -163,7 +163,7 @@
 
 
 
-<div style="
+<div ng-repeat='a in actividad' style="
     margin-left: 10px;
     margin-right: 10px;
     padding-bottom: 10px;
@@ -171,8 +171,8 @@
     border-bottom: solid 1px rgba(211, 211, 211, 0.56);
 ">
 	
-	<img src="img/car.png" style="
-    height: 37px;    opacity: 0.7;
+	<img ng-src="img/actividad{{a.tipo}}.png" style="
+    height: 37px;   vertical-align: top; opacity: 0.7;
 ">
 	<div style="
     display: inline-block;
@@ -181,9 +181,9 @@
     font-size: 14px;
     font-family: UbuntuL;
 ">
-	<p style="color: #777;">Haz canjeado un producto, <strong>tu saldo es de 1850 puntos</strong>
-	</p>
-
+	<p ng-show='a.tipo==1' style="color: #777;"> <strong>Has activado un codigo!</strong></p>
+    <p ng-show='a.tipo==2' style="color: #777;"> <strong>Enhorabuena! Tienes un Ticket nuevo</strong></p>
+<br>    
 	<p style="
     color: darkgray;
     font-size: 12px;
@@ -191,14 +191,14 @@
     float: right;
     margin-right: 13px;
     margin-top: -28px;
-    ">Hace 3 horas</p>
+    ">{{a.fechaCreacion}}</p>
 	</div>
 
 
 
 </div>
 
-
+<!-- 
 
 <div style="
     margin-left: 10px;
@@ -272,7 +272,7 @@
 
 
 </div>
-
+ -->
 
 
 

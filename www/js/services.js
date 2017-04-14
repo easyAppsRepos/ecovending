@@ -1,50 +1,108 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
+.factory('api', function($http, $q, $window, serverConfig) {
 
-  // Some fake testing data
-  var chats = [{
-    id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
-  }, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }];
+    return {
 
-  return {
-    all: function() {
-      return chats;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+    
+
+
+        registrarUsuario:function(user){  
+            console.log(user);
+           
+            return  $http.post(serverConfig.url+'/registrarUsuario',user)
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+                doLogin:function(user){  
+            console.log(user);
+           
+            return  $http.post(serverConfig.url+'/doLogin',user)
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+            activarCodigo:function(codigo, usuario){  
+            console.log(codigo + '- ' + usuario);
+            return  $http.post(serverConfig.url+'/activarCodigo',{codigo:codigo, idUsuario:usuario})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+
+            getActividad:function(idUsuario){  
+
+            return  $http.post(serverConfig.url+'/getActividad',{idUsuario:idUsuario})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+            canjearProducto:function(idUsuario, idProducto){  
+
+            return  $http.post(serverConfig.url+'/canjearProducto',{idUsuario:idUsuario, idProducto:idProducto})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+
+            getProductos:function(idUsuario){  
+
+            return  $http.post(serverConfig.url+'/getProductos',{idUsuario:idUsuario})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
         }
-      }
-      return null;
+
+
     }
-  };
-});
+
+    })
+
+
