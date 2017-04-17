@@ -782,7 +782,13 @@ $scope.usuarioInfo={};
   $scope.getActividad();
 
 });
-    
+    $scope.valorF = 3;
+
+$scope.getime=function(){
+
+  return $scope.valorF;
+}
+
 
 
   function mensajeAlerta(tipo, mensaje){
@@ -919,6 +925,11 @@ var ft = new FileTransfer();
   $ionicLoading.hide();
   $state.reload();
   console.log('Foto cambiada correctamente');
+
+  $scope.$apply(function () {
+     $scope.valorF =4;
+});
+  
 
  }, function(error){
  console.log(JSON.stringify(error));
