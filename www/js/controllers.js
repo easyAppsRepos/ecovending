@@ -30,6 +30,262 @@ angular.module('starter.controllers', [])
 
 })
 
+
+
+.controller('rankingCtrl', function($scope, $stateParams, serverConfig, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
+
+
+
+  $scope.usuarioInfo={};
+  $scope.filtro=1;
+  var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
+
+  $scope.usuarioInfo.nombre=  userData.nombre;
+  $scope.usuarioInfo.institucion=  userData.institucion;
+  $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
+  $scope.usuarioInfo.idUsuario=  userData.idUsuario;
+ $scope.url = serverConfig.imageStorageURL;
+
+
+  function mensajeAlerta(tipo, mensaje){
+
+    var ima ='exclam.png';
+if(tipo==1){
+
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/exclam.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
+
+
+}
+  if(tipo == 2){
+
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/confirma.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
+
+}
+
+      $ionicPopup.show({
+        template: customTemplate,
+        title: '',
+        subTitle: '',
+        buttons: [{
+          text: 'Cerrar',
+          type: 'button-blueCustom',
+          onTap: function(e) {
+
+            if(tipo==2){ 
+
+          //    $scope.closeModal();
+             // $scope.usuario={};
+
+            }
+          }
+           // if(borrar){ $scope.user.pin='';}
+           
+          
+        }]
+      });
+
+}
+
+
+
+
+function getRanking(){
+
+$ionicLoading.show();
+            
+            api.getRanking($scope.filtro, $scope.usuarioInfo.idUsuario).then(function(response){
+
+          
+          $ionicLoading.hide();
+
+          if(response.status== -1){ $ionicLoading.hide();mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+
+          if(response.data.error == false){
+
+           // mensajeAlerta(2,'Codigo activado! Se te han acreditado 100 puntos');   
+          $scope.ranking = response.data.ranking;
+           $scope.myRank = response.data.rank;
+          $ionicLoading.hide();
+          }
+          else{
+             $ionicLoading.hide();
+           mensajeAlerta(1,'Ha ocurrido un error');
+         }
+          });
+
+}
+
+
+
+
+getRanking();
+
+
+
+})
+
+
+.controller('misTicketsCtrl', function($scope, $stateParams, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
+
+  $scope.goBack = function() {
+    $ionicHistory.goBack()
+  }
+
+  $scope.usuarioInfo={};
+  var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
+
+  $scope.usuarioInfo.nombre=  userData.nombre;
+  $scope.usuarioInfo.institucion=  userData.institucion;
+  $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
+  $scope.usuarioInfo.idUsuario=  userData.idUsuario;
+
+
+
+  function mensajeAlerta(tipo, mensaje){
+
+    var ima ='exclam.png';
+if(tipo==1){
+
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/exclam.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
+
+
+}
+  if(tipo == 2){
+
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/confirma.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
+
+}
+
+      $ionicPopup.show({
+        template: customTemplate,
+        title: '',
+        subTitle: '',
+        buttons: [{
+          text: 'Cerrar',
+          type: 'button-blueCustom',
+          onTap: function(e) {
+
+            if(tipo==2){ 
+
+          //    $scope.closeModal();
+             // $scope.usuario={};
+
+            }
+          }
+           // if(borrar){ $scope.user.pin='';}
+           
+          
+        }]
+      });
+
+}
+
+
+
+function getTickets(){
+
+$ionicLoading.show();
+
+            api.getTickets($scope.usuarioInfo.idUsuario).then(function(response){
+
+          
+          $ionicLoading.hide();
+
+          if(response.status== -1){ $ionicLoading.hide();mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+
+          if(response.data.error == false){
+
+           // mensajeAlerta(2,'Codigo activado! Se te han acreditado 100 puntos');   
+          $scope.tickets = response.data.tickets;
+          $ionicLoading.hide();
+          }
+          else{
+             $ionicLoading.hide();
+           mensajeAlerta(1,'Codigo invalido');
+         }
+          });
+
+}
+
+
+
+
+getTickets();
+
+
+$scope.generarTicket = function(item){
+
+ $ionicLoading.show();
+  console.log(item);
+
+            api.usarTicket($scope.usuarioInfo.idUsuario, item.idTicket).then(function(response){
+
+          
+          $ionicLoading.hide();
+
+          if(response.status== -1){ $ionicLoading.hide();mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+
+          if(response.data.error == false){
+
+           // mensajeAlerta(2,'Codigo activado! Se te han acreditado 100 puntos');   
+            $scope.canjeado=item;
+            $scope.openModal();
+            getTickets();
+          }
+          else{
+             $ionicLoading.hide();
+           mensajeAlerta(1,'Ha ocurrido un error');
+         }
+          });
+
+
+
+
+}
+
+
+
+
+    $scope.openModal = function() {
+    $ionicModal.fromTemplateUrl('canjearTicket.html', {
+      scope: $scope,
+      animation: 'fade-in-right'
+    }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.modal.show();
+    });
+  };
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+
+
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+      console.log('cerraMod');
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+
+  });
+
+
+
+
+  })
+
 .controller('activarCodigoCtrl', function($scope, $stateParams, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
 
 $scope.$on('$ionicView.enter', function(event, viewData) {
@@ -139,7 +395,10 @@ if(result.cancelled == 0){
 
 
           }
-          else{ mensajeAlerta(1,'Codigo invalido');}
+          else{
+             $ionicLoading.hide();
+           mensajeAlerta(1,'Codigo invalido');
+         }
           });
 
 }
@@ -506,7 +765,7 @@ if(tipo==1){
 })
 
 
-.controller('AccountCtrl', function($scope, $ionicLoading, api, $ionicPopup, $ionicModal) {
+.controller('AccountCtrl', function($scope, $ionicLoading, api, $ionicPopup, $ionicModal,serverConfig) {
 
 
 
@@ -519,6 +778,7 @@ $scope.usuarioInfo={};
   $scope.usuarioInfo.institucion=  userData.institucion;
   $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
   $scope.usuarioInfo.idUsuario=  userData.idUsuario;
+  $scope.url = serverConfig.imageStorageURL;
   $scope.getActividad();
 
 });
@@ -627,4 +887,48 @@ $scope.modalClasses = ['slide-in-up', 'slide-in-down', 'fade-in-scale', 'fade-in
   $scope.settings = {
     enableFriends: true
   };
+
+$scope.cambiarFoto = function(){
+getImage();
+function getImage() {
+ navigator.camera.getPicture(uploadPhoto, function(message) {
+ alert('get picture failed');
+ }, {
+ quality: 100,
+ destinationType: navigator.camera.DestinationType.FILE_URI,
+ sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+ });
+}
+
+function uploadPhoto(imageURI) {
+  $ionicLoading.show();
+ var options = new FileUploadOptions();
+ options.fileKey = "file";
+ options.fileName = 'userP'+$scope.usuarioInfo.idUsuario;
+ options.mimeType = "image/jpeg";
+ console.log(options.fileName);
+ var params = new Object();
+ params.value1 = "test";
+ params.value2 = "param";
+ options.params = params;
+ options.chunkedMode = false;
+
+var ft = new FileTransfer();
+ ft.upload(imageURI, serverConfig.imageStorageURL+"/upload.php", function(result){
+ console.log(JSON.stringify(result));
+  $ionicLoading.hide();
+  console.log('Foto cambiada correctamente');
+
+ }, function(error){
+ console.log(JSON.stringify(error));
+ $ionicLoading.hide();
+ console.log('error al subir foto');
+ }, options);
+ }
+ 
+
+ }
+
+
+
 });

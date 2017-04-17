@@ -1,6 +1,29 @@
 
 
 <ion-view hide-nav-bar="true">
+
+
+
+
+
+
+      <script id="canjearTicket.html" type="text/ng-template">
+  <ion-modal-view class="ion-nifty-modal4">
+    <div  class="ion-modal-content-custom4">
+
+      <ion-content class="padding">
+
+            <div style="text-align: center;"><img style='vertical-align: bottom;height: 50px;' src="img/tik.png"> <h3 style="display:inline-block; font-family: Ubuntu;text-align: center;color: #fafafa">Ticket canjeado</h3></div>
+            <div style="text-align:center"><img  style='    border-radius: 70px;height: 65px;margin-top: 15px;' src="img/jover.png"></div>
+             <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa"><strong>{{canjeado.titulo}}</strong></h4>
+
+
+      </ion-content>
+    </div>
+  </ion-modal-view>
+</script>
+
+
 <div style="       background-color: #1cb382;
     height: 45px;
     text-align: left;
@@ -31,23 +54,23 @@
 
     <div style="position:absolute; top:0; right:0; bottom:0; left:0; overflow-y:scroll; overflow-x: hidden;    height: calc(100% - 49px);">
                
-            <div style="        background-color: #276AB0;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
+            <div ng-repeat='t in tickets' ng-show='t.estado==1' style="        background-color: #276AB0;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
                 <div>
                     <div class='semicirculo'></div>
 
                     <div>
                         <img style="height: 60px;border-radius: 50px;display: inline-block;vertical-align: top;" src="img/jover.png"> 
-                        <div class='tituloTik' >10% de descuento en tiendas Jover </div>
+                        <div class='tituloTik' >{{t.titulo}}</div>
                     </div>
                 </div>
 
                 <div style="    text-align: left;font-size: 21px;margin-top: 15px;    color: lightgray;
     margin-left: 12px;">
-                     Vence el 18 . 09 . 2019  
+                     Vence el {{t.fechaCaducidad}} 
                 </div>
 
                 <div style="      text-align: left;font-size: 21px;margin-top: 15px;color: #555;">
-                            <button style='     border-top: dashed 3px darkgray;
+                            <button ng-click='generarTicket(t)'  style='     border-top: dashed 3px darkgray;
     border-bottom: dashed 3px darkgray;   font-family: UbuntuM;' class="button button-full button-light">
                             Generar Ticket
                             </button>
@@ -56,79 +79,6 @@
                </div>
 
 
-                           <div style="        background-color: #FFA928;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
-                <div>
-                    <div class='semicirculo'></div>
-
-                    <div>
-                        <img style="height: 60px;border-radius: 50px;display: inline-block;vertical-align: top;" src="img/jover.png"> 
-                        <div class='tituloTik' >10% de descuento en tiendas Jover </div>
-                    </div>
-                </div>
-
-                <div style="    text-align: left;font-size: 21px;margin-top: 15px;    color: lightgray;
-    margin-left: 12px;">
-                     Vence el 18 . 09 . 2019  
-                </div>
-
-                <div style="      text-align: left;font-size: 21px;margin-top: 15px;color: #555;">
-                            <button style='        border-top: dashed 3px darkgray;
-    border-bottom: dashed 3px darkgray;font-family: UbuntuM;' class="button button-full button-light">
-                            Generar Ticket
-                            </button>
-
-                </div>
-               </div>
-
-
-                           <div style="        background-color: #FF7028;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
-                <div>
-                    <div class='semicirculo'></div>
-
-                    <div>
-                        <img style="height: 60px;border-radius: 50px;display: inline-block;vertical-align: top;" src="img/jover.png"> 
-                        <div class='tituloTik' >10% de descuento en tiendas Jover </div>
-                    </div>
-                </div>
-
-                <div style="    text-align: left;font-size: 21px;margin-top: 15px;    color: lightgray;
-    margin-left: 12px;">
-                     Vence el 18 . 09 . 2019  
-                </div>
-
-                <div style="      text-align: left;font-size: 21px;margin-top: 15px;color: #555;">
-                            <button style='       border-top: dashed 3px darkgray;
-    border-bottom: dashed 3px darkgray; font-family: UbuntuM;' class="button button-full button-light">
-                            Generar Ticket
-                            </button>
-
-                </div>
-               </div>
-
-
-                           <div style="          margin-bottom: 20px;  background-color: #EC2553;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
-                <div>
-                    <div class='semicirculo'></div>
-
-                    <div>
-                        <img style="height: 60px;border-radius: 50px;display: inline-block;vertical-align: top;" src="img/jover.png"> 
-                        <div class='tituloTik' >10% de descuento en tiendas Jover </div>
-                    </div>
-                </div>
-
-                <div style="    text-align: left;font-size: 21px;margin-top: 15px;    color: lightgray;
-    margin-left: 12px;">
-                     Vence el 18 . 09 . 2019  
-                </div>
-
-                <div style="        text-align: left;font-size: 21px;margin-top: 15px;color: #555;">
-                            <button style='    border-top: dashed 3px darkgray;
-    border-bottom: dashed 3px darkgray;    font-family: UbuntuM;' class="button button-full button-light">
-                            Generar Ticket
-                            </button>
-
-                </div>
-               </div>
 
 
 
@@ -141,59 +91,22 @@
 
     <div style="position:absolute; top:0; right:0; bottom:0; left:0; overflow-y:scroll; overflow-x: hidden;    height: calc(100% - 49px);">
                
-            <div style="        background-color: #fafafa;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
+            <div ng-repeat='t in tickets' ng-show='t.estado==2' style="        background-color: #fafafa;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
                 <div>
                     <div class='semicirculo'></div>
 
                     <div>
                         <img style="height: 60px;border-radius: 50px;display: inline-block;vertical-align: top;" src="img/jover.png"> 
-                        <div class='tituloTik' style="    color: #1cb382 !important;">10% de descuento en tiendas Jover </div>
+                        <div class='tituloTik' style="    color: #1cb382 !important;">{{t.titulo}}</div>
                     </div>
                 </div>
 
                 <div style="     padding-bottom: 14px;   text-align: left;font-size: 21px;margin-top: 15px;    color: lightgray;
     margin-left: 12px;">
-                     Activado el 18 . 09 . 2016 
+                     Activado el {{t.fechaCanje}}
                 </div>
 
                </div>
-
-
-                           <div style="        background-color: #fafafa;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
-                <div>
-                    <div class='semicirculo'></div>
-
-                    <div>
-                        <img style="height: 60px;border-radius: 50px;display: inline-block;vertical-align: top;" src="img/jover.png"> 
-                        <div class='tituloTik' style="    color: #1cb382 !important;">10% de descuento en tiendas Jover </div>
-                    </div>
-                </div>
-
-                <div style="     padding-bottom: 14px;   text-align: left;font-size: 21px;margin-top: 15px;    color: lightgray;
-    margin-left: 12px;">
-                     Activado el 18 . 09 . 2016 
-                </div>
-
-               </div>
-
-                           <div style="        background-color: #fafafa;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
-                <div>
-                    <div class='semicirculo'></div>
-
-                    <div>
-                        <img style="height: 60px;border-radius: 50px;display: inline-block;vertical-align: top;" src="img/jover.png"> 
-                        <div class='tituloTik' style="    color: #1cb382 !important;">10% de descuento en tiendas Jover </div>
-                    </div>
-                </div>
-
-                <div style="     padding-bottom: 14px;   text-align: left;font-size: 21px;margin-top: 15px;    color: lightgray;
-    margin-left: 12px;">
-                     Activado el 18 . 09 . 2016 
-                </div>
-
-               </div>
-
-
 
                </div>
         </ion-slide>

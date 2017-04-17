@@ -85,6 +85,55 @@ angular.module('starter.services', [])
         },
 
 
+
+            getTickets:function(idUsuario){  
+
+            return  $http.post(serverConfig.url+'/getTickets',{idUsuario:idUsuario})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+            usarTicket:function(idUsuario,idTicket){  
+
+            return  $http.post(serverConfig.url+'/usarTicket',{idUsuario:idUsuario, idTicket:idTicket})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+
+            getRanking:function(filtro,idUsuario){  
+
+            return  $http.post(serverConfig.url+'/getRanking',{filtro:filtro, idUsuario:idUsuario})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+
+
             getProductos:function(idUsuario){  
 
             return  $http.post(serverConfig.url+'/getProductos',{idUsuario:idUsuario})

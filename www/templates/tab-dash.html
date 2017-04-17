@@ -40,18 +40,18 @@
     border-bottom: solid 1px;
     padding-bottom: 10px;
 ">
-      <img src="img/ben.png" style="
+      <img ng-src="{{url}}/userP{{usuarioInfo.idUsuario}}.png" onerror="if (this.src != 'error.png') this.src = 'img/userB.png';" style="
        height: 68px;
     border-radius: 60px;
     border: solid 2px #96ffdd;
 ">
-      <p>NO. 4</p>
+      <p>NO. {{myRank}}</p>
       </div>
 
     </div>
 <div class="lista">
 
-<div class="card">
+<!-- <div class="card">
 <div class="item item-text-wrap" style=" color: white;background-color: #2ed09c;">
    <i style="font-family: UbuntuM;
     font-size: 22px;">1</i>
@@ -67,63 +67,26 @@
     margin-top: 3px;
 ">
    </div>
-</div>
+</div> -->
 
-<div class="card">
-<div class="item item-text-wrap" style=" color: #2ed09c;background-color: white;">
-   <i style="font-family: UbuntuM;
-    font-size: 22px;">2</i>
-   <img src="img/adam.jpg" style="     border: solid 1px;height: 50px;border-radius: 55px;vertical-align: middle;margin-left: 7px;margin-right: 7px;">
-   <i style="font-family: Ubuntu;font-size: 19px;
+<div class="card" ng-repeat='r in ranking'>
+<div class="item item-text-wrap" ng-class="{ 'ranking1': $index == 0,  'ranking2': $index !== 0}"  >
+         <i style="font-family: UbuntuM;
+          font-size: 22px;">{{$index+1}}</i>
+         <img ng-src="{{url}}/userP{{r.idUsuario}}.png" onerror="if (this.src != 'error.jpg') this.src = 'img/userB.png';" style="     border: solid 1px;height: 50px;border-radius: 55px;vertical-align: middle;margin-left: 7px;margin-right: 7px;">
+         <i style="font-family: Ubuntu;font-size: 19px;
 
-">Carlos Villanueva</i>
-   <i style="float: right;margin-top: 14px;font-size: 22px;font-family: UbuntuM;">2200</i></div>
-</div>
+      ">{{r.nombre}}</i>
+         <i ng-class="{ 'rankingi1': $index == 0,  'rankingi2': $index !== 0}" >{{r.acumulado}}</i>
 
-<div class="card">
-<div class="item item-text-wrap" style=" color: #2ed09c;background-color: white;">
-   <i style="font-family: UbuntuM;
-    font-size: 22px;">3</i>
-   <img src="img/mike.png" style="     border: solid 1px;height: 50px;border-radius: 55px;vertical-align: middle;margin-left: 7px;margin-right: 7px;">
-   <i style="font-family: Ubuntu;font-size: 19px;
-
-">Juan Perez G</i>
-   <i style="float: right;margin-top: 14px;font-size: 22px;font-family: UbuntuM;">1950</i></div>
-</div>
-
-<div class="card">
-<div class="item item-text-wrap" style=" color: #2ed09c;background-color: white;">
-   <i style="font-family: UbuntuM;
-    font-size: 22px;">4</i>
-   <img src="img/ben.png" style="     border: solid 1px;height: 50px;border-radius: 55px;vertical-align: middle;margin-left: 7px;margin-right: 7px;">
-   <i style="font-family: Ubuntu;font-size: 19px;
-
-">Federico Zapata</i>
-   <i style="float: right;margin-top: 14px;font-size: 22px;font-family: UbuntuM;">1870</i></div>
+  
+         <img ng-show='$index == 0  ' src="img/trof.png" style=" position: absolute;
+    right: 5px;
+    height: 40px;
+    margin-top: 3px;"> </div>
 </div>
 
 
-<div class="card">
-<div class="item item-text-wrap" style=" color: #2ed09c;background-color: white;">
-   <i style="font-family: UbuntuM;
-    font-size: 22px;">5</i>
-   <img src="img/adam.jpg" style="     border: solid 1px;height: 50px;border-radius: 55px;vertical-align: middle;margin-left: 7px;margin-right: 7px;">
-   <i style="font-family: Ubuntu;font-size: 19px;
-
-">Willian Trejos</i>
-   <i style="float: right;margin-top: 14px;font-size: 22px;font-family: UbuntuM;">1860</i></div>
-</div>
-
-<div class="card">
-<div class="item item-text-wrap" style=" color: #2ed09c;background-color: white;">
-   <i style="font-family: UbuntuM;
-    font-size: 22px;">6</i>
-   <img src="img/perry.png" style="     border: solid 1px;height: 50px;border-radius: 55px;vertical-align: middle;margin-left: 7px;margin-right: 7px;">
-   <i style="font-family: Ubuntu;font-size: 19px;
-
-">Maria del pilar</i>
-   <i style="float: right;margin-top: 14px;font-size: 22px;font-family: UbuntuM;">1600</i></div>
-</div>
 
 
 

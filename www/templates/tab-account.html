@@ -28,12 +28,12 @@
     width: 40px;
     height: 40px;
 "></i>
-  	<img style="
+  	<img ng-click='cambiarFoto()' style="
     height: 80px;
     border: solid 2px white;
     border-radius: 100px;
     margin-top: 25px;
-    " src="img/ben.png">
+    " ng-src="{{url}}/userP{{usuarioInfo.idUsuario}}.png" onerror="if (this.src != 'error.jpg') this.src = 'img/userB.png';">
 
     <p style="
     color: white;

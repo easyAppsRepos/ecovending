@@ -71,7 +71,7 @@ angular.element(tabs[0]).css('display', '');
   .state('misTickets', {
       url: '/misTickets',
       templateUrl: 'templates/misTickets.html',
-      controller: 'DashCtrl'
+      controller: 'misTicketsCtrl'
   })
 
 
@@ -115,7 +115,7 @@ angular.element(tabs[0]).css('display', '');
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        controller: 'rankingCtrl'
       }
     }
   })
