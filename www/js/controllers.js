@@ -881,6 +881,8 @@ $scope.modalClasses = ['slide-in-up', 'slide-in-down', 'fade-in-scale', 'fade-in
 
             $scope.actividad = response.data.actividad;
              $scope.puntos = response.data.puntos;
+             $scope.huella = response.data.huella;
+             $scope.canjes = response.data.canjes;
             $ionicLoading.hide();
 
           }
@@ -929,7 +931,7 @@ var ft = new FileTransfer();
   $scope.$apply(function () {
      $scope.valorF =4;
 });
-  
+
 
  }, function(error){
  console.log(JSON.stringify(error));
