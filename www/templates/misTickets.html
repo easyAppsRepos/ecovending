@@ -53,7 +53,11 @@
 
 
     <div style="position:absolute; top:0; right:0; bottom:0; left:0; overflow-y:scroll; overflow-x: hidden;    height: calc(100% - 49px);">
-               
+               <div ng-show='cantCanjeables==0' style="    text-align: center;
+    margin-top: 40px;
+    font-size: 16px;
+    font-family: Ubuntu;
+    color: #999;">No tienes tickets canjeables</div>
             <div ng-repeat='t in tickets' ng-show='t.estado==1' style="        background-color: #276AB0;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
                 <div>
                     <div class='semicirculo'></div>
@@ -90,7 +94,13 @@
 
 
     <div style="position:absolute; top:0; right:0; bottom:0; left:0; overflow-y:scroll; overflow-x: hidden;    height: calc(100% - 49px);">
-               
+                              <div ng-show='cantHisto==0' style="    text-align: center;
+    margin-top: 40px;
+    font-size: 16px;
+    font-family: Ubuntu;
+    color: #999;">Historial vacio</div>
+
+
             <div ng-repeat='t in tickets' ng-show='t.estado==2' style="        background-color: #fafafa;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
                 <div>
                     <div class='semicirculo'></div>

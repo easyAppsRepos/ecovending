@@ -14,7 +14,7 @@
     
      font-size: 23px;
     font-family: UbuntuM;
-">RANKING</p>
+">HUELLA VERDE</p>
     <i ng-controller='menuButtonCtrl' ng-click='openModal("menu.html", "fade-in-right")' class="ion-android-more-vertical" style="
        position: absolute;
     top: 0;
@@ -78,13 +78,19 @@
          <i style="font-family: Ubuntu;font-size: 19px;
 
       ">{{r.nombre}}</i>
-         <i ng-class="{ 'rankingi1': $index == 0,  'rankingi2': $index !== 0}" >{{r.acumulado}}</i>
+         <i ng-class="{ 'rankingi1': $index == 0,  'rankingi2': $index !== 0}" ><img ng-show='$index !== 0  ' src="img/gt.png" style="    height: 40px;
+    vertical-align: middle;">{{r.acumulado}}</i>
 
   
          <img ng-show='$index == 0  ' src="img/trof.png" style=" position: absolute;
     right: 5px;
     height: 40px;
-    margin-top: 3px;"> </div>
+    margin-top: 3px;">
+
+           
+
+
+    </div>
 </div>
 
 

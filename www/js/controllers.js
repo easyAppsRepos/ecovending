@@ -133,6 +133,9 @@ getRanking();
     $ionicHistory.goBack()
   }
 
+$scope.cantCanjeables = 0;
+$scope.cantHisto = 0;
+
   $scope.usuarioInfo={};
   var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
 
@@ -201,6 +204,20 @@ $ionicLoading.show();
 
            // mensajeAlerta(2,'Codigo activado! Se te han acreditado 100 puntos');   
           $scope.tickets = response.data.tickets;
+
+          for(var i = 0; $scope.tickets.length > i ; i++){
+
+            if($scope.tickets[i].estado==1){
+              $scope.cantCanjeables = $scope.cantCanjeables+1;
+            }
+
+           if($scope.tickets[i].estado==2){
+              $scope.cantHisto = $scope.cantHisto+1;
+            }
+
+
+          }
+
           $ionicLoading.hide();
           }
           else{
@@ -656,12 +673,13 @@ $ionicLoading.show();
 
 
 
-.controller('productsCtrl', function($scope, $ionicLoading, api, $ionicPopup, $ionicModal) {
+.controller('productsCtrl', function($scope, $ionicLoading, api, serverConfig, $ionicPopup, $ionicModal) {
 
 
 //$scope.$on('$ionicView.enter', function(event, viewData) {
 
 $scope.usuarioInfo={};
+  $scope.url = serverConfig.imageStorageURL;
   var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
 
   $scope.usuarioInfo.nombre=  userData.nombre;
