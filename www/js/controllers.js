@@ -765,7 +765,7 @@ if(tipo==1){
 })
 
 
-.controller('AccountCtrl', function($scope, $ionicLoading, api, $ionicPopup, $ionicModal,serverConfig) {
+.controller('AccountCtrl', function($scope, $ionicLoading, $state, api, $ionicPopup, $ionicModal,serverConfig) {
 
 
 
@@ -892,7 +892,7 @@ $scope.cambiarFoto = function(){
 getImage();
 function getImage() {
  navigator.camera.getPicture(uploadPhoto, function(message) {
- alert('get picture failed');
+ console.log('getPic cancelled');
  }, {
  quality: 100,
  destinationType: navigator.camera.DestinationType.FILE_URI,
@@ -917,6 +917,7 @@ var ft = new FileTransfer();
  ft.upload(imageURI, serverConfig.imageStorageURL+"/upload.php", function(result){
  console.log(JSON.stringify(result));
   $ionicLoading.hide();
+  $state.reload();
   console.log('Foto cambiada correctamente');
 
  }, function(error){
