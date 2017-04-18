@@ -82,6 +82,13 @@ angular.element(tabs[0]).css('display', '');
   })
 
 
+  .state('ubicaciones', {
+      url: '/ubicaciones',
+      templateUrl: 'templates/ubicaciones.html',
+      controller: 'ubicacionesCtrl'
+  })
+
+
 
   .state('contactenos', {
       url: '/contactenos',

@@ -127,6 +127,27 @@ getRanking();
 })
 
 
+
+.controller('ubicacionesCtrl', function($scope, $stateParams, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
+
+  $scope.goBack = function() {
+    $ionicHistory.goBack()
+  }
+
+$scope.cantCanjeables = 0;
+$scope.cantHisto = 0;
+
+  $scope.usuarioInfo={};
+  var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
+
+  $scope.usuarioInfo.nombre=  userData.nombre;
+  $scope.usuarioInfo.institucion=  userData.institucion;
+  $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
+  $scope.usuarioInfo.idUsuario=  userData.idUsuario;
+
+
+})
+
 .controller('misTicketsCtrl', function($scope, $stateParams, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
 
   $scope.goBack = function() {
@@ -697,7 +718,7 @@ $scope.usuarioInfo={};
           $ionicLoading.show();
           api.getProductos($scope.usuarioInfo.idUsuario).then(function(response){
           console.log(response);
-          if(response.status== -1){ $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
           if(response.data.error == false){
 
             $scope.productos = response.data.productos;
