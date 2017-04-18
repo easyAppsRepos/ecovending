@@ -506,7 +506,7 @@ $scope.doLogin=function(usuario){
 
 else{
               $ionicLoading.show();
-
+usuario.email = usuario.email.toLowerCase();
           api.doLogin(usuario).then(function(response){
 
           
@@ -590,6 +590,7 @@ else{
 
           $ionicLoading.show();
   if(user.lugar == 'undefined' || user.lugar == null || user.lugar == ''){user.lugar=''}
+    user.email = user.email.toLowerCase();
           api.registrarUsuario(user).then(function(response){
 
           console.log(response);
