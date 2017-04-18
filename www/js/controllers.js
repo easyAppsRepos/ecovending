@@ -440,6 +440,7 @@ if(result.cancelled == 0){
           });
 
 }
+else{  $ionicLoading.hide();}
 
 
 /*          alert("We got a barcode\n" +
