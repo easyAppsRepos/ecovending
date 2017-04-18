@@ -591,6 +591,8 @@ else{
           $ionicLoading.show();
   if(user.lugar == 'undefined' || user.lugar == null || user.lugar == ''){user.lugar=''}
     user.email = user.email.toLowerCase();
+
+  console.log(user);
           api.registrarUsuario(user).then(function(response){
 
           console.log(response);
