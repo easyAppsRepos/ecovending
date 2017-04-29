@@ -714,7 +714,7 @@ $ionicLoading.show();
 })
 
 
-.controller('ecosociosCtrl', function($scope, $ionicLoading, api, serverConfig, $ionicPopup, $ionicModal) {
+.controller('ecosociosCtrl', function($scope, $ionicLoading, $ionicHistory, api, serverConfig, $ionicPopup, $ionicModal) {
 
 $scope.usuarioInfo={};
   $scope.url = serverConfig.imageStorageURL;
@@ -724,6 +724,12 @@ $scope.usuarioInfo={};
   $scope.usuarioInfo.institucion=  userData.institucion;
   $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
   $scope.usuarioInfo.idUsuario=  userData.idUsuario;
+
+
+  $scope.goBack = function() {
+    $ionicHistory.goBack()
+  }
+
 
 
 
@@ -795,7 +801,8 @@ if(tipo==1){
 
 .controller('productsCtrl', function($scope, $ionicLoading, api, serverConfig, $ionicPopup, $ionicModal) {
 
-
+$scope.busqueda={};
+$scope.busqueda.categoria=0;
 //$scope.$on('$ionicView.enter', function(event, viewData) {
 
 $scope.usuarioInfo={};
