@@ -148,11 +148,13 @@ $scope.cantHisto = 0;
 
 })
 
-.controller('misTicketsCtrl', function($scope, $stateParams, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
+.controller('misTicketsCtrl', function($scope, $stateParams, serverConfig, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
 
   $scope.goBack = function() {
     $ionicHistory.goBack()
   }
+
+  $scope.url = serverConfig.imageStorageURL;
 
 $scope.cantCanjeables = 0;
 $scope.cantHisto = 0;
@@ -164,6 +166,19 @@ $scope.cantHisto = 0;
   $scope.usuarioInfo.institucion=  userData.institucion;
   $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
   $scope.usuarioInfo.idUsuario=  userData.idUsuario;
+
+
+
+
+$scope.$on('$ionicView.enter', function(event, viewData) {
+ getTickets();
+});
+
+
+
+
+
+
 
 
 
@@ -252,7 +267,6 @@ $ionicLoading.show();
 
 
 
-getTickets();
 
 
 $scope.generarTicket = function(item){
@@ -268,9 +282,12 @@ $scope.generarTicket = function(item){
           if(response.status== -1){ $ionicLoading.hide();mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
 
           if(response.data.error == false){
-
-           // mensajeAlerta(2,'Codigo activado! Se te han acreditado 100 puntos');   
+console.log();
+           // mensajeAlerta(2,'Codigo activado! Se te han acreditado 100 puntos'); 
+           item.fechaCanje=response.data.fechaCanje;  
             $scope.canjeado=item;
+
+            console.log($scope.canjeado);
             $scope.openModal();
             getTickets();
           }
@@ -697,6 +714,84 @@ $ionicLoading.show();
 })
 
 
+.controller('ecosociosCtrl', function($scope, $ionicLoading, api, serverConfig, $ionicPopup, $ionicModal) {
+
+$scope.usuarioInfo={};
+  $scope.url = serverConfig.imageStorageURL;
+  var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
+
+  $scope.usuarioInfo.nombre=  userData.nombre;
+  $scope.usuarioInfo.institucion=  userData.institucion;
+  $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
+  $scope.usuarioInfo.idUsuario=  userData.idUsuario;
+
+
+
+  $scope.getEcosocios = function(){
+
+          $ionicLoading.show();
+          api.getEcosocios().then(function(response){
+          console.log(response);
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+          if(response.data.error == false){
+
+            $scope.ecosocios = response.data.ecosocios;
+
+            $ionicLoading.hide();
+
+          }
+          else{  $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error');}
+         // $state.go('app.login');
+          });
+
+
+  }
+
+  $scope.getEcosocios();
+
+  function mensajeAlerta(tipo, mensaje){
+
+    var ima ='exclam.png';
+if(tipo==1){
+
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/exclam.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
+
+
+}
+  if(tipo == 2){
+
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/confirma.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
+
+}
+
+      $ionicPopup.show({
+        template: customTemplate,
+        title: '',
+        subTitle: '',
+        buttons: [{
+          text: 'Cerrar',
+          type: 'button-blueCustom',
+          onTap: function(e) {
+
+            if(tipo==2){ 
+
+          //    $scope.closeModal();
+             // $scope.usuario={};
+
+            }
+          }
+           // if(borrar){ $scope.user.pin='';}
+           
+          
+        }]
+      });
+
+}
+
+})
+
 
 .controller('productsCtrl', function($scope, $ionicLoading, api, serverConfig, $ionicPopup, $ionicModal) {
 
@@ -739,6 +834,52 @@ $scope.usuarioInfo={};
   }
 
   $scope.getProductos();
+
+
+
+
+          $scope.showPopup = function(idProducto) {
+            $scope.data = {}
+           var customTemplate2 ='<div style="color:white !important" >El ticket tiene fecha de expiracion, se recomienda canjear al momento de la compra <br><br>  <strong>Deseas continuar?</strong></div> ';
+
+
+            $ionicPopup.show({
+              template: customTemplate2,
+              title: '',
+              subTitle: '',
+              scope: $scope,
+              buttons: [
+                { text: 'No', onTap: function(e) { return false; } },
+                {
+                  text: '<b>Si</b>',
+                  type: 'button-positive ',
+                  onTap: function(e) {
+                    return  true;
+                  }
+                },
+              ]
+              }).then(function(res) {
+
+              
+                console.log('Tapped!', res);
+
+                if(res){
+
+                  $scope.canjearProducto(idProducto);
+
+
+                }
+
+
+
+              }, function(err) {
+                console.log('Err:', err);
+              }, function(msg) {
+                console.log('message:', msg);
+              });
+
+
+          };
 
 
 $scope.canjearProducto=function(idProducto){
@@ -808,17 +949,20 @@ if(tipo==1){
 })
 
 
-.controller('AccountCtrl', function($scope, $ionicLoading, $state, api, $ionicPopup, $ionicModal,serverConfig) {
+.controller('AccountCtrl', function($scope, $ionicLoading, $state, $timeout, api, $ionicPopup, $ionicModal,serverConfig) {
 
-
+$scope.busqueda={};
+$scope.busqueda.categoria=0;
 
 $scope.$on('$ionicView.enter', function(event, viewData) {
-
+$scope.edicion={};
 $scope.usuarioInfo={};
   var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
 
   $scope.usuarioInfo.nombre=  userData.nombre;
   $scope.usuarioInfo.institucion=  userData.institucion;
+  $scope.usuarioInfo.ranking=  userData.ranking;
+  
   $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
   $scope.usuarioInfo.idUsuario=  userData.idUsuario;
   $scope.url = serverConfig.imageStorageURL;
@@ -862,7 +1006,7 @@ if(tipo==1){
 
             if(tipo==2){ 
 
-          //    $scope.closeModal();
+              $scope.closeModal();
              // $scope.usuario={};
 
             }
@@ -985,6 +1129,77 @@ var ft = new FileTransfer();
  
 
  }
+
+
+    $scope.editPerfil=function(){
+
+
+
+
+           $scope.edicion.nombre=   $scope.usuarioInfo.nombre;
+          $scope.edicion.lugar = $scope.usuarioInfo.institucion;
+           $scope.edicion.ranking = $scope.usuarioInfo.ranking == 1 ? true : false;
+
+
+
+$scope.openModal("nuevoUsuario.html", "slide-in-down");
+
+    }
+
+
+        $scope.editarUsuario=function(user){
+
+    console.log(user.ranking);
+    console.log($scope.usuarioInfo.ranking);
+
+if(user.ranking == true){ user.ranking = 1}
+  if(user.ranking == false){ user.ranking = 0}
+
+
+
+      if( user.ranking == $scope.usuarioInfo.ranking && user.nombre==$scope.usuarioInfo.nombre && user.lugar == $scope.usuarioInfo.institucion){
+
+        mensajeAlerta(1,'No has actualizado ningun dato');
+        return true;
+      }
+
+
+
+               $ionicLoading.show();
+
+               user.idUsuario = $scope.usuarioInfo.idUsuario;
+                console.log(user);
+
+
+          api.editarUsuario(user).then(function(response){
+
+          console.log(response);
+
+          
+
+          if(response.status== -1){mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');$ionicLoading.hide();}
+          if(response.data.error == false){
+            $ionicLoading.hide();
+           mensajeAlerta(2,'Has editado tu perfil correctamente');
+          window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));  
+          $state.reload();
+            
+
+
+
+
+           
+            
+
+          }
+          else{ mensajeAlerta(1,'Ha ocurrido un error');$ionicLoading.hide();}
+         // $state.go('app.login');
+          });
+
+
+
+    }
+
 
 
 

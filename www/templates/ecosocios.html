@@ -38,10 +38,10 @@
     border: none;
     border-radius: 5px;
     background: #fafafa;
-    " class="item item-thumbnail-left">
+    " class="item item-thumbnail-left" ng-repeat='e in ecosocios'>
 
-                  <img src="img/jover.png" style="
-    border-radius: 50px;
+                  <img  ng-src="{{url}}/ecosocio{{e.idEcosocio}}.jpg?5" style="
+    border-radius: 50px;    height: auto !important;
 ">
 
                   <p style="
@@ -50,7 +50,7 @@
     font-style: italic;
     font-family: UbuntuL;
     margin-top: 11px;
-    "><span style="font-size:22px">"</span>  Ecovending es una opcion innovador y sin duda nos unimos a ellos  <span style="font-size:22px">"</span></p>
+    "><span style="font-size:22px">"</span>  {{e.descripcion}}  <span style="font-size:22px">"</span></p>
 <div style="
         text-align: center;
         margin-top: 10px;

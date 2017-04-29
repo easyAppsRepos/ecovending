@@ -15,7 +15,7 @@
      font-size: 23px;
     font-family: UbuntuM;
 ">HUELLA VERDE</p>
-    <i ng-controller='menuButtonCtrl' ng-click='openModal("menu.html", "fade-in-right")' class="ion-android-more-vertical" style="
+    <i ng-controller='menuButtonCtrl' ng-click='openModal("menu.html", "fade-in-right")' class="ion-navicon-round" style="
        position: absolute;
     top: 0;
     left: 0;
@@ -24,7 +24,7 @@
     width: 40px;
     height: 40px;
 "></i>
-        <i class="ion-ios-settings-strong" style="
+        <i class="ion-funnel" style="
       position: absolute;
     top: 0;
     right: 0;
@@ -74,18 +74,14 @@
 <div class="item item-text-wrap" ng-class="{ 'ranking1': $index == 0,  'ranking2': $index !== 0}"  >
          <i style="font-family: UbuntuM;
           font-size: 22px;">{{$index+1}}</i>
-         <img ng-src="{{url}}/userP{{r.idUsuario}}.jpg" onerror="if (this.src != 'error.jpg') this.src = 'img/userB.png';" style="     border: solid 1px;height: 50px; width: 50px;border-radius: 55px;vertical-align: middle;margin-left: 7px;margin-right: 7px;">
-         <i style="font-family: Ubuntu;font-size: 19px;
+         <img ng-src="{{url}}/userP{{r.idUsuario}}.jpg" onerror="if (this.src != 'error.jpg') this.src = 'img/userB.png';" style="     border: solid 1px;height: 45px; width: 45px;border-radius: 55px;vertical-align: middle;margin-left: 5px;margin-right: 5px;">
+         <i style="font-family: Ubuntu;font-size: 17px;
 
       ">{{r.nombre}}</i>
-         <i ng-class="{ 'rankingi1': $index == 0,  'rankingi2': $index !== 0}" ><img ng-show='$index !== 0  ' src="img/gt.png" style="    height: 40px;
+         <i ng-class="{ 'rankingi2': true }" ><img  src="img/gt.png" style="    height: 34px;
     vertical-align: middle;">{{r.acumulado}}</i>
 
   
-         <img ng-show='$index == 0  ' src="img/trof.png" style=" position: absolute;
-    right: 5px;
-    height: 40px;
-    margin-top: 3px;">
 
            
 

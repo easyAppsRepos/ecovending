@@ -159,8 +159,8 @@ background-color: #1cb382 !important;
 .ion-nifty-modal4 {
   width: 90%;
   min-height: 0 !important;
-  height: 230px !important;
-  top: 30%;
+  height: 300px !important;
+  top: 17%;
   left: 5%;
   right: 5%;
   bottom: 5%;
@@ -263,9 +263,9 @@ background-color: #1cb382 !important;
 .tituloTik{
 
         display: inline-block;
-        font-size: 33px;
+        font-size: 17px;
         width: calc(100% - 75px);
-        float: right;
+  
         color: #fafafa;
         line-height: 29px;
         
@@ -318,8 +318,22 @@ margin-right: 40px;float: right;margin-top: 14px;font-size: 22px;font-family: Ub
     margin-top: 5px;
     font-size: 22px;
     font-family: UbuntuM;
-    margin-right: 9px;
+    margin-right: 5px;
+        min-width: 70px;
 }
 
+
+.vineta{
+
+    display: inline-block;
+    border: solid 2px lightcoral;
+    padding: 0px 3px;
+    background-color: lightcoral;
+    color: white;
+    font-family: Ubuntu;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
 
 

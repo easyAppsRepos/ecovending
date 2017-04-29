@@ -39,6 +39,26 @@ angular.module('starter.services', [])
             });
         },
 
+
+                editarUsuario:function(dat){  
+            console.log(dat);
+           
+            return  $http.post(serverConfig.url+'/editarUsuario',dat)
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+
+        
+
             activarCodigo:function(codigo, usuario){  
             console.log(codigo + '- ' + usuario);
             return  $http.post(serverConfig.url+'/activarCodigo',{codigo:codigo, idUsuario:usuario})
@@ -132,7 +152,20 @@ angular.module('starter.services', [])
             });
         },
 
+            getEcosocios:function(){  
 
+            return  $http.post(serverConfig.url+'/getEcosocios')
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
 
             getProductos:function(idUsuario){  
 

@@ -1,4 +1,47 @@
 <ion-view hide-nav-bar="true" view-title="Account">
+
+
+      <script id="nuevoUsuario.html" type="text/ng-template">
+  <ion-modal-view class="ion-nifty-modal2">
+    <div  class="ion-modal-content-custom2">
+      <ion-content class="padding">
+  <i ng-click='closeModal()' style='    color: #1cb382;
+    font-size: 35px;' class=" ion-android-cancel"></i>
+      <div class='' style="    margin-left: 3%;margin-right: 3%;font-family: Ubuntu;    margin-top: 3%;">
+                    <div  style='      color: #1cb382;
+   border-bottom: solid 1px #1cb382;    margin-top: 15px;font-size: 17px !important;    padding-bottom: 13px;' >Editar Perfil</div>
+                    <div class="list" >
+
+                        <div style="margin-top:13px"><label style="    color: darkgray;
+    font-size: 17px !important;">Nombre</label></div>
+                        <input   ng-model='edicion.nombre' style='' placeholder='' type="text" class="inputRegistrar md-input">
+
+
+                      <div style="margin-top:13px"><label style="    color: darkgray;
+    font-size: 17px !important;">Lugar / Institucion</label></div>
+                        <input ng-model='edicion.lugar' placeholder='' type="text" class="inputRegistrar md-input">
+
+
+
+  <ion-checkbox style=' border:none !important; margin-top: 23px; background-color: transparent; border:none !important, padding-left:30px'  ng-model='edicion.ranking'><div style="    color: darkgray;padding-left: 50px !important">Aparecer en Huella Verde? <br><br>  </div></ion-checkbox>
+<div style=" color: #1cb382;
+"><span>Participar del ranking te permitira ganar premios</span></div>
+
+
+                    </div>
+
+                         
+            <button ng-click='editarUsuario(edicion)' style="margin-bottom: 55px; background-color: #1cb382!important;color: white !important; font-family:UbuntuM"  class="button button-full  ink" >Editar</button>
+        
+      </div> 
+      <!--   <button class="button button-full button-positive" ng-click="closeModal()">Close Modal</button> -->
+      </ion-content>
+    </div>
+  </ion-modal-view>
+</script>
+
+
+
   <ion-content style='    background: #E1F1F1;' > 
 
 
@@ -11,7 +54,7 @@
     color: white;
     text-align: center;
 ">
-  	<i   style='    position: absolute;
+  	<i   ng-click='editPerfil()' style='    position: absolute;
     right: 0;
     margin-right: 13px;
     margin-top: 6px;
@@ -19,7 +62,7 @@
     color: white;' class="ion-edit"></i>
 
 
-    <i ng-controller='menuButtonCtrl' ng-click='openModal("menu.html", "fade-in-right")' class="ion-android-more-vertical" style="
+    <i ng-controller='menuButtonCtrl' ng-click='openModal("menu.html", "fade-in-right")' class="ion-navicon-round" style="
        position: absolute;
     top: 0;
     left: 0;
@@ -154,6 +197,8 @@
     </div>
  -->
  <div class="activity">
+
+
  	
  	<div style="    margin-left: 10px;
     font-size: 20px;

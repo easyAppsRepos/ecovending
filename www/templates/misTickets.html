@@ -14,8 +14,16 @@
       <ion-content class="padding">
 
             <div style="text-align: center;"><img style='vertical-align: bottom;height: 50px;' src="img/tik.png"> <h3 style="display:inline-block; font-family: Ubuntu;text-align: center;color: #fafafa">Ticket canjeado</h3></div>
-            <div style="text-align:center"><img  style='    border-radius: 70px;height: 65px;margin-top: 15px;' src="img/jover.png"></div>
+            <div style="text-align:center"><img  style="height: 60px;
+    border-radius: 7px;"  ng-src="{{url}}/ecosocio{{canjeado.idEcosocio}}.jpg?9" >
+
+           
+
+             </div>
              <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa"><strong>{{canjeado.titulo}}</strong></h4>
+
+            <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa"><strong>{{canjeado.fechaCanje}}</strong></h4>
+
 
 
       </ion-content>
@@ -63,21 +71,26 @@
                     <div class='semicirculo'></div>
 
                     <div>
-                        <img style="height: 60px;border-radius: 50px;display: inline-block;vertical-align: top;" src="img/jover.png"> 
+                        <img ng-src="{{url}}/ecosocio{{t.idEcosocio}}.jpg?3" onerror="if (this.src != 'error.jpg') this.src = 'img/logoApp.gif';" style="height: 60px;border-radius: 7px;display: inline-block;vertical-align: top;"> 
                         <div class='tituloTik' >{{t.titulo}}</div>
                     </div>
                 </div>
 
-                <div style="    text-align: left;font-size: 21px;margin-top: 15px;    color: lightgray;
-    margin-left: 12px;">
-                     Vence el {{t.fechaCaducidad}} 
-                </div>
 
                 <div style="      text-align: left;font-size: 21px;margin-top: 15px;color: #555;">
-                            <button ng-click='generarTicket(t)'  style='     border-top: dashed 3px darkgray;
+
+
+
+                            <div style="    color: white;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;">*Este ticket no es acumulables con otro descuento o promocion <br> *Vence el {{t.fechaCaducidad}} </div>
+
+                                <button ng-click='generarTicket(t)'  style='     border-top: dashed 3px darkgray;
     border-bottom: dashed 3px darkgray;   font-family: UbuntuM;' class="button button-full button-light">
                             Generar Ticket
                             </button>
+
 
                 </div>
                </div>
@@ -106,7 +119,7 @@
                     <div class='semicirculo'></div>
 
                     <div>
-                        <img style="height: 60px;border-radius: 50px;display: inline-block;vertical-align: top;" src="img/jover.png"> 
+                        <img style="height: 60px;border-radius: 7px;display: inline-block;vertical-align: top;" ng-src="{{url}}/ecosocio{{t.idEcosocio}}.jpg?3" onerror="if (this.src != 'error.jpg') this.src = 'img/logoApp.gif';">
                         <div class='tituloTik' style="    color: #1cb382 !important;">{{t.titulo}}</div>
                     </div>
                 </div>

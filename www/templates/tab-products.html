@@ -10,7 +10,7 @@
 
 
 
-    <i ng-controller='menuButtonCtrl' ng-click='openModal("menu.html", "fade-in-right")' class="ion-android-more-vertical" style="
+    <i ng-controller='menuButtonCtrl' ng-click='openModal("menu.html", "fade-in-right")' class="ion-navicon-round" style="
        position: absolute;
     top: 0;
     left: 0;
@@ -36,27 +36,48 @@
     font-family: Ubuntu;
     color: #777;
     padding: 0px 10px 16px 10px;
-"><div style='    margin-top: 0px;' class="list list-inset">
+"><div style='      margin-bottom: 7px;  margin-top: 0px;' class="list list-inset">
   <label style='    padding: 0px !important;' class="item item-input">
     <i style='margin-left: 10px' class="icon ion-search placeholder-icon"></i>
-    <input type="text" placeholder="Buscar Producto">
+    <input type="text" placeholder="Buscar Producto" ng-model='busqueda.nombre'>
   </label>
+
+ 
+
+
 </div>
 
 
+                <div style="      text-align: left;
+    margin-left: 10px;
+    border: solid white 1px;
+    padding-left: 15px;
+    margin-right: 10px;">
+                    <div style='color:white !important;    display: inline-block;' class="input-label">
+                      Categoria
+                    </div>
+                    <select ng-model='busqueda.categoria' style="  color:white !important;  display: inline-block;">
+                      <option  value='0' selected >Todas</option>
+                      <option value='4' >Shopping</option>
+                      <option value='2'>Sabores</option>
+                      <option value='3'>Salud</option>
+                      <option value='3'>Belleza</option>
+                      <option value='1'>Panoramas</option>
+                    </select>
+                </div>
+  </div>
+
 
   </div>
 
-  </div>
 
-
-  <ion-content  style='   top: 113px; background: #E1F1F1;' > 
+  <ion-content  style='   top: 153px; background: #E1F1F1;' > 
 
 
 <div style="  margin-top: 10px;  width: 95%;
     margin-left: 2.5%;">
    
-   <a  ng-repeat='p in productos' style="
+   <a  ng-repeat='p in productos | filter: busqueda.nombre' ng-show='busqueda.categoria == 0 || busqueda.categoria == p.idCategoria '  style="
     padding-top: 8px !important;
     padding-left: 106px !important;
     min-height: 100px;
@@ -68,18 +89,22 @@
         background: #fafafa;
     " class="item item-thumbnail-left">
 
-                  <img ng-src="{{url}}/ecosocio{{p.idEcosocio}}.jpg" onerror="if (this.src != 'error.jpg') this.src = 'img/logoApp.gif';" style="
-    border-radius: 50px;
+                  <img ng-src="{{url}}/ecosocio{{p.idEcosocio}}.jpg?3" onerror="if (this.src != 'error.jpg') this.src = 'img/logoApp.gif';" style="
+    border-radius: 50px;    height: auto !important;
 ">
 <div style="
     height: 33px;
-"><div style="
-    display: inline-block;
-    margin-top: 4px;
-"><img style="    vertical-align: sub;
-    height: 20px;" src="img/coin.png"> {{p.valor}}</div> 
+">
 
-        <button ng-click='canjearProducto(p.idProducto)'  class='button button-energized' style="
+  <div style="
+    display: inline-block;
+    margin-top: 4px;font-size: 15px;
+"><img style="    vertical-align: sub;
+    height: 20px;" src="img/coin.png"> {{p.valor}}
+
+    </div> 
+
+        <button ng-click='showPopup(p.idProducto)'  class='button button-energized' style="
        
            float: right;
     min-height: 10px;
@@ -90,6 +115,13 @@
 
 </div>
                   <p style="white-space:normal">{{p.descripcion}}</p>
+
+                <div style="white-space: normal;">  
+
+                  <div style='margin-right: 5px' class='vineta'>{{p.categoria}}</div>
+                  <div class='vineta'>{{p.subcategoria}}</div> 
+
+                </div>
 
    </a>
 

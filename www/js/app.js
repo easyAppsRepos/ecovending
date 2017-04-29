@@ -78,7 +78,7 @@ angular.element(tabs[0]).css('display', '');
   .state('ecosocios', {
       url: '/ecosocios',
       templateUrl: 'templates/ecosocios.html',
-      controller: 'DashCtrl'
+      controller: 'ecosociosCtrl'
   })
 
 
