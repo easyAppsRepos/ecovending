@@ -6,6 +6,15 @@ angular.module('starter.controllers', [])
     $ionicHistory.goBack()
   }
  
+
+ $scope.getH=function(ee){
+
+var acu = ee*0.055;
+
+  return acu;
+ }
+
+
   $scope.items = [
     {title: 'Item 1', desc: 'This is item 1'},
     {title: 'Item 2', desc: 'This is item 2'},
@@ -45,6 +54,17 @@ angular.module('starter.controllers', [])
   $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
   $scope.usuarioInfo.idUsuario=  userData.idUsuario;
  $scope.url = serverConfig.imageStorageURL;
+
+
+
+
+ $scope.getH=function(ee){
+
+var acu = parseInt(ee*0.055);
+
+  return acu;
+ }
+
 
 
   function mensajeAlerta(tipo, mensaje){
@@ -731,6 +751,17 @@ $scope.usuarioInfo={};
   }
 
 
+$scope.openPage = function(link){
+
+  if(link == null || link == 'null' || link == 'undefinded'){console.log('nolink')}
+
+  else{
+      window.open(link, '_system', 'location=yes'); return false;
+
+  }  
+}
+
+
 
 
   $scope.getEcosocios = function(){
@@ -983,6 +1014,12 @@ $scope.getime=function(){
   return $scope.valorF;
 }
 
+ $scope.getH=function(ee){
+
+var acu = parseInt(ee*0.055);
+
+  return acu;
+ }
 
 
   function mensajeAlerta(tipo, mensaje){

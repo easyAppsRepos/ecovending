@@ -319,7 +319,9 @@ margin-right: 40px;float: right;margin-top: 14px;font-size: 22px;font-family: Ub
     font-size: 22px;
     font-family: UbuntuM;
     margin-right: 5px;
-        min-width: 70px;
+    min-width: 70px;
+    max-width: 71px;
+    white-space: nowrap;
 }
 
 
