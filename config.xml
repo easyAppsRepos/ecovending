@@ -107,4 +107,30 @@
 
 
 
+  <splash src="splash.png" />
+
+
+<!-- iPhone and iPod touch -->
+<splash src="res/splash/ios/320x480.png" platform="ios" width="320" height="480" />
+<splash src="res/splash/ios/640x960.png" platform="ios" width="640" height="960" />
+
+<!-- iPhone 5 / iPod Touch (5th Generation) -->
+<splash src="res/splash/ios/640x1136.png" platform="ios" width="640" height="1136" />
+
+<!-- iPhone 6 -->
+<splash src="res/splash/ios/750x1334.png" platform="ios" width="750" height="1334" />
+<splash src="res/splash/ios/1242x2208.png" platform="ios" width="1242" height="2208" />
+
+
+<!-- iPad -->
+<splash src="res/splash/ios/768x1024.png" platform="ios" width="768" height="1024" />
+
+<!-- Retina iPad -->
+<splash src="res/splash/ios/1536x2048.png" platform="ios" width="1536" height="2048" />
+
+
+
+
+
+
 </widget>
