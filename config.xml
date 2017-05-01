@@ -28,6 +28,12 @@
 
    -->
 
+     <preference name="AutoHideSplashScreen" value="false"/>
+  <preference name="ShowSplashScreenSpinner" value="false"/>
+
+
+  
+
   <preference name="android-minSdkVersion" value="16"/>
   <preference name="BackupWebStorage" value="none"/>
 
