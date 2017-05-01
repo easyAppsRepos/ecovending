@@ -23,7 +23,21 @@
 
                       <div style="margin-top:13px"><label style="    color: darkgray;
     font-size: 17px !important;">Lugar / Institucion</label></div>
-                        <input ng-model='usuario.lugar' placeholder='' type="text" class="inputRegistrar md-input">
+
+
+    <select ng-model='usuario.lugar'  style="    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: darkgray;
+    font-family: Ubuntu; ">
+
+      <option ng-repeat='l in lugares' ng-value='l.idLugar' >{{l.nombre}}</option>
+
+    </select>
+
+
+
+
                       <div style="margin-top:13px"><label style="    color: darkgray;
     font-size: 17px !important;">Contraseña *</label></div>
                         <input ng-model='usuario.contra' placeholder='' type="text" class="inputRegistrar md-input">
@@ -76,7 +90,7 @@
     font-size: 17px;
     color: #fafafa;
     margin-top:5px">
-        <a ng-click='openModal("nuevoUsuario.html", "slide-in-up")' style="color:white">¿Aun no eres usuario? <bold> Registrate </bold> </a><br><br>
+        <a ng-click='newUser()' style="color:white">¿Aun no eres usuario? <bold> Registrate </bold> </a><br><br>
 
         <a style="color:white" >¿Olvidaste tu contraseña?</a>
 

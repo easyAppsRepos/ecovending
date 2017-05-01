@@ -180,7 +180,24 @@ angular.module('starter.services', [])
 
             return response;
             });
+        },
+
+                    getLugares:function(idUsuario){  
+
+            return  $http.post(serverConfig.url+'/getLugares')
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
         }
+
+
 
 
     }

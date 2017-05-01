@@ -19,7 +19,16 @@
 
                       <div style="margin-top:13px"><label style="    color: darkgray;
     font-size: 17px !important;">Lugar / Institucion</label></div>
-                        <input ng-model='edicion.lugar' placeholder='' type="text" class="inputRegistrar md-input">
+
+    <select ng-model='edicion.lugar'  style="    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: darkgray;
+    font-family: Ubuntu; ">
+
+      <option ng-repeat='l in lugares' ng-value='l.idLugar' >{{l.nombre}}</option>
+
+    </select>
 
 
 

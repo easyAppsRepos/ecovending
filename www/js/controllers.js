@@ -650,6 +650,31 @@ else{
 
 }
 
+$scope.newUser = function(){
+
+
+          api.getLugares().then(function(response){
+
+          
+          $ionicLoading.hide();
+
+          if(response.status== -1){mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+          if(response.data.error == false){
+            console.log(response);
+            $scope.lugares = response.data.lugares;
+            $scope.openModal("nuevoUsuario.html", "slide-in-up");
+
+          }
+          else{ mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+         // $state.go('app.login');
+          });
+
+
+
+ 
+}
+
+
 
     $scope.openModal = function(templateName,animation) {
     $ionicModal.fromTemplateUrl(templateName, {
@@ -1175,18 +1200,39 @@ var ft = new FileTransfer();
  }
 
 
+
+
+
     $scope.editPerfil=function(){
 
+ $ionicLoading.show();
+          api.getLugares().then(function(response){
+
+          
+          $ionicLoading.hide();
+
+          if(response.status== -1){mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+          if(response.data.error == false){
 
 
-
+            console.log(response);
+            $scope.lugares = response.data.lugares;
+            
            $scope.edicion.nombre=   $scope.usuarioInfo.nombre;
           $scope.edicion.lugar = $scope.usuarioInfo.institucion;
            $scope.edicion.ranking = $scope.usuarioInfo.ranking == 1 ? true : false;
+            $scope.openModal("nuevoUsuario.html", "slide-in-down");
 
 
 
-$scope.openModal("nuevoUsuario.html", "slide-in-down");
+
+          }
+          else{ mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+         // $state.go('app.login');
+          });
+
+
+
 
     }
 
