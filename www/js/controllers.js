@@ -9,7 +9,7 @@ angular.module('starter.controllers', [])
 
  $scope.getH=function(ee){
 
-var acu = ee*0.055;
+var acu = (ee*0.0055).toFixed(2);
 
   return acu;
  }
@@ -60,7 +60,7 @@ var acu = ee*0.055;
 
  $scope.getH=function(ee){
 
-var acu = parseInt(ee*0.055);
+var acu = (ee*0.0055).toFixed(2);
 
   return acu;
  }
@@ -1097,7 +1097,7 @@ $scope.getime=function(){
 
  $scope.getH=function(ee){
 
-var acu = parseInt(ee*0.055);
+var acu = (ee*0.0055).toFixed(2);
 
   return acu;
  }
