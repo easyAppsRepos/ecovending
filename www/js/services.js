@@ -75,6 +75,31 @@ angular.module('starter.services', [])
         },
 
 
+
+                recuperarContra:function(email){  
+
+            return  $http.post(serverConfig.url+'/recuperarContra',{email: email})
+            .then(function(response) {
+
+                console.log(response);
+
+            return response.data;
+            }, function(response) {
+            // something went wrong
+               console.log(response);
+               var e = response;
+               e.error =true;
+                //var r.data.error=true;
+
+               if(response.status==404){  e.recuperacionOK =false;}
+
+           
+            return e;
+            });
+        },
+
+        
+
             getActividad:function(idUsuario){  
 
             return  $http.post(serverConfig.url+'/getActividad',{idUsuario:idUsuario})

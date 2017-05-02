@@ -566,6 +566,61 @@ usuario.email = usuario.email.toLowerCase();
 
 }
 
+
+    $scope.olvide = function(){
+
+                      var mensaje = 'Correo Electronico'
+                   var customTemplate =
+          '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/email.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> <input type="text" ng-model="olvideEmail" > <button ng-click="recuperar(olvideEmail)" class="btnRecuperar button" style="    width: 100%;background-color: #999;margin-top: 20px;height: 40px;font-family: Ubuntu;color: white;border: none;border-radius: 2px;">Recuperar</button></div>';
+
+        $scope.pop = $ionicPopup.show({
+          template: customTemplate,
+          title: '',
+          subTitle: '',
+          scope: $scope,
+          buttons: [{
+            text: 'Cerrar',
+            type: 'button-blueCustoms',
+            onTap: function(e) {
+
+             // if(borrar){ $scope.user.pin='';}
+             
+            }
+          }]
+        });
+    }
+
+
+
+    $scope.recuperar = function(email){
+$ionicLoading.show();
+  console.log(email);
+
+          api.recuperarContra(email).then(function(data) {
+
+            $ionicLoading.hide();
+
+            if(data.recuperacionOK){
+              //console.log(data);
+              //window.localStorage.setItem( 'userInfoTS', JSON.stringify(data));
+
+              $scope.pop.close();
+              mensajeAlerta(2,'Se ha enviado la contraseña a tu correo, verifica en breve. Recuerda buscar en la carpeta de "no deseados" si no está en tu bandeja');
+
+            }
+            else{
+
+              $scope.pop.close();
+              mensajeAlerta(1,'Email invalido');
+            }
+       
+
+        });
+
+
+}
+
+
   function mensajeAlerta(tipo, mensaje){
     console.log(tipo);
     var ima ='exclam.png';
@@ -594,8 +649,8 @@ if(tipo==1){
 
             if(tipo==2){ 
 
-              $scope.closeModal();
-              $scope.usuario={};
+              /////$scope.closeModal();
+              //$scope.usuario={};
 
             }
           }
