@@ -649,8 +649,8 @@ if(tipo==1){
 
             if(tipo==2){ 
 
-              /////$scope.closeModal();
-              //$scope.usuario={};
+              $scope.closeModal();
+              $scope.usuario={};
 
             }
           }
@@ -694,6 +694,7 @@ else{
           if(response.data.error == false){
 
             mensajeAlerta(2,'Usuario creado correctamente, ya puedes iniciar sesion!','1');
+            //$scope.closeModal();
            // $scope.user={};
            
           //  $state.reload();
@@ -706,7 +707,7 @@ else{
 }
 
 $scope.newUser = function(){
-
+  $ionicLoading.show();
 
           api.getLugares().then(function(response){
 
