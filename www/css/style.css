@@ -159,7 +159,7 @@ background-color: #1cb382 !important;
 .ion-nifty-modal4 {
   width: 90%;
   min-height: 0 !important;
-  height: 300px !important;
+  height: 362px !important;
   top: 17%;
   left: 5%;
   right: 5%;
@@ -310,13 +310,13 @@ background-color: #1cb382 !important;
 
 .rankingi1{
 
-margin-right: 40px;float: right;margin-top: 14px;font-size: 22px;font-family: UbuntuM;
+margin-right: 40px;float: right;margin-top: 14px;font-size: 17px;font-family: UbuntuM;
 }
 .rankingi2{
 
     float: right;
     margin-top: 5px;
-    font-size: 20px;
+    font-size: 17px;
     font-family: UbuntuM;
     margin-right: 5px;
     min-width: 70px;

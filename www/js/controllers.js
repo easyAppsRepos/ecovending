@@ -9,7 +9,7 @@ angular.module('starter.controllers', [])
 
  $scope.getH=function(ee){
 
-var acu = (ee*0.0055).toFixed(2);
+var acu = (ee*0.00055).toFixed(3);
 
   return acu;
  }
@@ -60,7 +60,7 @@ var acu = (ee*0.0055).toFixed(2);
 
  $scope.getH=function(ee){
 
-var acu = (ee*0.0055).toFixed(2);
+var acu = (ee*0.00055).toFixed(3);
 
   return acu;
  }
@@ -304,8 +304,15 @@ $scope.generarTicket = function(item){
           if(response.data.error == false){
 console.log();
            // mensajeAlerta(2,'Codigo activado! Se te han acreditado 100 puntos'); 
-           item.fechaCanje=response.data.fechaCanje;  
+           item.fechaCanje=response.data.fechaCanje;
+           item.fechaVencimiento =   response.data.fechaVencimiento;
+           item.codigoWeb =   response.data.codigoWeb;
+
+           
+
+
             $scope.canjeado=item;
+
 
             console.log($scope.canjeado);
             $scope.openModal();
@@ -466,7 +473,7 @@ if(result.cancelled == 0){
 
           if(response.data.error == false){
 
-            mensajeAlerta(2,'Codigo activado! Se te han acreditado 100 puntos');   
+            mensajeAlerta(2,'Codigo activado! Se te han acreditado '+response.data.puntos+' puntos');   
 
 
           }
@@ -1097,7 +1104,7 @@ $scope.getime=function(){
 
  $scope.getH=function(ee){
 
-var acu = (ee*0.0055).toFixed(2);
+var acu = (ee*0.00055).toFixed(3);
 
   return acu;
  }

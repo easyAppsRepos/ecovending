@@ -22,7 +22,20 @@
              </div>
              <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa"><strong>{{canjeado.titulo}}</strong></h4>
 
-            <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa"><strong>{{canjeado.fechaCanje}}</strong></h4>
+
+
+
+<br>
+
+<div ng-show='canjeado.tipo == 3' >
+                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >Codigo WEB</h4>
+               <h4 style=" font-family: Ubuntu;text-align: center;    color: darkred"><strong>{{canjeado.codigoWeb}}</strong></h4>
+
+</div>
+                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >Fecha de vencimiento</h4>
+               <h4 style=" font-family: Ubuntu;text-align: center;    color: darkred"><strong>{{canjeado.fechaVencimiento}}</strong></h4>
+
+
 
 
 
@@ -84,7 +97,7 @@
                             <div style="    color: white;
     font-size: 12px;
     padding-left: 5px;
-    padding-right: 5px;">*Este ticket no es acumulables con otro descuento o promocion <br> *Vence el {{t.fechaCaducidad}} </div>
+    padding-right: 5px;">*Este ticket no es acumulables con otro descuento o promocion <br> </div>
 
                                 <button ng-click='generarTicket(t)'  style='     border-top: dashed 3px darkgray;
     border-bottom: dashed 3px darkgray;   font-family: UbuntuM;' class="button button-full button-light">
