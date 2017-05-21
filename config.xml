@@ -107,6 +107,8 @@
     <icon gap:platform="ios" height="144" src="res/icon/ios/144.png" width="144" />
     <icon gap:platform="ios" height="100" src="res/icon/ios/100.png" width="100" />
 
+   <icon gap:platform="ios" height="120" src="res/icon/ios/120.png" width="120" />
+
 
 
   <splash src="splash.png" />
