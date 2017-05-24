@@ -5,6 +5,17 @@
          
 }
 
+
+@media (min-width: 680px){
+.modal {
+    top: 0px !important;
+    right: 0px !important;
+    bottom: 0px !important;
+    left: 0px !important;
+}
+}
+
+
 @font-face {
     font-family: 'UbuntuL';
     src: url('../lib/ionic/fonts/UbuntuLight.ttf') format('truetype')
@@ -92,7 +103,7 @@ background-color: #1cb382 !important;
   background-size: cover;
   display: block;
 
-  height: 800px;
+height: 2000px;
   left: 0;
   position: fixed;
   right: 0;
@@ -160,8 +171,8 @@ background-color: #1cb382 !important;
   width: 90%;
   min-height: 0 !important;
   height: 362px !important;
-  top: 17%;
-  left: 5%;
+    top: 17% !important;
+    left: 5% !important;
   right: 5%;
   bottom: 5%;
   background-color: transparent;
@@ -185,8 +196,8 @@ background-color: #1cb382 !important;
   width: 90%;
   min-height: 0 !important;
   height: 387px !important;
-  top: 3%;
-  left: 5%;
+    top: 3% !important;
+    left: 5% !important;
   right: 5%;
   bottom: 5%;
   background-color: transparent;
