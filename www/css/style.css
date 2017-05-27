@@ -149,8 +149,8 @@ height: 2000px;
 
 
 .ion-nifty-modal2 {
-    width: 100%;
-    min-height: 0 !important;
+    width: 100% !important;
+
     height: 100% !important;
        background: #E1F1F1;
  
