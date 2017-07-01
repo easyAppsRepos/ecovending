@@ -1,7 +1,6 @@
 
 
 <ion-view hide-nav-bar="true">
-
 <div style="       background-color: #1cb382;
     height: 108px;
     text-align: left;
@@ -19,7 +18,7 @@
     padding-left: 8px;
     margin-top: 5px;' class="ion-ios-arrow-back" ng-click='goBack()'></i>
 
-    <h4 style="    margin-left: 44px;color:white">Ecosocios</h4>
+    <h4 style="    margin-left: 44px;color:white">Maquinas</h4>
 
 <div style="text-align: center;">
 
@@ -36,7 +35,6 @@ margin-right: 10px;
 
                       <option  value='1' selected >Chile</option>
                       <option value='2' >Argentina</option>
-                      <option  value='69'  >Todos</option>
                     </select>
                 </div>
 
@@ -68,11 +66,16 @@ margin-right: 10px;
 </div>
 
 
-    <ion-content style="top: 108px; background: #E1F1F1; font-family:Ubuntu" >
-
+    <ion-content style="top: 108px; background: #E1F1F1; font-family:Ubuntu">
 
 <div style="  margin-top: 10px;  width: 95%;
     margin-left: 2.5%;">
+
+
+<div ng-show='noMaquinas' style="    font-size: 18px;
+    text-align: center;
+    margin-top: 32px;
+    color: #999;">No se ha encontrado ninguna maquina</div>
 
 <a style="
     padding-top: 8px !important;
@@ -84,71 +87,46 @@ margin-right: 10px;
     border: none;
     border-radius: 5px;
     background: #fafafa;
-    " class="item item-thumbnail-left" ng-repeat='e in ecosocios' ng-show='(e.idPais == filtro.pais || filtro.pais == 69) && e.distance < filtro.distancia'>
+    " class="item item-thumbnail-left" ng-repeat='e in ecosocios ' ng-show='e.idPais == filtro.pais'>
 
-                  <img  ng-src="{{url}}/ecosocio{{e.idEcosocio}}.jpg?5" style="
+<!--                   <img  ng-src="{{url}}/ecosocio{{e.idEcosocio}}.jpg?5" style="
+    border-radius: 50px;    height: auto !important;
+"> -->
+                  <img  ng-src="img/maquina.png" style="
     border-radius: 50px;    height: auto !important;
 ">
-
-                  <p style="
-    white-space: normal;
-    text-align: center;
-    font-style: italic;
-    font-family: UbuntuL;
-    margin-top: 11px;
-    "><span style="font-size:22px">"</span>  {{e.descripcion}}  <span style="font-size:22px">"</span></p>
 
 
 <div style="
         text-align: left;    margin-left: 10px;
         margin-top: 10px;
         margin-bottom: 20px;
+        color: #444;
+            font-size: 15px !important;
 ">
-   
-    <i  ng-show='e.webLink !== null' ng-click='openPage(e.webLink)' style="    color: #1cb382;  font-size: 27px;" class="icon ion-ios-world"></i>
-   
+  <img src="img/ubicacion.png" style="height: 25px;vertical-align: middle;"> {{e.ubicacionNombre}} <br>
+  
+  <span ng-show='!noDistancia' >
+   <img src="img/walk.png" style="height: 25px;vertical-align: middle;"> <span ng-click="abrirMapa(e.lat,e.lon)" style="    margin-top: 7px;
+    display: inline-block;">Maquina a {{getDistance(e.distance)}} km</span> <br>
+</span>
+  <img src="img/vermapa.png" style="height: 25px;vertical-align: middle;"> <span ng-click="abrirMapa(e.lat,e.lon)" style="    margin-top: 7px;
+    display: inline-block;">Ver en mapa</span>
 
+ </div>
 
-     
-    <i ng-show='e.faceLink !== null' ng-click='openPage(e.faceLink)' style="color:#3b5998;margin-left:50px;font-size: 27px;" class="icon ion-social-facebook"> </i>
-   
-     
-    <i ng-show='e.ubicaciones.length > 0' ng-click='openMap(e.ubicaciones)' style="color:lightcoral ;margin-left:50px;font-size: 27px;" class="icon ion-ios-location"> </i>
-         
-
-   
-</div>
-
-
-
-                <div style="white-space: normal;">  
+<!--  
+               <div style="white-space: normal;">  
 
                   <div style='margin-right: 5px;margin-left: 8px;' class='vinetaE'>{{e.categoria}}</div>
                   <div style='margin-left: 8px;' class='vinetaE'>{{e.subCategoria}}</div> 
-               <img style='    position: absolute;
-    left: 0;
-    margin-left: 8px;
-    bottom: 0;
-    height: 35px;'  src="img/chile.png">
 
                 </div>
-
-
- 
-
-
+ -->
    </a>
+</div>
 
 
-
-
-<div ng-show='!((e.idPais == filtro.pais || filtro.pais == 69) && (e.distance < filtro.distancia))'  style="    font-size: 18px;
-    text-align: center;
-    margin-top: 32px;
-    color: #999;">No se ha encontrado ningun ecosocio</div>
-
-
-   </div>
 
 
     </ion-content>

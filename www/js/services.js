@@ -192,6 +192,39 @@ angular.module('starter.services', [])
             });
         },
 
+
+            getEcosociosGPS:function(dara){  
+
+            return  $http.post(serverConfig.url+'/getEcosociosGPS',dara)
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+            getMaquinas:function(dara){  
+
+            return  $http.post(serverConfig.url+'/getMaquinas',dara)
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+
+
             getProductos:function(idUsuario){  
 
             return  $http.post(serverConfig.url+'/getProductos',{idUsuario:idUsuario})

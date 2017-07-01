@@ -22,8 +22,8 @@ var tabs = document.querySelectorAll('div.tabs');
 angular.element(tabs[0]).css('display', '');
 });
 */
-navigator.splashscreen.hide();
- window.open = cordova.InAppBrowser.open;
+//navigator.splashscreen.hide();
+ //window.open = cordova.InAppBrowser.open;
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -74,6 +74,14 @@ navigator.splashscreen.hide();
       templateUrl: 'templates/misTickets.html',
       controller: 'misTicketsCtrl'
   })
+
+    .state('maquinas', {
+      url: '/maquinas',
+      templateUrl: 'templates/maquinas.html',
+      controller: 'maquinasCtrl'
+  })
+
+
 
 
   .state('ecosocios', {

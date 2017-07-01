@@ -168,6 +168,215 @@ $scope.cantHisto = 0;
 
 })
 
+
+
+
+
+.controller('maquinasCtrl', function($scope, $stateParams, serverConfig, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
+
+
+
+$scope.filtro={distancia:'10000000000000000000000', pais:'1'};
+
+  $scope.goBack = function() {
+    $ionicHistory.goBack()
+  }
+
+
+
+$scope.selectPais = function(pais){
+    //pais from sellect
+ console.log(pais);
+}
+
+$scope.selectDistancia = function(distancia){
+
+  $scope.ecosocios = null;
+    //distancia from sellect
+     console.log(distancia);
+     $scope.filtro.distancia = distancia;
+       $scope.getEcosocios();
+ 
+}
+
+
+  function mensajeAlerta(tipo, mensaje){
+
+    var ima ='exclam.png';
+
+
+if(tipo==1){
+
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/exclam.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
+
+
+}
+  if(tipo == 2){
+
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/confirma.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
+
+}
+
+      $ionicPopup.show({
+        template: customTemplate,
+        title: '',
+        subTitle: '',
+        buttons: [{
+          text: 'Cerrar',
+          type: 'button-blueCustom',
+          onTap: function(e) {
+
+            if(tipo==2){ 
+
+          //    $scope.closeModal();
+             // $scope.usuario={};
+
+            }
+          }
+           // if(borrar){ $scope.user.pin='';}
+           
+          
+        }]
+      });
+
+}
+
+
+
+
+  $scope.abrirMapa=function(lat,lng){
+
+
+
+ var url = "https://maps.google.com/?q=" + lat + "," + lng;
+    window.open(url, '_system', 'location=yes'); return false;
+
+
+  }
+
+
+
+
+
+
+  $scope.url = serverConfig.imageStorageURL;
+
+$scope.getDistance = function(d){
+
+ var f = Math.round(d);
+
+ if (f < 1 ){ f = 'Menos de 1'}
+ return f;
+}
+
+  $scope.getEcosocios = function(){
+$scope.noMaquinas = false;
+
+console.log($scope.filtro.distancia);
+console.log($scope.filtro.pais);
+
+ $ionicLoading.show();
+
+        navigator.geolocation.getCurrentPosition(function(pos) {
+         console.log(pos.coords.latitude+' Long: '+ pos.coords.longitude);
+    
+
+               var latitudePerson = pos.coords.latitude;
+                var longitudePerson = pos.coords.longitude;
+
+                  console.log(latitudePerson);
+
+
+            var dataE = {
+            lat:latitudePerson,
+            lon:longitudePerson,
+
+            pais:$scope.filtro.pais,
+            distancia:$scope.filtro.distancia
+            }
+
+$scope.noDistancia = false;
+        
+          api.getMaquinas(dataE).then(function(response){
+          console.log(response);
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); 
+            //mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');
+                   console.log('Ha ocurrido un error, verifica tu conexion a internet');
+          }
+          if(response.data.error == false){
+            $scope.noMaquinas = false;
+            $scope.ecosocios = response.data.maquinas;
+
+            $ionicLoading.hide();
+
+          }
+          else{  $ionicLoading.hide(); 
+      //      mensajeAlerta(1,'Ha ocurrido un error');
+              console.log('Ha ocurrido un error, verifica tu conexion a internet');
+              $scope.noMaquinas = true;
+            }
+         // $state.go('app.login');
+          });
+
+
+
+        }, function(error) {
+           $ionicLoading.hide();
+         mensajeAlerta(1,'Debes activar el GPS para filtrar por distancia ');
+         $scope.noDistancia = true;
+
+
+    var dataE = {
+            lat:0,
+            lon:0,
+
+            pais:$scope.filtro.pais,
+            distancia:$scope.filtro.distancia
+            }
+
+
+
+                   api.getMaquinas(dataE).then(function(response){
+          console.log(response);
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); 
+            //mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');
+                   console.log('Ha ocurrido un error, verifica tu conexion a internet');
+          }
+          if(response.data.error == false){
+            $scope.noMaquinas = false;
+            $scope.ecosocios = response.data.maquinas;
+
+            $ionicLoading.hide();
+
+          }
+          else{  $ionicLoading.hide(); 
+      //      mensajeAlerta(1,'Ha ocurrido un error');
+              console.log('Ha ocurrido un error, verifica tu conexion a internet');
+              $scope.noMaquinas = true;
+            }
+         // $state.go('app.login');
+          });
+
+
+
+        });
+
+
+
+  }
+
+  $scope.getEcosocios();
+
+
+
+
+
+})
+
+
+
 .controller('misTicketsCtrl', function($scope, $stateParams, serverConfig, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
 
   $scope.goBack = function() {
@@ -824,6 +1033,10 @@ $ionicLoading.show();
 
 .controller('ecosociosCtrl', function($scope, $ionicLoading, $ionicHistory, api, serverConfig, $ionicPopup, $ionicModal) {
 
+
+
+$scope.filtro={distancia:'10000000000000000000000', pais:'1'};
+
 $scope.usuarioInfo={};
   $scope.url = serverConfig.imageStorageURL;
   var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
@@ -849,12 +1062,50 @@ $scope.openPage = function(link){
   }  
 }
 
+var urlMap = function(lat, lng){
+         var url = "https://maps.google.com/?q=" + lat + "," + lng;
+    window.open(url, '_system', 'location=yes'); return false;
+
+
+}
 
 
 
-  $scope.getEcosocios = function(){
+$scope.urlMap = function(lat, lng){
+         var url = "https://maps.google.com/?q=" + lat + "," + lng;
+    window.open(url, '_system', 'location=yes'); return false;
+
+
+}
+
+
+$scope.openMap = function(data){
+
+    console.log(data.length);
+console.log(data);
+    if(data.length > 1 ){
+
+      console.log('display pop');
+      mensajeAlerta(3, data);
+
+    }
+    else{
+
+      urlMap(data[0].lat, data[0].lon);
+
+
+    }
+
+}
+
+
+
+
+  $scope.getEcosocios = function(dara){
 
           $ionicLoading.show();
+
+          if(dara==0){
           api.getEcosocios().then(function(response){
           console.log(response);
           if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
@@ -869,14 +1120,111 @@ $scope.openPage = function(link){
          // $state.go('app.login');
           });
 
+          }
+          else{
+
+          api.getEcosociosGPS(dara).then(function(response){
+          console.log(response);
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+          if(response.data.error == false){
+
+            $scope.ecosocios = response.data.ecosocios;
+
+            $ionicLoading.hide();
+
+          }
+          else{  $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error');}
+         // $state.go('app.login');
+          });
+
+
+          }  
+
+
 
   }
 
-  $scope.getEcosocios();
+$scope.getEcoGPS = function(){
+
+ $ionicLoading.show();
+
+        navigator.geolocation.getCurrentPosition(function(pos) {
+         console.log(pos.coords.latitude+' Long: '+ pos.coords.longitude);
+    
+
+               var latitudePerson = pos.coords.latitude;
+                var longitudePerson = pos.coords.longitude;
+
+                  console.log(latitudePerson);
+
+
+            var dataE = {
+            lat:latitudePerson,
+            lon:longitudePerson,
+            distancia:$scope.filtro.distancia
+            }
+
+$scope.noDistancia = false;
+
+
+
+  $scope.getEcosocios(dataE);
+
+        }, function(error) {
+           $ionicLoading.hide();
+         mensajeAlerta(1,'Debes activar el GPS para filtrar por distancia ');
+         $scope.noDistancia = true;
+          $scope.getEcosocios(0);
+
+        });
+
+
+}
+
+  $scope.getEcoGPS();
 
   function mensajeAlerta(tipo, mensaje){
 
     var ima ='exclam.png';
+
+    if(tipo==3){
+
+  for (var j = 0; j < mensaje.length; j++){
+  console.log(mensaje[j].etiqueta);
+}
+$scope.ubicaciones = mensaje;
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"> <p style="font-size:14px;color:white">Selecciona la ubicacion a mostrar</p> <button style="margin:5px;padding:5px" class="button button-small button-ligth" ng-repeat="o in ubicaciones" ng-click="urlMap(o.lat, o.lon)" >{{o.etiqueta}}</button></div>';
+
+      $ionicPopup.show({
+        template: customTemplate,
+        scope: $scope,
+        title: '',
+        subTitle: '',
+        buttons: [{
+          text: 'Cerrar',
+          type: 'button-blueCustom',
+          onTap: function(e) {
+
+            if(tipo==2){ 
+
+          //    $scope.closeModal();
+             // $scope.usuario={};
+
+            }
+          }
+           // if(borrar){ $scope.user.pin='';}
+           
+          
+        }]
+      });
+
+
+return false;
+}
+
+
+
 if(tipo==1){
 
      var customTemplate =
@@ -944,7 +1292,8 @@ $scope.usuarioInfo={};
           api.getProductos($scope.usuarioInfo.idUsuario).then(function(response){
           console.log(response);
           if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
-          if(response.data.error == false){
+          
+          if( response.data == null || response.data.error == false){
 
             $scope.productos = response.data.productos;
             $scope.puntos = response.data.puntos;
