@@ -23,11 +23,11 @@
 
 <div style="text-align: center;">
 
-                    <div style="
-    margin-top:5px;display: inline-block; width:32%;text-align: center
+                    <div style="position: absolute; left: 0;
+    margin-top:15px;display: inline-block; width:32%;text-align: center
     ">
 <span style="color:white">Pais</span><br>
-                    <select ng-model='filtro.pais' style="  color:white !important;  display: inline-block;"
+                    <select ng-model='filtro.pais' style="  width:100%;color:white !important;  display: inline-block;"
                     ng-change='selectPais(filtro.pais)' >
 
                       <option  value='1' selected >Chile</option>
@@ -39,12 +39,13 @@
 
 
 
-                    <div style="margin-top:15px;display: inline-block;
+                    <div style="position: absolute; left: 33%;
+                    margin-top:15px;display: inline-block;
     width:32%;text-align:center">
 
 <span style="color:white">Distancia</span><br>
 
-                    <select ng-disabled='noDistancia' ng-model='filtro.distancia' style="  color:white !important;  display: inline-block;" ng-change='selectDistancia(filtro.distancia)' >
+                    <select ng-disabled='noDistancia' ng-model='filtro.distancia' style="  color:white !important;  display: inline-block;width:100%" ng-change='selectDistancia(filtro.distancia)' >
                     <option  value='10000000000000000000000' selected >Todas</option>
                       <option  value='5'  >5km</option>
                       <option value='10' >10km</option>
@@ -54,16 +55,18 @@
 
 
 
-                    <div style="margin-top:15px;display: inline-block;
+                    <div style="position: absolute; left: 66%;
+                    margin-top:15px;display: inline-block;
     width:32%;text-align:center">
 
-<span style="color:white">Subcategoria</span><br>
+<span style="color:white">Categoria</span><br>
 
-                    <select  ng-model='filtro.subcategoria' style="  color:white !important;  display: inline-block;"  >
+                    <select  ng-model='filtro.subcategoria' style="  color:white !important;  display: inline-block; width:100%"  >
                     <option  value='0' selected >Todas</option>
                       <option  value='1'  >Cine y Teatro</option>
                       <option value='2' >Cumpleaños y Fiesta</option>
                       <option value='3'>Espectaculos</option>
+                      <option value='24'>Libreria</option>
                     </select>
                 </div>
 
@@ -91,7 +94,7 @@
     border: none;
     border-radius: 5px;
     background: #fafafa;
-    " class="item item-thumbnail-left" ng-repeat='e in ecosocios' ng-show='(e.idPais == filtro.pais || filtro.pais == 69) && e.distance < filtro.distancia'>
+    " class="item item-thumbnail-left" ng-repeat='e in ecosocios | filter: myFilter as filtered' >
 
                   <img  ng-src="{{url}}/ecosocio{{e.idEcosocio}}.jpg?5" style="
     border-radius: 50px;    height: auto !important;
@@ -148,7 +151,10 @@
 
 
 
-
+<div ng-show='filtered.length == 0' style="    font-size: 18px;
+    text-align: center;
+    margin-top: 32px;
+    color: #999;">No se han encontrado Ecosocios</div>
 
    </div>
 

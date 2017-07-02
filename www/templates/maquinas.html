@@ -22,36 +22,29 @@
 
 <div style="text-align: center;">
 
-                    <div style="      text-align: left;
-    
-    border: solid white 1px;
-    padding-left: 15px;
-margin-right: 10px;
-    margin-top:15px;display: inline-block; width:40%
+                    <div style="position: absolute; left: 10px;
+    margin-top:15px;display: inline-block; width:45%;text-align: center
     ">
-
-                    <select ng-model='filtro.pais' style="  color:white !important;  display: inline-block;"
+<span style="color:white">Pais</span><br>
+                    <select ng-model='filtro.pais' style="  width:100%;color:white !important;  display: inline-block;"
                     ng-change='selectPais(filtro.pais)' >
 
                       <option  value='1' selected >Chile</option>
                       <option value='2' >Argentina</option>
+                      <option  value='69'  >Todos</option>
                     </select>
                 </div>
 
 
 
 
-                    <div style="      text-align: left;
- 
-    border: solid white 1px;
-    padding-left: 15px;
+                    <div style="position: absolute; left: 50%;
+                    margin-top:15px;display: inline-block;
+    width:45%;text-align:center">
 
-    margin-top:15px;display: inline-block;
-    width:40%">
+<span style="color:white">Distancia</span><br>
 
-
-
-                    <select ng-disabled='noDistancia' ng-model='filtro.distancia' style="  color:white !important;  display: inline-block;" ng-change='selectDistancia(filtro.distancia)' >
+                    <select ng-disabled='noDistancia' ng-model='filtro.distancia' style="  color:white !important;  display: inline-block;width:100%" ng-change='selectDistancia(filtro.distancia)' >
                     <option  value='10000000000000000000000' selected >Todas</option>
                       <option  value='5'  >5km</option>
                       <option value='10' >10km</option>
@@ -61,8 +54,9 @@ margin-right: 10px;
 
 
 
-</div>
 
+
+</div>
 </div>
 
 
@@ -87,7 +81,7 @@ margin-right: 10px;
     border: none;
     border-radius: 5px;
     background: #fafafa;
-    " class="item item-thumbnail-left" ng-repeat='e in ecosocios ' ng-show='e.idPais == filtro.pais'>
+    " class="item item-thumbnail-left" ng-repeat='e in ecosocios ' ng-show='e.idPais == filtro.pais || filtro.pais == 69'>
 
 <!--                   <img  ng-src="{{url}}/ecosocio{{e.idEcosocio}}.jpg?5" style="
     border-radius: 50px;    height: auto !important;

@@ -1052,6 +1052,15 @@ $scope.usuarioInfo={};
   }
 
 
+$scope.myFilter = function (item) { 
+
+//console.log(item);
+  //  return item.idPais == $scope.filtro.pais || $scope.filtro.pais == 69; 
+    return (item.idPais == $scope.filtro.pais || $scope.filtro.pais == 69) && ( item.distance < $scope.filtro.distancia || item.distance == undefined) && (item.subCategoriaID == $scope.filtro.subcategoria || $scope.filtro.subcategoria == 0); 
+};
+
+
+
 $scope.openPage = function(link){
 
   if(link == null || link == 'null' || link == 'undefinded'){console.log('nolink')}
