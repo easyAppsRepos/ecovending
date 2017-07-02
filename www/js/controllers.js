@@ -1035,7 +1035,7 @@ $ionicLoading.show();
 
 
 
-$scope.filtro={distancia:'10000000000000000000000', pais:'1'};
+$scope.filtro={distancia:'10000000000000000000000', pais:'1', subcategoria:'0'};
 
 $scope.usuarioInfo={};
   $scope.url = serverConfig.imageStorageURL;
@@ -1125,7 +1125,10 @@ console.log(data);
 
           api.getEcosociosGPS(dara).then(function(response){
           console.log(response);
-          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ 
+            $ionicLoading.hide(); 
+            mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');
+          }
           if(response.data.error == false){
 
             $scope.ecosocios = response.data.ecosocios;

@@ -23,14 +23,10 @@
 
 <div style="text-align: center;">
 
-                    <div style="      text-align: left;
-    
-    border: solid white 1px;
-    padding-left: 15px;
-margin-right: 10px;
-    margin-top:15px;display: inline-block; width:40%
+                    <div style="
+    margin-top:5px;display: inline-block; width:32%;text-align: center
     ">
-
+<span style="color:white">Pais</span><br>
                     <select ng-model='filtro.pais' style="  color:white !important;  display: inline-block;"
                     ng-change='selectPais(filtro.pais)' >
 
@@ -43,15 +39,10 @@ margin-right: 10px;
 
 
 
-                    <div style="      text-align: left;
- 
-    border: solid white 1px;
-    padding-left: 15px;
+                    <div style="margin-top:15px;display: inline-block;
+    width:32%;text-align:center">
 
-    margin-top:15px;display: inline-block;
-    width:40%">
-
-
+<span style="color:white">Distancia</span><br>
 
                     <select ng-disabled='noDistancia' ng-model='filtro.distancia' style="  color:white !important;  display: inline-block;" ng-change='selectDistancia(filtro.distancia)' >
                     <option  value='10000000000000000000000' selected >Todas</option>
@@ -60,6 +51,22 @@ margin-right: 10px;
                       <option value='15'>15km</option>
                     </select>
                 </div>
+
+
+
+                    <div style="margin-top:15px;display: inline-block;
+    width:32%;text-align:center">
+
+<span style="color:white">Subcategoria</span><br>
+
+                    <select  ng-model='filtro.subcategoria' style="  color:white !important;  display: inline-block;"  >
+                    <option  value='0' selected >Todas</option>
+                      <option  value='1'  >Cine y Teatro</option>
+                      <option value='2' >Cumpleaños y Fiesta</option>
+                      <option value='3'>Espectaculos</option>
+                    </select>
+                </div>
+
 
 
 
@@ -141,11 +148,6 @@ margin-right: 10px;
 
 
 
-
-<div ng-show='!((e.idPais == filtro.pais || filtro.pais == 69) && (e.distance < filtro.distancia))'  style="    font-size: 18px;
-    text-align: center;
-    margin-top: 32px;
-    color: #999;">No se ha encontrado ningun ecosocio</div>
 
 
    </div>
