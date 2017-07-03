@@ -21,6 +21,24 @@
     font-size: 17px !important;">Nombre *</label></div>
                         <input ng-model='usuario.nombre' placeholder='' type="text" class="inputRegistrar md-input">
 
+
+    <div style="margin-top:13px"><label style="    color: darkgray;
+    font-size: 17px !important;">Pais</label></div>
+
+
+    <select ng-model='usuario.idPais'  style="    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: darkgray;
+    font-family: Ubuntu; ">
+
+      <option ng-repeat='l in paises' ng-value='l.idPais' >{{l.nombre}}</option>
+
+    </select>
+
+
+
+
                       <div style="margin-top:13px"><label style="    color: darkgray;
     font-size: 17px !important;">Lugar / Institucion</label></div>
 

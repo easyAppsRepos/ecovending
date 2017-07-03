@@ -184,6 +184,27 @@ $scope.filtro={distancia:'10000000000000000000000', pais:'1'};
 
 
 
+          api.getPaises().then(function(response){
+          console.log(response);
+
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); 
+            //mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');
+                   console.log('Ha ocurrido un error, verifica tu conexion a internet');
+          }
+          if(response.data.error == false){
+            $scope.paises = response.data.paises;
+          }
+          else{  $ionicLoading.hide(); 
+      //      mensajeAlerta(1,'Ha ocurrido un error');
+              console.log('Ha ocurrido un error, verifica tu conexion a internet');
+             // $scope.noMaquinas = true;
+            }
+         // $state.go('app.login');
+          });
+
+
+
+
 $scope.selectPais = function(pais){
     //pais from sellect
  console.log(pais);
@@ -883,15 +904,27 @@ $scope.registrarUsuario = function(user){
 //console.log('user');
 
 
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+   if(re.test(user.email) == false){
+
+     mensajeAlerta(1,'Email invalido');
+   return false;
+
+   };
+   
+
+
 if(user.email == 'undefined' || user.email == null || user.email == '' ||
    user.nombre == 'undefined' || user.nombre == null || user.nombre == '' || 
    user.contra == 'undefined' || user.contra == null || user.contra == '' ||
-   user.contra2 == 'undefined' || user.contra2 == null || user.contra2 == ''   ){
+   user.contra2 == 'undefined' || user.contra2 == null || user.contra2 == '' ||
+   user.idPais == 'undefined' || user.idPais == null || user.idPais == ''   ){
 
   mensajeAlerta(1,'Rellena tu informacion!');
 }
 
 else if(user.contra !== user.contra2){ mensajeAlerta(1,'Las contraseñas no coinciden'); }
+
 else{ 
 
 
@@ -934,6 +967,12 @@ $scope.newUser = function(){
           if(response.data.error == false){
             console.log(response);
             $scope.lugares = response.data.lugares;
+            $scope.paises = response.data.paises;
+
+            console.log($scope.paises);
+            console.log($scope.lugares);
+
+
             $scope.openModal("nuevoUsuario.html", "slide-in-up");
 
           }
@@ -1471,22 +1510,56 @@ var acu = (ee*0.00055).toFixed(3);
  }
 
 
+
   function mensajeAlerta(tipo, mensaje){
 
     var ima ='exclam.png';
-if(tipo==1){
+
+
+if(tipo==5){
 
      var customTemplate =
         '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/exclam.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
 
 
+      $ionicPopup.show({
+        template: customTemplate,
+        title: '',
+        subTitle: '',
+        buttons: [{
+          text: 'cancelar',
+          type: 'button-blueCustom',
+          onTap: function(e) {
+            return false;
+          }
+           // if(borrar){ $scope.user.pin='';}
+           
+          
+        },
+
+        {
+          text: 'Ok',
+          type: 'button-blueCustom',
+          onTap: function(e) {
+
+          }
+           // if(borrar){ $scope.user.pin='';}
+           
+          
+        }
+        ]
+      });
+
+      
+
 }
-  if(tipo == 2){
+
+
+if(tipo==1){
 
      var customTemplate =
-        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/confirma.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/exclam.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
 
-}
 
       $ionicPopup.show({
         template: customTemplate,
@@ -1509,6 +1582,42 @@ if(tipo==1){
           
         }]
       });
+
+
+
+}
+  if(tipo == 2){
+
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/confirma.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
+
+
+      $ionicPopup.show({
+        template: customTemplate,
+        title: '',
+        subTitle: '',
+        buttons: [{
+          text: 'Cerrar',
+          type: 'button-blueCustom',
+          onTap: function(e) {
+
+            if(tipo==2){ 
+
+              $scope.closeModal();
+             // $scope.usuario={};
+
+            }
+          }
+           // if(borrar){ $scope.user.pin='';}
+           
+          
+        }]
+      });
+
+
+}
+
+
 
 }
 
@@ -1645,7 +1754,14 @@ var ft = new FileTransfer();
            $scope.edicion.nombre=   $scope.usuarioInfo.nombre;
           $scope.edicion.lugar = $scope.usuarioInfo.institucion;
            $scope.edicion.ranking = $scope.usuarioInfo.ranking == 1 ? true : false;
-            $scope.openModal("nuevoUsuario.html", "slide-in-down");
+
+           if($scope.usuarioInfo.ranking == 1){
+            $scope.huellaCheck=false;
+           }
+           else{
+            $scope.huellaCheck=true;
+           }
+            $scope.openModal("editPerfilUs.html", "slide-in-down");
 
 
 
@@ -1663,9 +1779,10 @@ var ft = new FileTransfer();
 
         $scope.editarUsuario=function(user){
 
-    console.log(user.ranking);
-    console.log($scope.usuarioInfo.ranking);
+    console.log(user);
 
+    console.log($scope.usuarioInfo);
+//return false;
 if(user.ranking == true){ user.ranking = 1}
   if(user.ranking == false){ user.ranking = 0}
 
@@ -1678,8 +1795,33 @@ if(user.ranking == true){ user.ranking = 1}
       }
 
 
+var mensaje= 'Para volver al listado deberas contactar al administrador';
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/exclam.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
 
-               $ionicLoading.show();
+
+      $ionicPopup.show({
+        template: customTemplate,
+        title: '',
+        subTitle: '',
+        buttons: [{
+          text: 'cancelar',
+          type: 'button-blueCustom',
+          onTap: function(e) {
+            return false;
+          }
+           // if(borrar){ $scope.user.pin='';}
+           
+          
+        },
+
+        {
+          text: 'Ok',
+          type: 'button-blueCustom',
+          onTap: function(e) {
+
+
+       $ionicLoading.show();
 
                user.idUsuario = $scope.usuarioInfo.idUsuario;
                 console.log(user);
@@ -1693,10 +1835,27 @@ if(user.ranking == true){ user.ranking = 1}
 
           if(response.status== -1){mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');$ionicLoading.hide();}
           if(response.data.error == false){
+
             $ionicLoading.hide();
            mensajeAlerta(2,'Has editado tu perfil correctamente');
           window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));  
           $state.reload();
+
+
+
+
+          }
+                   else{ mensajeAlerta(1,'Ha ocurrido un error');$ionicLoading.hide();}
+           // if(borrar){ $scope.user.pin='';}
+           
+          
+        });
+        }}]
+      });
+
+
+
+        
             
 
 
@@ -1706,13 +1865,12 @@ if(user.ranking == true){ user.ranking = 1}
             
 
           }
-          else{ mensajeAlerta(1,'Ha ocurrido un error');$ionicLoading.hide();}
+ 
          // $state.go('app.login');
-          });
+     
 
 
-
-    }
+    
 
 
 

@@ -28,9 +28,7 @@
 <span style="color:white">Pais</span><br>
                     <select ng-model='filtro.pais' style="  width:100%;color:white !important;  display: inline-block;"
                     ng-change='selectPais(filtro.pais)' >
-
-                      <option  value='1' selected >Chile</option>
-                      <option value='2' >Argentina</option>
+  <option ng-repeat='l in paises' ng-value='l.idPais' ng-show='l.estado==1'  >{{l.nombre}}</option>
                       <option  value='69'  >Todos</option>
                     </select>
                 </div>

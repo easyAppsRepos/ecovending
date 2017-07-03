@@ -240,6 +240,8 @@ angular.module('starter.services', [])
             });
         },
 
+
+
                     getLugares:function(idUsuario){  
 
             return  $http.post(serverConfig.url+'/getLugares')
@@ -253,8 +255,21 @@ angular.module('starter.services', [])
 
             return response;
             });
-        }
+        },
+                    getPaises:function(idUsuario){  
 
+            return  $http.post(serverConfig.url+'/getPaises')
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        }
 
 
 

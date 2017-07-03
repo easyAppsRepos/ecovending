@@ -85,8 +85,8 @@
    <gap:plugin name="cordova-plugin-geolocation"  source="npm" />
 
 
-<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
-
+<!-- <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+ -->
        <access origin="*" />
 <allow-intent href="*" />
  <allow-navigation href="*" />

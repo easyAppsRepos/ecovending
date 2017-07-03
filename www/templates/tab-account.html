@@ -1,9 +1,12 @@
 <ion-view hide-nav-bar="true" view-title="Account">
 
 
-      <script id="nuevoUsuario.html" type="text/ng-template">
+      <script id="editPerfilUs.html" type="text/ng-template">
+
   <ion-modal-view class="ion-nifty-modal2">
+
     <div  class="ion-modal-content-custom2">
+    
       <ion-content class="padding">
   <i ng-click='closeModal()' style='    color: #1cb382;
     font-size: 35px;' class=" ion-android-cancel"></i>
@@ -32,9 +35,15 @@
 
 
 
-  <ion-checkbox style=' border:none !important; margin-top: 23px; background-color: transparent; border:none !important, padding-left:30px'  ng-model='edicion.ranking'><div style="    color: darkgray;padding-left: 50px !important">Aparecer en Huella Verde? <br><br>  </div></ion-checkbox>
+  <ion-checkbox ng-disabled='huellaCheck'  style=' border:none !important; margin-top: 23px; background-color: transparent; border:none !important, padding-left:30px'  ng-model='edicion.ranking'  ><div style="    color: darkgray;padding-left: 50px !important">Aparecer en Huella Verde? <br><br>  </div></ion-checkbox>
+
 <div style=" color: #1cb382;
-"><span>Participar del ranking te permitira ganar premios</span></div>
+">
+
+<span ng-show='!huellaCheck'>Participar del ranking te permitira ganar premios</span>
+<span ng-show='huellaCheck'>Para ingresar al ranking nuevamente debes contactar al admin</span>
+
+</div>
 
 
                     </div>
