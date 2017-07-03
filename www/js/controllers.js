@@ -1091,6 +1091,27 @@ $scope.usuarioInfo={};
   }
 
 
+            api.getPaises().then(function(response){
+          console.log(response);
+
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); 
+            //mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');
+                   console.log('Ha ocurrido un error, verifica tu conexion a internet');
+          }
+          if(response.data.error == false){
+            $scope.paises = response.data.paises;
+          }
+          else{  $ionicLoading.hide(); 
+      //      mensajeAlerta(1,'Ha ocurrido un error');
+              console.log('Ha ocurrido un error, verifica tu conexion a internet');
+             // $scope.noMaquinas = true;
+            }
+         // $state.go('app.login');
+          });
+
+            
+
+
 $scope.myFilter = function (item) { 
 
 //console.log(item);
