@@ -242,6 +242,25 @@ angular.module('starter.services', [])
 
 
 
+           anotarEvento:function(idEvento,idUsuario){  
+
+            return  $http.post(serverConfig.url+'/anotarEvento',{idUsuario:idUsuario, idEvento:idEvento})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+
+
+
+
                     getLugares:function(idUsuario){  
 
             return  $http.post(serverConfig.url+'/getLugares')
@@ -259,6 +278,21 @@ angular.module('starter.services', [])
                     getPaises:function(idUsuario){  
 
             return  $http.post(serverConfig.url+'/getPaises')
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+                            getEventos:function(idUsuario){  
+
+            return  $http.post(serverConfig.url+'/getEventos')
             .then(function(response) {
             console.log(response);
             return response;

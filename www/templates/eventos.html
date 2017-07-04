@@ -1,0 +1,153 @@
+
+
+<ion-view hide-nav-bar="true">
+
+
+<div style="       background-color: #1cb382;
+    height: 45px;
+    text-align: left;
+    position: absolute;
+    width: 100%;
+    z-index: 10;">
+<i style='   color:white; font-size: 30px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    padding-left: 8px;
+    margin-top: 5px;' class="ion-ios-arrow-back" ng-click='goBack()'></i>
+
+    <h4 style="    margin-left: 44px;color:white">Eventos</h4>
+</div>
+
+
+    <ion-content  scroll='false' style="top: 45px; background: #E1F1F1; font-family:Ubuntu" >
+
+
+    <ion-slide-box slide-tabs-scrollable='false' show-pager="false" ion-slide-tabs>
+        <ion-slide ion-slide-tab-label="Próximos">
+
+
+    <div style="position:absolute; top:0; right:0; bottom:0; left:0; overflow-y:scroll; overflow-x: hidden;    height: calc(100% - 49px);">
+               <div ng-show='cantCanjeables==0' style="    text-align: center;
+    margin-top: 40px;
+    font-size: 16px;
+    font-family: Ubuntu;
+    color: #999;">No hay eventos programados</div>
+
+
+
+
+
+
+                <div>
+                  
+             <div style="margin-left:30px; margin-right:30px; border-bottom:2px solid #777"> <h4>
+            Agenda</h4></div>
+
+                          <div style='    margin-left: 30px;
+                margin-right: 30px;' class="list">
+
+                        <a  ng-repeat='e in eventos | filter: myFilter as filtered' style="       border-radius: 5px; margin-top: 10px;" class="item " >
+                          <img src="img/calen.png">
+                          <h2 style="position: absolute;top: 0;left: 65px;margin-top: 10px;">{{e.nombre}}</h2>
+                          <p style="    position: absolute; top: 20px;left: 65px;margin-top: 10px;">{{e.fecha.split(" ")[0]}} - {{e.hora}}</p>
+                          <p style="    white-space: normal; margin-top: 5px;margin-bottom: 5px;">{{e.description}}</p>
+
+                       <span style="font-size: 18px;
+    margin-left: 4px;
+    color: #1cb382;">    <i    class="ion-ios-people"></i> {{e.usuarios}} </span>
+
+
+
+                                  <button  ng-click='anotarEvento(e.idEvento)' class='button button-energized' style="float: right;min-height: 10px;height: 24px;line-height: 1px;">
+                                  Asistir 
+                                  </button> 
+
+     
+
+
+                        </a>
+
+
+             
+                    </div>
+
+
+                </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+        </ion-slide>
+
+
+
+        <ion-slide ion-slide-tab-label="Asistiré">
+            
+
+
+
+    <div style="position:absolute; top:0; right:0; bottom:0; left:0; overflow-y:scroll; overflow-x: hidden;    height: calc(100% - 49px);">
+                              <div ng-show='cantHisto==0' style="    text-align: center;
+    margin-top: 40px;
+    font-size: 16px;
+    font-family: Ubuntu;
+    color: #999;">No hay eventos programados</div>
+
+
+
+
+                              <div style='    margin-left: 30px;
+                margin-right: 30px;' class="list">
+
+                        <a  ng-repeat='e in eventos | filter: myFilter2 as filtered2' style="       border-radius: 5px; margin-top: 10px;" class="item " >
+                          <img src="img/calen.png">
+                          <h2 style="position: absolute;top: 0;left: 65px;margin-top: 10px;">{{e.nombre}}</h2>
+                          <p style="    position: absolute; top: 20px;left: 65px;margin-top: 10px;">{{e.fecha.split(" ")[0]}} - {{e.hora}}</p>
+                          <p style="    white-space: normal; margin-top: 5px;margin-bottom: 5px;">{{e.description}}</p>
+
+                       <span style="font-size: 18px;
+    margin-left: 4px;
+    color: #1cb382;">    <i    class="ion-ios-people"></i> {{e.usuarios}} </span>
+
+
+
+                                 
+                                  <div   class='' style="    margin-top: 3px;
+    color: #1cb382;float: right;min-height: 10px;height: 24px;line-height: 1px;">
+                                  <i class="ion-checkmark-circled"> Asistiras</i> 
+                                  </div> 
+
+
+                        </a>
+
+
+             
+                    </div>
+
+
+
+
+               </div>
+        </ion-slide>
+
+
+      
+    </ion-slide-box>
+
+
+    </ion-content>
+
+    </ion-view >

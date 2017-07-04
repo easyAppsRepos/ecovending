@@ -170,7 +170,181 @@ $scope.cantHisto = 0;
 
 
 
+.controller('eventosCtrl', function($scope, $stateParams, serverConfig, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
 
+
+
+  $scope.usuarioInfo={};
+  var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
+
+  $scope.usuarioInfo.nombre=  userData.nombre;
+  $scope.usuarioInfo.institucion=  userData.institucion;
+  $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
+  $scope.usuarioInfo.idUsuario=  userData.idUsuario;
+
+$scope.$on('$ionicView.enter', function(event, viewData) {
+$scope.getEventos();
+});
+
+
+
+
+
+$scope.goBack = function() {
+    $ionicHistory.goBack();
+  }
+
+
+  function mensajeAlerta(tipo, mensaje){
+
+    var ima ='exclam.png';
+
+
+if(tipo==1){
+
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/exclam.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
+
+
+}
+  if(tipo == 2){
+
+     var customTemplate =
+        '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/confirma.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
+
+}
+
+      $ionicPopup.show({
+        template: customTemplate,
+        title: '',
+        subTitle: '',
+        buttons: [{
+          text: 'Cerrar',
+          type: 'button-blueCustom',
+          onTap: function(e) {
+
+            if(tipo==2){ 
+//$state.reload();
+          //    $scope.closeModal();
+             // $scope.usuario={};
+
+            }
+          }
+           // if(borrar){ $scope.user.pin='';}
+           
+          
+        }]
+      });
+
+}
+
+
+
+$scope.anotarEvento=function(idEvento){
+
+console.log(idEvento);
+
+$ionicLoading.show();
+
+          api.anotarEvento(idEvento,$scope.usuarioInfo.idUsuario ).then(function(response){
+          console.log(response);
+
+
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); 
+            //mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');
+                   console.log('Ha ocurrido un error, verifica tu conexion a internet');
+          }
+          if(response.data.error == false){
+
+            $ionicLoading.hide(); 
+            mensajeAlerta(2, 'Te has anotado exitosamente');
+            $scope.getEventos();
+            //$scope.eventos = response.data.eventos;
+          }
+          else{  $ionicLoading.hide(); 
+      //      mensajeAlerta(1,'Ha ocurrido un error');
+              console.log('Ha ocurrido un error, verifica tu conexion a internet');
+             // $scope.noMaquinas = true;
+            }
+         // $state.go('app.login');
+          });
+
+
+
+}
+
+
+
+
+$scope.asistirEvento=function(evento){
+
+if(evento.listUsers == null){
+  return false;
+}
+var str = evento.listUsers;
+var res = str.split("-");
+
+
+for(var j=0;res.length>j;j++){
+    if(res[j] == $scope.usuarioInfo.idUsuario ){
+
+      return true;
+    }
+}
+
+  return false;
+
+}
+
+
+
+$scope.myFilter = function (item) { 
+
+//console.log(item);
+  //  return item.idPais == $scope.filtro.pais || $scope.filtro.pais == 69; 
+    return !$scope.asistirEvento(item); 
+};
+
+$scope.myFilter2 = function (item) { 
+
+//console.log(item);
+  //  return item.idPais == $scope.filtro.pais || $scope.filtro.pais == 69; 
+    return $scope.asistirEvento(item); 
+};
+
+
+$scope.getEventos = function(){
+
+$ionicLoading.show();
+
+          api.getEventos().then(function(response){
+          console.log(response);
+
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); 
+            //mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');
+                   console.log('Ha ocurrido un error, verifica tu conexion a internet');
+          }
+          if(response.data.error == false){
+            $ionicLoading.hide();
+            $scope.eventos = response.data.eventos;
+          }
+          else{  $ionicLoading.hide(); 
+      //      mensajeAlerta(1,'Ha ocurrido un error');
+              console.log('Ha ocurrido un error, verifica tu conexion a internet');
+             // $scope.noMaquinas = true;
+            }
+         // $state.go('app.login');
+          });
+
+
+
+
+}
+
+
+
+
+})
 
 .controller('maquinasCtrl', function($scope, $stateParams, serverConfig, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
 

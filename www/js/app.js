@@ -82,6 +82,11 @@ angular.element(tabs[0]).css('display', '');
   })
 
 
+    .state('eventos', {
+      url: '/eventos',
+      templateUrl: 'templates/eventos.html',
+      controller: 'eventosCtrl'
+  })
 
 
   .state('ecosocios', {
