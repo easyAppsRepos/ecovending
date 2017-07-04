@@ -1109,7 +1109,7 @@ $scope.usuarioInfo={};
          // $state.go('app.login');
           });
 
-            
+
 
 
 $scope.myFilter = function (item) { 
@@ -1340,6 +1340,8 @@ if(tipo==1){
 
 .controller('productsCtrl', function($scope, $ionicLoading, api, serverConfig, $ionicPopup, $ionicModal) {
 
+
+$scope.filtro={distancia:'10000000000000000000000', pais:'1', subcategoria:'0'};
 $scope.busqueda={};
 $scope.busqueda.categoria=0;
 //$scope.$on('$ionicView.enter', function(event, viewData) {
@@ -1356,12 +1358,52 @@ $scope.usuarioInfo={};
 
 //});
     
+            api.getPaises().then(function(response){
+          console.log(response);
+
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); 
+            //mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');
+                   console.log('Ha ocurrido un error, verifica tu conexion a internet');
+          }
+          if(response.data.error == false){
+            $scope.paises = response.data.paises;
+
+          }
+          else{  $ionicLoading.hide(); 
+      //      mensajeAlerta(1,'Ha ocurrido un error');
+              console.log('Ha ocurrido un error, verifica tu conexion a internet');
+             // $scope.noMaquinas = true;
+            }
+         // $state.go('app.login');
+          });
+
 
 
   $scope.getProductos = function(){
 
-          $ionicLoading.show();
-          api.getProductos($scope.usuarioInfo.idUsuario).then(function(response){
+console.log($scope.filtro.distancia);
+console.log($scope.filtro.pais);
+
+ $ionicLoading.show();
+
+        navigator.geolocation.getCurrentPosition(function(pos) {
+         console.log(pos.coords.latitude+' Long: '+ pos.coords.longitude);
+    
+
+               var latitudePerson = pos.coords.latitude;
+                var longitudePerson = pos.coords.longitude;
+
+                  console.log(latitudePerson);
+
+
+            var dataE = {
+            lat:latitudePerson,
+            lon:longitudePerson,
+            }
+
+$scope.noDistancia = false;
+        
+          api.getProductos($scope.usuarioInfo.idUsuario, dataE.lat, dataE.lon).then(function(response){
           console.log(response);
           if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
           
@@ -1378,7 +1420,46 @@ $scope.usuarioInfo={};
           });
 
 
+
+        }, function(error) {
+           $ionicLoading.hide();
+         mensajeAlerta(1,'Debes activar el GPS para filtrar por distancia ');
+         $scope.noDistancia = true;
+
+
+    var dataE = {
+            lat:0,
+            lon:0,
+            }
+
+
+          api.getProductos($scope.usuarioInfo.idUsuario, dataE.lat, dataE.lon).then(function(response){
+          console.log(response);
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+          
+          if( response.data == null || response.data.error == false){
+
+            $scope.productos = response.data.productos;
+            $scope.puntos = response.data.puntos;
+
+            $ionicLoading.hide();
+
+          }
+          else{  $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error');}
+         // $state.go('app.login');
+          });
+
+
+
+        });
+
+
+
   }
+
+
+
+ 
 
   $scope.getProductos();
 

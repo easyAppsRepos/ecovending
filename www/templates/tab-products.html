@@ -48,7 +48,91 @@
 </div>
 
 
-                <div style="      text-align: left;
+<div style="text-align: center;font-size:16px">
+
+                    <div style=" left: 0;
+    margin-top:5px;display: inline-block; width:32%;text-align: center
+    ">
+<span style="color:white">Pais</span><br>
+                    <select ng-model='filtro.pais' style="  width:100%;color:white !important;  display: inline-block;">
+  <option ng-repeat='l in paises | filter:{ estado: 1 }' ng-value='l.idPais' ng-selected='l.idPais == filtro.pais'  >{{l.nombre}}</option>
+                      <option  value='69'  >Todos</option>
+                    </select>
+                </div>
+
+
+
+
+                    <div style=" left: 33%;
+                    margin-top:5px;display: inline-block;
+    width:32%;text-align:center">
+
+<span style="color:white">Distancia</span><br>
+
+                    <select ng-disabled='noDistancia' ng-model='filtro.distancia' style="  color:white !important;  display: inline-block;width:100%" ng-change='selectDistancia(filtro.distancia)' >
+                    <option  value='10000000000000000000000' selected >Todas</option>
+                      <option  value='5'  >5km</option>
+                      <option value='10' >10km</option>
+                      <option value='15'>15km</option>
+                    </select>
+                </div>
+
+
+
+                    <div style=" left: 66%;
+                    margin-top:5px;display: inline-block;
+    width:32%;text-align:center">
+
+<span style="color:white">Categoria</span><br>
+
+                    <select  ng-model='filtro.subcategoria' style="  color:white !important;  display: inline-block; width:100%"  >
+                    <option  value='0' selected >Todas</option>
+                      <option  value='1'  >Cine y Teatro</option>
+                      <option value='2' >Cumpleaños y Fiesta</option>
+                      <option value='3'>Espectaculos</option>
+                      <option value='4'>Parques</option>
+                       <option value='5'>Salas de Eventos</option>
+                       <option value='6'>Entretención</option>
+                       <option value='7'>Comida Rápida</option>
+                       <option value='8'>Gourmet/Delicatessen</option>
+                       <option value='9'>Restaurantes</option>
+                       <option value='10'>Restaurantes y Gourmet</option>
+                       <option value='11'>Vinos y Licores</option>
+                       <option value='12'>Belleza</option>
+                       <option value='13'>Centros de Estética y Spa</option>
+                       <option value='14'>Clínicas y Centros Médicos</option>
+                       <option value='15'>Farmacias</option>
+                       <option value='16'>Gimnasios</option>
+                       <option value='17'>Ópticas</option>
+                       <option value='18'>Automotriz</option>
+                       <option value='19'>Centros Educacionales</option>
+                       <option value='20'>Deportes</option>
+                       <option value='21'>Electrónica</option>
+                       <option value='22'>Hogar y Decoración</option>
+                       <option value='23'>Jugueterías</option>
+                       <option value='24'>Libreria</option>
+                       <option value='25'>Relojerías y Joyerías</option>
+                       <option value='26'>Rent a Car</option>
+                       <option value='27'>Seguridad</option>
+                        <option value='28'>Servicios Pyme</option>
+                         <option value='29'>Suscripciones</option>
+                          <option value='30'>Transporte</option>
+                           <option value='31'>Vestuario y Calzado</option>
+                            <option value='32'>Veterinarias</option>
+
+
+                    </select>
+                </div>
+
+
+
+
+</div>
+
+
+
+
+<!--                 <div style="      text-align: left;
     margin-left: 10px;
     border: solid white 1px;
     padding-left: 15px;
@@ -64,20 +148,20 @@
                       <option value='3'>Belleza</option>
                       <option value='1'>Panoramas</option>
                     </select>
-                </div>
+                </div> -->
   </div>
 
 
   </div>
 
 
-  <ion-content  style='   top: 153px; background: #E1F1F1;' > 
+  <ion-content  style='   top: 166px; background: #E1F1F1;' > 
 
 
 <div style="  margin-top: 10px;  width: 95%;
     margin-left: 2.5%;">
    
-   <a  ng-repeat='p in productos | filter: busqueda.nombre' ng-show='busqueda.categoria == 0 || busqueda.categoria == p.idCategoria '  style="
+   <a  ng-repeat='p in productos | filter: busqueda.nombre' ng-show='(filtro.subcategoria == 0 || filtro.subcategoria == p.idSubCategoria ) && (p.distance>filtro.distancia || filtro.distancia == 10000000000000000000000) && (p.idPais == filtro.pais || filtro.pais == 69)'  style="
     padding-top: 8px !important;
     padding-left: 106px !important;
     min-height: 100px;

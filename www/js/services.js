@@ -225,9 +225,9 @@ angular.module('starter.services', [])
 
 
 
-            getProductos:function(idUsuario){  
+            getProductos:function(idUsuario,lat,lon){  
 
-            return  $http.post(serverConfig.url+'/getProductos',{idUsuario:idUsuario})
+            return  $http.post(serverConfig.url+'/getProductosGPS',{idUsuario:idUsuario, lat:lat, lon:lon})
             .then(function(response) {
             console.log(response);
             return response;
