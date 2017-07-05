@@ -832,6 +832,7 @@ if(tipo==1){
 
     $scope.activarCodigo=function(codigo){
 
+
 /*  if(codigo == 'undefined' || codigo == null || codigo == '' ){
 
   mensajeAlerta(1,'Debes indicar ingresar un codigo');
@@ -873,12 +874,15 @@ if(result.cancelled == 0){
           
           $ionicLoading.hide();
 
-          if(response.status== -1){mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+          if(response.status== -1){
+            mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');
+
+          }
 
           if(response.data.error == false){
 
-            mensajeAlerta(2,'Codigo activado! Se te han acreditado '+response.data.puntos+' puntos');   
-
+            mensajeAlerta(2,'+'+response.data.puntos+' puntos <br><br>'+response.data.leyenda);   
+         //  mensajeAlerta(2,' '+'+200'+' puntos <br><br>'+'Reciclar es un habito agradable, inculcale a tu familia el arte del reciclajas'); 
 
           }
           else{
@@ -1248,7 +1252,7 @@ $ionicLoading.show();
 
 
 
-$scope.filtro={distancia:'10000000000000000000000', pais:'1', subcategoria:'0'};
+$scope.filtro={distancia:'10000000000000000000000', pais:'69', subcategoria:'0'};
 
 $scope.usuarioInfo={};
   $scope.url = serverConfig.imageStorageURL;
