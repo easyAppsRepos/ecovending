@@ -113,6 +113,9 @@
                 margin-right: 30px;' class="list">
 
                         <a  ng-repeat='e in eventos | filter: myFilter2 as filtered2' style="       border-radius: 5px; margin-top: 10px;" class="item " >
+
+
+                        <i ng-click='borrarEvento(e.idEvento)'  style='position: absolute;right: 0; margin-right: 5px; font-size: 22px; color: lightcoral; opacity: 0.6;' class="icon ion-android-cancel"></i>
                           <img src="img/calen.png">
                           <h2 style="position: absolute;top: 0;left: 65px;margin-top: 10px;">{{e.nombre}}</h2>
                           <p style="    position: absolute; top: 20px;left: 65px;margin-top: 10px;">{{e.fecha.split(" ")[0]}} - {{e.hora}}</p>

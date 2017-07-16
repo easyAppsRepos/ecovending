@@ -162,7 +162,7 @@
 <div style="  margin-top: 10px;  width: 95%;
     margin-left: 2.5%;">
    
-   <a  ng-repeat='p in productos | filter: busqueda.nombre' ng-show='(filtro.subcategoria == 0 || filtro.subcategoria == p.idSubCategoria ) && (p.distance>filtro.distancia || filtro.distancia == 10000000000000000000000) && (p.idPais == filtro.pais || filtro.pais == 69)'  style="
+   <a  ng-repeat='p in productos | filter: busqueda.nombre' ng-show='(filtro.subcategoria == 0 || filtro.subcategoria == p.idSubCategoria ) && ((p.distance<filtro.distancia && p.distance !== null) || filtro.distancia == 10000000000000000000000) && (p.idPais == filtro.pais || filtro.pais == 69)'  style="
     padding-top: 8px !important;
     padding-left: 106px !important;
     min-height: 100px;

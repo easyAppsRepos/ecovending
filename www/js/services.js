@@ -256,7 +256,20 @@ angular.module('starter.services', [])
             return response;
             });
         },
+      borrarEvento:function(idEvento,idUsuario){  
 
+            return  $http.post(serverConfig.url+'/borrarEvento',{idUsuario:idUsuario, idEvento:idEvento})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
 
 
 

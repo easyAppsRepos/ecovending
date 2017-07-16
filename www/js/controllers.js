@@ -238,6 +238,79 @@ if(tipo==1){
 
 }
 
+$scope.borrarEvento = function(idEvento){
+
+
+
+       var customTemplate2 ='<div style="color:white !important" >Vas a cancelar tu asistencia al evento <br><br>  <strong>Deseas continuar?</strong></div> ';
+
+
+            $ionicPopup.show({
+              template: customTemplate2,
+              title: '',
+              subTitle: '',
+              scope: $scope,
+              buttons: [
+                { text: 'No', onTap: function(e) { return false; } },
+                {
+                  text: '<b>Si</b>',
+                  type: 'button-positive ',
+                  onTap: function(e) {
+                    return  true;
+                  }
+                },
+              ]
+              }).then(function(res) {
+
+              
+                console.log('Tapped!', res);
+
+                if(res){
+
+                      //pais from sellect
+console.log(idEvento);
+
+$ionicLoading.show();
+
+          api.borrarEvento(idEvento,$scope.usuarioInfo.idUsuario ).then(function(response){
+          console.log(response);
+
+
+          if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); 
+            //mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');
+                   console.log('Ha ocurrido un error, verifica tu conexion a internet');
+          }
+          if(response.data.error == false){
+
+            $ionicLoading.hide(); 
+            mensajeAlerta(2, 'Has cancelado el evento');
+            $scope.getEventos();
+            //$scope.eventos = response.data.eventos;
+          }
+          else{  $ionicLoading.hide(); 
+      //      mensajeAlerta(1,'Ha ocurrido un error');
+              console.log('Ha ocurrido un error, verifica tu conexion a internet');
+             // $scope.noMaquinas = true;
+            }
+         // $state.go('app.login');
+          });
+
+
+                }
+
+
+
+              }, function(err) {
+                console.log('Err:', err);
+              }, function(msg) {
+                console.log('message:', msg);
+              });
+
+
+
+
+}
+
 
 
 $scope.anotarEvento=function(idEvento){
@@ -383,6 +456,10 @@ $scope.selectPais = function(pais){
     //pais from sellect
  console.log(pais);
 }
+
+
+
+
 
 $scope.selectDistancia = function(distancia){
 
@@ -1965,6 +2042,56 @@ $scope.modalClasses = ['slide-in-up', 'slide-in-down', 'fade-in-scale', 'fade-in
     enableFriends: true
   };
 
+
+
+
+
+  $scope.cFoto = function(){
+
+
+
+       var customTemplate2 ='<div style="color:white !important" ><strong>Quieres cambiar tu foto de perfil? </strong></div> ';
+
+
+            $ionicPopup.show({
+              template: customTemplate2,
+              title: '',
+              subTitle: '',
+              scope: $scope,
+              buttons: [
+                { text: 'No', onTap: function(e) { return false; } },
+                {
+                  text: '<b>Si</b>',
+                  type: 'button-positive ',
+                  onTap: function(e) {
+                    return  true;
+                  }
+                },
+              ]
+              }).then(function(res) {
+
+              
+                console.log('Tapped!', res);
+
+                if(res){
+                  $scope.cambiarFoto();
+                }
+
+
+
+              }, function(err) {
+                console.log('Err:', err);
+              }, function(msg) {
+                console.log('message:', msg);
+              });
+
+
+
+
+}
+
+
+
 $scope.cambiarFoto = function(){
 getImage();
 function getImage() {
@@ -1994,9 +2121,9 @@ var ft = new FileTransfer();
  ft.upload(imageURI, serverConfig.imageStorageURL+"/upload.php", function(result){
  console.log(JSON.stringify(result));
   $ionicLoading.hide();
-  $state.reload();
-  console.log('Foto cambiada correctamente');
 
+  console.log('Foto cambiada correctamente');
+  $state.reload();
   $scope.$apply(function () {
      $scope.valorF =4;
 });
