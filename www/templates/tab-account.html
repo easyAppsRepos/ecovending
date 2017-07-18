@@ -29,7 +29,7 @@
     color: darkgray;
     font-family: Ubuntu; ">
 
-      <option ng-repeat='l in lugares' ng-value='l.idLugar' >{{l.nombre}}</option>
+      <option ng-repeat='l in lugares' value='{{l.idLugar}}' >{{l.nombre}}</option>
 
     </select>
 
@@ -74,19 +74,22 @@
 ">
   	<i   ng-click='editPerfil()' style='    position: absolute;
     right: 0;
-    margin-right: 13px;
     margin-top: 6px;
     font-size: 24px;
-    color: white;' class="ion-edit"></i>
+    color: white;
+    height: 45px;
+    width: 47px;' class="ion-edit"></i>
 
 
 
     <i   ng-click='cFoto()' style='    position: absolute;
     right: 0;
-    margin-right: 13px;
     margin-top: 45px;
     font-size: 24px;
-    color: white;' class="ion-image"></i>
+    color: white;
+    height: 49px;
+    width: 45px;
+    line-height: 2;' class="ion-image"></i>
 
 
 

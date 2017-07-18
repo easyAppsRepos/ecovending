@@ -1044,6 +1044,10 @@ usuario.email = usuario.email.toLowerCase();
           if(response.status== -1){mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
           if(response.data.error == false){
 //console.log(response.data.info);
+if(response.data.info.verificado == 0){
+  mensajeAlerta(1,'Debes verificar tu cuenta');
+  return false;
+}
             window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));            
             $state.go('tab.account');
 
@@ -1156,7 +1160,7 @@ if(tipo==1){
 
 
 $scope.registrarUsuario = function(user){
-//console.log('user');
+console.log('user');
 
 
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -1844,6 +1848,7 @@ $scope.usuarioInfo={};
 
   $scope.usuarioInfo.nombre=  userData.nombre;
   $scope.usuarioInfo.institucion=  userData.institucion;
+    $scope.usuarioInfo.institucionID=  userData.institucionID;
   $scope.usuarioInfo.ranking=  userData.ranking;
   
   $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
@@ -2029,6 +2034,8 @@ $scope.modalClasses = ['slide-in-up', 'slide-in-down', 'fade-in-scale', 'fade-in
              $scope.puntos = response.data.puntos;
              $scope.huella = response.data.huella;
              $scope.canjes = response.data.canjes;
+             $scope.edicion.ranking = response.data.ranking;
+             $scope.oldRank = response.data.ranking;
             $ionicLoading.hide();
 
           }
@@ -2142,6 +2149,7 @@ var ft = new FileTransfer();
 
 
 
+ //$scope.lero={selectedItemBalue:0};
 
     $scope.editPerfil=function(){
 
@@ -2157,17 +2165,22 @@ var ft = new FileTransfer();
 
             console.log(response);
             $scope.lugares = response.data.lugares;
-            
+            console.log($scope.usuarioInfo);
            $scope.edicion.nombre=   $scope.usuarioInfo.nombre;
-          $scope.edicion.lugar = $scope.usuarioInfo.institucion;
-           $scope.edicion.ranking = $scope.usuarioInfo.ranking == 1 ? true : false;
-
-           if($scope.usuarioInfo.ranking == 1){
+            $scope.edicion.lugar=   String($scope.usuarioInfo.institucionID);
+           //$scope.usuarioInfo.institucionID
+         // $scope.edicion.lugar = $scope.usuarioInfo.institucion;
+        //  $scope.lero.selectedItemBalue= $scope.usuarioInfo.institucion;
+         // $scope.edicion.ranking = $scope.usuarioInfo.ranking == 1 ? true : false;
+        // $scope.edicion.ranking = false;
+         /*  if($scope.edicion.ranking){
             $scope.huellaCheck=false;
            }
            else{
             $scope.huellaCheck=true;
-           }
+           }*/
+
+            $scope.huellaCheck=!$scope.edicion.ranking;
             $scope.openModal("editPerfilUs.html", "slide-in-down");
 
 
@@ -2186,23 +2199,27 @@ var ft = new FileTransfer();
 
         $scope.editarUsuario=function(user){
 
-    console.log(user);
-
-    console.log($scope.usuarioInfo);
+    console.log(user.ranking);
+    console.log($scope.oldRank);
+    //console.log($scope.usuarioInfo);
 //return false;
-if(user.ranking == true){ user.ranking = 1}
-  if(user.ranking == false){ user.ranking = 0}
+//if(user.ranking == true){ user.ranking = 1}
+ // if(user.ranking == false){ user.ranking = 0}
 
 
 
-      if( user.ranking == $scope.usuarioInfo.ranking && user.nombre==$scope.usuarioInfo.nombre && user.lugar == $scope.usuarioInfo.institucion){
+      if( user.ranking == $scope.oldRank && user.nombre==$scope.usuarioInfo.nombre && user.lugar == $scope.usuarioInfo.institucionID){
 
         mensajeAlerta(1,'No has actualizado ningun dato');
         return true;
       }
 
 
-var mensaje= 'Para volver al listado deberas contactar al administrador';
+var mensaje= 'Estas seguro que deseas editar tu perfil?';
+
+if(user.ranking !== $scope.oldRank){
+  mensaje = mensaje + ' *Para volver al listado de HV deberas contactar al administrador';
+}
      var customTemplate =
         '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/exclam.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
 
