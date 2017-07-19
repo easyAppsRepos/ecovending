@@ -431,6 +431,12 @@ $scope.openPage = function(link){
 
   }  
 }
+
+$scope.goBack = function() {
+    $ionicHistory.goBack()
+  }
+
+  
 })
 
 
