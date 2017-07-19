@@ -79,7 +79,7 @@
     border: none;
     border-radius: 5px;
     background: #fafafa;
-    " class="item item-thumbnail-left" ng-repeat='e in ecosocios ' ng-show='e.idPais == filtro.pais || filtro.pais == 69'>
+    " class="item item-thumbnail-left" ng-repeat='e in ecosocios' ng-show='e.idPais == filtro.pais || filtro.pais == 69'>
 
 <!--                   <img  ng-src="{{url}}/ecosocio{{e.idEcosocio}}.jpg?5" style="
     border-radius: 50px;    height: auto !important;
@@ -98,12 +98,19 @@
 ">
   <img src="img/ubicacion.png" style="height: 25px;vertical-align: middle;"> {{e.ubicacionNombre}} <br>
   
+    <img src="img/tipoMaterial.png" style="height: 25px;vertical-align: middle;"> <span ng-click="abrirMapa(e.lat,e.lon)" style="    margin-top: 7px;
+    display: inline-block;">{{e.material}}</span> <br>
+
   <span ng-show='!noDistancia' >
    <img src="img/walk.png" style="height: 25px;vertical-align: middle;"> <span ng-click="abrirMapa(e.lat,e.lon)" style="    margin-top: 7px;
     display: inline-block;">Maquina a {{getDistance(e.distance)}} km</span> <br>
 </span>
   <img src="img/vermapa.png" style="height: 25px;vertical-align: middle;"> <span ng-click="abrirMapa(e.lat,e.lon)" style="    margin-top: 7px;
     display: inline-block;">Ver en mapa</span>
+
+
+
+
 
  </div>
 

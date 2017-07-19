@@ -419,6 +419,22 @@ $ionicLoading.show();
 
 })
 
+
+.controller('contactenosCtrl', function($scope, $stateParams, serverConfig, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
+
+$scope.openPage = function(link){
+
+  if(link == null || link == 'null' || link == 'undefinded'){console.log('nolink')}
+
+  else{
+      window.open(link, '_system', 'location=yes'); return false;
+
+  }  
+}
+})
+
+
+
 .controller('maquinasCtrl', function($scope, $stateParams, serverConfig, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
 
 
@@ -1375,7 +1391,7 @@ $scope.myFilter = function (item) {
 
 //console.log(item);
   //  return item.idPais == $scope.filtro.pais || $scope.filtro.pais == 69; 
-    return (item.idPais == $scope.filtro.pais || $scope.filtro.pais == 69) && ( item.distance < $scope.filtro.distancia || item.distance == undefined) && (item.subCategoriaID == $scope.filtro.subcategoria || $scope.filtro.subcategoria == 0); 
+    return (item.idPais == $scope.filtro.pais || $scope.filtro.pais == 69) && ( item.distance < $scope.filtro.distancia || item.distance == undefined || item.tipo == 3) && (item.subCategoriaID == $scope.filtro.subcategoria || $scope.filtro.subcategoria == 0); 
 };
 
 
@@ -1600,7 +1616,7 @@ if(tipo==1){
 .controller('productsCtrl', function($scope, $ionicLoading, api, serverConfig, $ionicPopup, $ionicModal) {
 
 
-$scope.filtro={distancia:'10000000000000000000000', pais:'1', subcategoria:'0'};
+$scope.filtro={distancia:'10000000000000000000000', pais:'69', subcategoria:'0'};
 $scope.busqueda={};
 $scope.busqueda.categoria=0;
 //$scope.$on('$ionicView.enter', function(event, viewData) {
@@ -1619,6 +1635,7 @@ $scope.usuarioInfo={};
     
             api.getPaises().then(function(response){
           console.log(response);
+
 
           if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); 
             //mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');

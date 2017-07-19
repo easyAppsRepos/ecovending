@@ -107,7 +107,7 @@ angular.element(tabs[0]).css('display', '');
   .state('contactenos', {
       url: '/contactenos',
       templateUrl: 'templates/contactenos.html',
-      controller: 'DashCtrl'
+      controller: 'contactenosCtrl'
   })
 
 

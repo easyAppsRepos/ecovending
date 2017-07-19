@@ -56,8 +56,8 @@
     ">
 <span style="color:white">Pais</span><br>
                     <select ng-model='filtro.pais' style="  width:100%;color:white !important;  display: inline-block;">
-  <option ng-repeat='l in paises | filter:{ estado: 1 }' ng-value='l.idPais' ng-selected='l.idPais == filtro.pais'  >{{l.nombre}}</option>
-                      <option  value='69'  >Todos</option>
+  <option ng-repeat='l in paises | filter:{ estado: 1 }' ng-value='l.idPais'>{{l.nombre}}</option>
+                      <option  value='69' ng-selected='{{true}}' >Todos</option>
                     </select>
                 </div>
 
@@ -201,12 +201,24 @@
 </div>
                   <p style="white-space:normal">{{p.descripcion}}</p>
 
-                <div style="white-space: normal;">  
+                 <div style="white-space: normal;">  
 
                   <div style='margin-right: 5px' class='vineta'>{{p.categoria}}</div>
                   <div class='vineta'>{{p.subcategoria}}</div> 
 
+                  <img style='    position: absolute;
+    left: 0;
+    margin-left: 8px;
+    bottom: 0;
+    height: 27px;'  src="img/pais{{p.idPais}}.png">
+
+
+
                 </div>
+
+
+
+
 
    </a>
 
