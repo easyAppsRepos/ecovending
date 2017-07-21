@@ -436,7 +436,7 @@ $scope.goBack = function() {
     $ionicHistory.goBack()
   }
 
-  
+
 })
 
 
@@ -445,7 +445,7 @@ $scope.goBack = function() {
 
 
 
-$scope.filtro={distancia:'10000000000000000000000', pais:'1'};
+$scope.filtro={distancia:'10000000000000000000000', pais:'69'};
 
   $scope.goBack = function() {
     $ionicHistory.goBack()
