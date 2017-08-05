@@ -262,7 +262,7 @@ $scope.hacerCheckin = function(idEvento) {
 
 $scope.verificarCheckin = function(e) {
 
-
+//console.log(e);
   if(e.lat == 0 || e.lon == 0){
 
     return false;
