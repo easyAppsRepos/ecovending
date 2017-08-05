@@ -256,6 +256,25 @@ angular.module('starter.services', [])
             return response;
             });
         },
+
+         hacerCheckin:function(idEvento,idUsuario, lat,lon){  
+
+            return  $http.post(serverConfig.url+'/hacerCheckin',{idUsuario:idUsuario, idEvento:idEvento, lat:lat,lon:lon})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+        
+
+
       borrarEvento:function(idEvento,idUsuario){  
 
             return  $http.post(serverConfig.url+'/borrarEvento',{idUsuario:idUsuario, idEvento:idEvento})

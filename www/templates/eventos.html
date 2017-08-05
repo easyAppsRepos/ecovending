@@ -63,7 +63,7 @@
 
 
 
-                                  <button  ng-click='anotarEvento(e.idEvento)' class='button button-energized' style="float: right;min-height: 10px;height: 24px;line-height: 1px;">
+                                  <button  ng-click='anotarEvento(e.idEvento)' class='button button-energized' style="float: right;min-height: 10px;height: 24px;    line-height: 1px;">
                                   Asistir 
                                   </button> 
 
@@ -115,7 +115,7 @@
                         <a  ng-repeat='e in eventos | filter: myFilter2 as filtered2' style="       border-radius: 5px; margin-top: 10px;" class="item " >
 
 
-                        <i ng-click='borrarEvento(e.idEvento)'  style='position: absolute;right: 0; margin-right: 5px; font-size: 22px; color: lightcoral; opacity: 0.6;' class="icon ion-android-cancel"></i>
+                        <i ng-click='borrarEvento(e.idEvento)'  ng-show='!asistirEvento2(e)' style='position: absolute;right: 0; margin-right: 5px; font-size: 22px; color: lightcoral; opacity: 0.6;' class="icon ion-android-cancel"></i>
                           <img src="img/calen.png">
                           <h2 style="position: absolute;top: 0;left: 65px;margin-top: 10px;">{{e.nombre}}</h2>
                           <p style="    position: absolute; top: 20px;left: 65px;margin-top: 10px;">{{e.fecha.split(" ")[0]}} - {{e.hora}}</p>
@@ -132,6 +132,15 @@
     color: #1cb382;float: right;min-height: 10px;height: 24px;line-height: 1px;">
                                   <i class="ion-checkmark-circled"> Asistiras</i> 
                                   </div> 
+
+
+                          <br>
+                          <button ng-show='verificarCheckin(e)' ng-click='hacerCheckin(e.idEvento)' ng-disabled='asistirEvento2(e)'   style='height: 30px;background-color: #1cb382;color:white ;
+                          min-height: 30px;
+                          line-height: 1;margin-bottom: 0px !important'  class="button button-full"><img src="img/check.png" style="height:20px; width:20px; vertical-align:middle"><span ng-show='!asistirEvento2(e)'>Check-in</span> <span ng-show='asistirEvento2(e)'>Has hecho check-in</span> </button>
+
+
+
 
 
                         </a>

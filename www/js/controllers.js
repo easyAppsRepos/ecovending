@@ -195,6 +195,97 @@ $scope.goBack = function() {
   }
 
 
+$scope.hacerCheckin = function(idEvento) {
+   console.log('chekin');
+
+    $ionicLoading.show();
+
+
+
+        navigator.geolocation.getCurrentPosition(function(pos) {
+         console.log(pos.coords.latitude+' Long: '+ pos.coords.longitude);
+    
+
+               var latitudePerson = pos.coords.latitude;
+                var longitudePerson = pos.coords.longitude;
+
+                  console.log(latitudePerson);
+    
+          
+              api.hacerCheckin(idEvento,$scope.usuarioInfo.idUsuario, latitudePerson, longitudePerson).then(function(response){
+              console.log(response);
+
+
+              if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); 
+              //mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');
+              console.log('Ha ocurrido un error, verifica tu conexion a internet');
+              return false;
+              }
+              if(response.data.error == false){
+
+              $ionicLoading.hide(); 
+
+              if(response.data.puntos > 0){
+                mensajeAlerta(2, 'Gracias por participar en el evento, has ganado '+response.data.puntos+' puntos!');
+              }
+              else{
+
+                mensajeAlerta(2, 'Gracias por participar en el evento');
+              }  
+              
+               $scope.getEventos();
+              //$scope.eventos = response.data.eventos;
+              }
+              else{  $ionicLoading.hide(); 
+              //      mensajeAlerta(1,'Ha ocurrido un error');
+               mensajeAlerta(1,'Debes estar cerca del evento para hacer check-in');
+             // return false;
+              // $scope.noMaquinas = true;
+              }
+              // $state.go('app.login');
+              });
+
+
+
+
+        }, function(error) {
+           $ionicLoading.hide();
+         mensajeAlerta(1,'Debes activar el GPS para hacer check-in');
+        });
+
+
+
+
+
+
+  }
+
+$scope.verificarCheckin = function(e) {
+
+
+  if(e.lat == 0 || e.lon == 0){
+
+    return false;
+  }
+// Create date from input value
+var inputDate = new Date(e.fecha);
+
+// Get today's date
+var todaysDate = new Date();
+
+// call setHours to take the time out of the comparison
+if(inputDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
+    // Date equals today's date
+    return true;
+}
+else{return false}
+
+
+  }
+
+
+
+
   function mensajeAlerta(tipo, mensaje){
 
     var ima ='exclam.png';
@@ -368,6 +459,31 @@ for(var j=0;res.length>j;j++){
   return false;
 
 }
+
+
+
+
+$scope.asistirEvento2=function(evento){
+
+if(evento.listCheckins == null){
+  return false;
+}
+var str = evento.listCheckins;
+var res = str.split("-");
+
+
+for(var j=0;res.length>j;j++){
+    if(res[j] == $scope.usuarioInfo.idUsuario ){
+
+      return true;
+    }
+}
+
+  return false;
+
+}
+
+
 
 
 
@@ -1089,7 +1205,7 @@ if(response.data.info.verificado == 0){
 
                       var mensaje = 'Correo Electronico'
                    var customTemplate =
-          '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/email.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> <input type="text" ng-model="olvideEmail" > <button ng-click="recuperar(olvideEmail)" class="btnRecuperar button" style="    width: 100%;background-color: #999;margin-top: 20px;height: 40px;font-family: Ubuntu;color: white;border: none;border-radius: 2px;">Recuperar</button></div>';
+          '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/email.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> <input type="text" ng-model="olvideEmail" autocapitalize="off" > <button ng-click="recuperar(olvideEmail)" class="btnRecuperar button" style="    width: 100%;background-color: #999;margin-top: 20px;height: 40px;font-family: Ubuntu;color: white;border: none;border-radius: 2px;">Recuperar</button></div>';
 
         $scope.pop = $ionicPopup.show({
           template: customTemplate,
@@ -1114,7 +1230,9 @@ if(response.data.info.verificado == 0){
 $ionicLoading.show();
   console.log(email);
 
-          api.recuperarContra(email).then(function(data) {
+  var cadena = email.toLowerCase();
+
+          api.recuperarContra(cadena).then(function(data) {
 
             $ionicLoading.hide();
 
@@ -1123,7 +1241,7 @@ $ionicLoading.show();
               //window.localStorage.setItem( 'userInfoTS', JSON.stringify(data));
 
               $scope.pop.close();
-              mensajeAlerta(2,'Se ha enviado la contraseña a tu correo, verifica en breve. Recuerda buscar en la carpeta de "no deseados" si no está en tu bandeja');
+              mensajeAlerta(3,'Se ha enviado la contraseña a tu correo, verifica en breve.');
 
             }
             else{
@@ -1149,7 +1267,7 @@ if(tipo==1){
 
 
 }
-  if(tipo == 2){
+  if(tipo == 2 || tipo == 3){
 
      var customTemplate =
         '<div style="text-align:center;font-family: Ubuntu;"><img style="margin-top:10px" src="img/confirma.png"> <p style="    font-size: 18px;color:white; margin-top:25px">'+mensaje+'</p> </div>';
@@ -1223,7 +1341,7 @@ else{
           if(response.status== -1){mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
           if(response.data.error == false){
 
-            mensajeAlerta(2,'Usuario creado correctamente, ya puedes iniciar sesion!','1');
+            mensajeAlerta(2,'Usuario creado correctamente, debes validar tu email para ingresar','1');
             //$scope.closeModal();
            // $scope.user={};
            
