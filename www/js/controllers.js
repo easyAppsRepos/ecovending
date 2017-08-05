@@ -195,6 +195,16 @@ $scope.goBack = function() {
   }
 
 
+  $scope.urlMap = function(lat, lng){
+         var url = "https://maps.google.com/?q=" + lat + "," + lng;
+    window.open(url, '_system', 'location=yes'); return false;
+
+
+}
+
+
+
+
 $scope.hacerCheckin = function(idEvento) {
    console.log('chekin');
 

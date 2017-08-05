@@ -56,7 +56,8 @@
                           <h2 style="position: absolute;top: 0;left: 65px;margin-top: 10px;">{{e.nombre}}</h2>
                           <p style="    position: absolute; top: 20px;left: 65px;margin-top: 10px;">{{e.fecha.split(" ")[0]}} - {{e.hora}}</p>
                           <p style="    white-space: normal; margin-top: 5px;margin-bottom: 5px;">{{e.description}}</p>
-
+ <i  ng-click='urlMap(e.lat, e.lon)' style="color:cadetblue;width: 100%;
+    display: inherit;" class="icon ion-ios-location"> ver ubicacion en mapa</i><br>
                        <span style="font-size: 18px;
     margin-left: 4px;
     color: #1cb382;">    <i    class="ion-ios-people"></i> {{e.usuarios}} </span>
@@ -120,6 +121,12 @@
                           <h2 style="position: absolute;top: 0;left: 65px;margin-top: 10px;">{{e.nombre}}</h2>
                           <p style="    position: absolute; top: 20px;left: 65px;margin-top: 10px;">{{e.fecha.split(" ")[0]}} - {{e.hora}}</p>
                           <p style="    white-space: normal; margin-top: 5px;margin-bottom: 5px;">{{e.description}}</p>
+                       <i  ng-click='urlMap(e.lat, e.lon)' style="color:cadetblue;width: 100%;
+    display: inherit;" class="icon ion-ios-location"> ver ubicacion en mapa</i><br>
+                            
+                            
+                            
+                             
 
                        <span style="font-size: 18px;
     margin-left: 4px;
