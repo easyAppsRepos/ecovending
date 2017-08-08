@@ -322,6 +322,25 @@ angular.module('starter.services', [])
             });
         },
 
+        getSubCategorias:function(idUsuario){  
+
+            return  $http.post(serverConfig.url+'/getSubCategorias')
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+
+
+        
+
                             getEventos:function(idUsuario){  
 
             return  $http.post(serverConfig.url+'/getEventos')

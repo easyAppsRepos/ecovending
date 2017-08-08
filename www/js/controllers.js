@@ -205,8 +205,14 @@ $scope.goBack = function() {
 
 
 
-$scope.hacerCheckin = function(idEvento) {
+$scope.hacerCheckin = function(idEvento, evento) {
    console.log('chekin');
+
+
+if($scope.verificarCheckin(evento) == false){
+     mensajeAlerta(1,'Hoy no es el evento. El evento es el dia '+evento.fecha.split(" ")[0]);
+     return false;
+}
 
     $ionicLoading.show();
 
@@ -1500,7 +1506,7 @@ $scope.usuarioInfo={};
   }
 
 
-            api.getPaises().then(function(response){
+            api.getSubCategorias().then(function(response){
           console.log(response);
 
           if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); 
@@ -1509,6 +1515,7 @@ $scope.usuarioInfo={};
           }
           if(response.data.error == false){
             $scope.paises = response.data.paises;
+            $scope.subcat = response.data.subCategorias;
           }
           else{  $ionicLoading.hide(); 
       //      mensajeAlerta(1,'Ha ocurrido un error');
@@ -1767,8 +1774,9 @@ $scope.usuarioInfo={};
 
 //});
     
-            api.getPaises().then(function(response){
+            api.getSubCategorias().then(function(response){
           console.log(response);
+            console.log('S');
 
 
           if(response.status== -1 || response.data==null  || response.data=='null'  ){ $ionicLoading.hide(); 
@@ -1777,6 +1785,8 @@ $scope.usuarioInfo={};
           }
           if(response.data.error == false){
             $scope.paises = response.data.paises;
+            $scope.subcat = response.data.subCategorias;
+            
 
           }
           else{  $ionicLoading.hide(); 
