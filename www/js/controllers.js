@@ -284,7 +284,12 @@ $scope.verificarCheckin = function(e) {
     return false;
   }
 // Create date from input value
-var inputDate = new Date(e.fecha);
+
+var dateString = e.fecha;
+var inputDate = new Date(dateString.replace(/-/g, '/'));
+
+
+//var inputDate = new Date(e.fecha);
 console.log(inputDate);
 
 // Get today's date
