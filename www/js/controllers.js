@@ -287,7 +287,12 @@ $scope.verificarCheckin = function(e) {
 var inputDate = new Date(e.fecha);
 
 // Get today's date
+//var todaysDate = new Date();
+
 var todaysDate = new Date();
+
+console.log(todaysDate.setHours(0,0,0,0));
+console.log(inputDate.setHours(0,0,0,0));
 
 // call setHours to take the time out of the comparison
 if(inputDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
