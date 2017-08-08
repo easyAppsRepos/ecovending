@@ -285,6 +285,7 @@ $scope.verificarCheckin = function(e) {
   }
 // Create date from input value
 var inputDate = new Date(e.fecha);
+console.log(inputDate);
 
 // Get today's date
 //var todaysDate = new Date();
