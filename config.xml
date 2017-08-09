@@ -1,9 +1,9 @@
-<?xml version="1.6" encoding="UTF-8" standalone="yes"?>
-<widget id          =     "com.ionicframework.ecovending"
-        version     =    "1.6.0"
+<?xml version="2.0" encoding="UTF-8" standalone="yes"?>
+<widget id          =    "com.ionicframework.ecovending"
+        version     =    "2.0"
         xmlns       =    "http://www.w3.org/ns/widgets"
         xmlns:gap   =    "http://phonegap.com/ns/1.0"
-        versionCode =   "6">
+        versionCode =    "2">
   <name>Ecoven</name>
   <description>
         Ecoven
