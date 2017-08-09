@@ -1,5 +1,5 @@
 <?xml version="1.9" encoding="UTF-8" standalone="yes"?>
-<widget id          =     "com.ionicframework.ecovendingdos"
+<widget id          =     "com.ionicframework.ecovending"
         version     =    "1.9"
         xmlns       =    "http://www.w3.org/ns/widgets"
         xmlns:gap   =    "http://phonegap.com/ns/1.0"
