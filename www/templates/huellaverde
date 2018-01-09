@@ -1,0 +1,109 @@
+<h2>Usuarios</h2>
+
+<table class="tableHV"><tr><th>Nombre</th><th>HV</th></tr>
+[insert_php]
+
+
+
+
+
+$servername = "localhost";
+$username = "ecovencl_admin";
+$password = "K3ku9Fn!Mv@$";
+$dbname = "ecovencl_app2";
+
+
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+
+$conn->set_charset("utf8");
+
+$sql = "SELECT Usuarios.nombre, Usuarios.idUsuario, SUM(Transacciones.valor) as acumulado FROM Usuarios INNER JOIN Transacciones ON Transacciones.idUsuario = Usuarios.idUsuario WHERE Transacciones.tipo = 1 AND Usuarios.mostrarEnRanking = 1 GROUP BY Usuarios.idUsuario ORDER BY acumulado DESC LIMIT 10";
+
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+
+// output data of each row
+while($row = $result->fetch_assoc()) {
+
+
+echo "<tr><td>" . $row["nombre"]. "</td>" . "<td>".($row["acumulado"] * 0.00055) ."</td></tr>";
+
+}
+
+
+
+
+} else {
+echo "Ha ocurrido un error";
+}
+
+
+
+$conn->close();
+
+
+
+[/insert_php]
+
+</table>
+
+
+
+
+
+
+<h2 style='margin-top:30px;'>Instituciones</h2>
+
+
+<table class="tableHV"><tr><th>Instituciones</th><th>HV</th></tr>
+[insert_php]
+
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+
+$conn->set_charset("utf8");
+
+$sql = "SELECT Lugares.nombre, Lugares.idLugar, SUM(Transacciones.valor) as acumulado FROM Lugares, Usuarios INNER JOIN Transacciones ON Transacciones.idUsuario = Usuarios.idUsuario WHERE Transacciones.tipo = 1 AND Usuarios.mostrarEnRanking = 1 AND Lugares.idLugar = Usuarios.institucion GROUP BY Usuarios.institucion ORDER BY acumulado DESC LIMIT 10";
+
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+
+// output data of each row
+while($row = $result->fetch_assoc()) {
+
+
+echo "<tr><td>" . $row["nombre"]. "</td>" . "<td>".($row["acumulado"] * 0.00055)."</td></tr>";
+
+}
+
+
+
+
+} else {
+echo "Ha ocurrido un error";
+}
+
+
+
+$conn->close();
+
+
+
+[/insert_php]
+
+</table>
+
+

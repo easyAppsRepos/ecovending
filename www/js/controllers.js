@@ -1338,7 +1338,7 @@ console.log('user');
 
    };
    
-
+if(user.email !== user.email2 ){mensajeAlerta(1,'Tu email no coincide!'); return false;}
 
 if(user.email == 'undefined' || user.email == null || user.email == '' ||
    user.nombre == 'undefined' || user.nombre == null || user.nombre == '' || 
@@ -2013,6 +2013,44 @@ if(tipo==1){
 $scope.busqueda={};
 $scope.busqueda.categoria=0;
 
+
+  cordova.plugins.diagnostic.isLocationAvailable(function(available){
+
+
+    console.log("Location is " + (available ? "available" : "not available"));
+
+    if(available){
+      console.log('gpsalreadyActivado');
+    }
+    else{
+
+        cordova.dialogGPS("Para usar todas las funcionalidades Ecoven requiere que el GPS este activado",
+                    function(buttonIndex){//callback 
+                      switch(buttonIndex) {
+                        case 0: break;//cancel 
+                        case 1: break;//neutro option 
+                        case 2: break;//user go to configuration 
+                      }},
+                      "Por favor, activa el GPS",
+                      ["Cancel","No mostar mas","Ir"]);
+
+    }  
+
+
+}, function(error){
+
+
+    console.error("The following error occurred: "+error);
+
+
+});
+
+
+
+
+
+
+
 $scope.$on('$ionicView.enter', function(event, viewData) {
 $scope.edicion={};
 $scope.usuarioInfo={};
@@ -2022,7 +2060,7 @@ $scope.usuarioInfo={};
   $scope.usuarioInfo.institucion=  userData.institucion;
     $scope.usuarioInfo.institucionID=  userData.institucionID;
   $scope.usuarioInfo.ranking=  userData.ranking;
-  
+   $scope.usuarioInfo.pib =userData.pib;
   $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
   $scope.usuarioInfo.idUsuario=  userData.idUsuario;
   $scope.url = serverConfig.imageStorageURL;
@@ -2339,6 +2377,7 @@ var ft = new FileTransfer();
             $scope.lugares = response.data.lugares;
             console.log($scope.usuarioInfo);
            $scope.edicion.nombre=   $scope.usuarioInfo.nombre;
+           $scope.edicion.pib=   $scope.usuarioInfo.pib;
             $scope.edicion.lugar=   String($scope.usuarioInfo.institucionID);
            //$scope.usuarioInfo.institucionID
          // $scope.edicion.lugar = $scope.usuarioInfo.institucion;
@@ -2380,7 +2419,7 @@ var ft = new FileTransfer();
 
 
 
-      if( user.ranking == $scope.oldRank && user.nombre==$scope.usuarioInfo.nombre && user.lugar == $scope.usuarioInfo.institucionID){
+      if( user.pib == $scope.usuarioInfo.pib && user.ranking == $scope.oldRank && user.nombre==$scope.usuarioInfo.nombre && user.lugar == $scope.usuarioInfo.institucionID){
 
         mensajeAlerta(1,'No has actualizado ningun dato');
         return true;

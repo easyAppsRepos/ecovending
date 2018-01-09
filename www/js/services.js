@@ -43,7 +43,7 @@ angular.module('starter.services', [])
                 editarUsuario:function(dat){  
             console.log(dat);
            
-            return  $http.post(serverConfig.url+'/editarUsuario',dat)
+            return  $http.post(serverConfig.url+'/editarUsuario2',dat)
             .then(function(response) {
             console.log(response);
             return response;
