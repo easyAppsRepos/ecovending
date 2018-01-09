@@ -66,7 +66,9 @@
 
   <gap:plugin name="cordova-plugin-camera"  source="npm"  spec="2.4.1" />
   <gap:plugin name="cordova-plugin-file-transfer"  source="npm" spec="1.6.3" />
- <gap:plugin name="cordova-plugin-file" source="npm" spec="4.3.1" />
+
+<gap:plugin name="cordova-plugin-file"  source="npm" spec="~4.3.3"/>
+
 
 <gap:plugin name="phonegap-plugin-barcodescanner"  source="npm" />
 <gap:plugin name="cordova-plugin-statusbar"  source="npm" />
@@ -75,11 +77,11 @@
 <gap:plugin name="cordova-plugin-inappbrowser" source="npm"  />
 
 
-<plugin name="cordova-plugin-media-capture" source="npm" spec="3.0.0">
+<!-- <plugin name="cordova-plugin-media-capture" source="npm" spec="3.0.0">
   <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
 
   <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
-</plugin>
+</plugin> -->
 
       <gap:plugin name="cordova-plugin-app-event" source="npm" version="1.2.0"/>
        <gap:plugin name="cordova-plugin-device" source="npm" version="1.1.4" />
