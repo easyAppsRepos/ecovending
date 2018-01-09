@@ -75,7 +75,7 @@
 <gap:plugin name="cordova-plugin-inappbrowser" source="npm"  />
 
 
-<plugin name="cordova-plugin-media-capture" source="npm" spec="*">
+<plugin name="cordova-plugin-media-capture" source="npm" spec="2.0.0">
   <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
 
   <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
