@@ -2024,7 +2024,7 @@ $scope.busqueda.categoria=0;
     }
     else{
 
-        cordova.dialogGPS("Para usar todas las funcionalidades Ecoven requiere que el GPS este activado",
+        cordova.dialogGPS("Para usar todas las funcionalidades Ecoven requiere que el GPS este activado", "Uso del GPS",
                     function(buttonIndex){//callback 
                       switch(buttonIndex) {
                         case 0: break;//cancel 
