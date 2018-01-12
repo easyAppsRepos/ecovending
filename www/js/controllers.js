@@ -1474,16 +1474,20 @@ console.log('f');
         // Check if we have our user saved
 
         api.verificarFBLog(success.authResponse.userID).then(function (events) { 
-        if(events.data.info.length > 0){
 
+          console.log(events);
+                    console.log(events.data.info.length);
+        if(events.data.info.length > 0){
+ console.log('3');
             window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));            
             $state.go('tab.account');
 
         }
         else{
-
+ console.log('4');
           getFacebookProfileInfo(success.authResponse).then(function(profileInfo) {
             // For the purpose of this example I will store user data on local storage
+            
             var usuario = {
               fbId: profileInfo.id,
               nombre: profileInfo.name,
@@ -1526,7 +1530,9 @@ console.log('f');
 
 
 
-        }}).finally(function () {$ionicLoading.hide();});
+        }
+
+      }).finally(function () {$ionicLoading.hide();});
 
 /*
 
