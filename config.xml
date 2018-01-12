@@ -34,7 +34,10 @@
   <preference name="SplashScreen" value="screen"/>
 
 
-  <preference name="android-minSdkVersion" value="17"/>
+  <preference name="android-minSdkVersion" value="16"/>
+      <preference name="android-targetSdkVersion"   value="16" />     
+
+
   <preference name="BackupWebStorage" value="none"/>
 
     <feature name="StatusBar">
@@ -92,7 +95,19 @@
 
 
 
+    <gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance" overwrite="true">
+        <false/>
+    </gap:config-file>
+    <gap:config-file platform="ios" parent="UIStatusBarHidden" overwrite="true">
+        <true/>
+    </gap:config-file>
 
+
+
+
+    <config-file platform="ios" parent="NSPhotoLibraryUsageDescription" mode="replace">
+        <string>This app uses your photo library</string>
+    </config-file>
 
     <plugin name="cordova-plugin-facebook4" source="npm" spec="~1.9.0">
             <param name="APP_ID" value="1957303017855019" />
