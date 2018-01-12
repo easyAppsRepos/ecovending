@@ -109,11 +109,11 @@
         <string>This app uses your photo library</string>
     </config-file>
 
-<!--     <plugin name="cordova-plugin-facebook4" source="npm" spec="~1.9.0">
+    <plugin name="cordova-plugin-facebook4" source="npm" spec="~1.9.0">
             <param name="APP_ID" value="1957303017855019" />
             <param name="APP_NAME" value="Ecoven" />
 </plugin>
- -->
+
 
 <!-- <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
  -->
