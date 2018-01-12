@@ -1476,8 +1476,9 @@ console.log('f');
         api.verificarFBLog(success.authResponse.userID).then(function (events) { 
 
           console.log('dd33');
-                    console.log(events.data.info.length);
-        if(events.data.info.length > 0){
+                    console.log(events);
+                    console.log(events.data.error);
+        if(events.data.error == 'false' || events.data.error == false){
  console.log('3');
             window.localStorage.setItem( 'userInfoEV', JSON.stringify(events.data.info));            
             $state.go('tab.account');
