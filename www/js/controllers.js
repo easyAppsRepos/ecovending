@@ -1440,7 +1440,8 @@ if(tipo==1){
     //This method is executed when the user press the "Login with facebook" button
   $scope.facebookSignIn = function() {
 
-
+console.log('f');
+console.log(facebookConnectPlugin);
     facebookConnectPlugin.getLoginStatus(function(success){
 
 
