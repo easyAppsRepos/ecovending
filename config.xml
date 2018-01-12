@@ -91,6 +91,15 @@
       <gap:plugin name="cordova-dialog-gps"  source="npm" />
 
 
+
+
+
+    <plugin name="cordova-plugin-facebook4" source="npm" spec="~1.9.0">
+            <param name="APP_ID" value="557322497945858" />
+            <param name="APP_NAME" value="UltraDoujinshi" />
+</plugin>
+
+
 <!-- <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
  -->
        <access origin="*" />

@@ -1441,7 +1441,7 @@ if(tipo==1){
   $scope.facebookSignIn = function() {
 
 console.log('f');
-console.log(facebookConnectPlugin);
+
     facebookConnectPlugin.getLoginStatus(function(success){
 
 
