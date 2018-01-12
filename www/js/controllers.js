@@ -1377,9 +1377,9 @@ if(tipo==1){
                     if(events.data.insertId > 0){
 
                        api.verificarFBLog(success.authResponse.userID).then(function (events) { 
-                        if(events.data.idUsuario > 0){
+                        if(events.data.info.length > 0){
 
-                        window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));            
+                        window.localStorage.setItem( 'userInfoEV', JSON.stringify(events.data.info));            
                         $state.go('tab.account');
 
                         }});
@@ -1479,7 +1479,7 @@ console.log('f');
                     console.log(events.data.info.length);
         if(events.data.info.length > 0){
  console.log('3');
-            window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));            
+            window.localStorage.setItem( 'userInfoEV', JSON.stringify(events.data.info));            
             $state.go('tab.account');
 
         }
@@ -1504,7 +1504,7 @@ console.log('f');
   console.log('asda3333');
                         if(events.data.info.length > 0){
 
-                        window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));            
+                        window.localStorage.setItem( 'userInfoEV', JSON.stringify(events.data.info));            
                         $state.go('tab.account');
 
                         }});
