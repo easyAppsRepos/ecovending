@@ -1474,7 +1474,7 @@ console.log('f');
         // Check if we have our user saved
 
         api.verificarFBLog(success.authResponse.userID).then(function (events) { 
-        if(events.data.idUsuario > 0){
+        if(events.data.info.length > 0){
 
             window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));            
             $state.go('tab.account');
@@ -1490,11 +1490,13 @@ console.log('f');
               email: profileInfo.email,
               imagenFB : "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
             };
+            console.log(usuario);
 
                api.addUserFb(usuario).then(function (events) {
-
+  console.log('advb');
                     if(events.data.insertId > 0){
                         api.verificarFBLog(success.authResponse.userID).then(function (events) { 
+
                         if(events.data.idUsuario > 0){
 
                         window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));            
@@ -1511,7 +1513,7 @@ console.log('f');
                     }
 
               }).finally(function () {
-
+  console.log('advb333');
               //$ionicLoading.hide();
               //$state.go('app.listaMascotas');
                });
