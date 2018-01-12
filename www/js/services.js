@@ -56,6 +56,38 @@ angular.module('starter.services', [])
             });
         },
 
+                        addUserFb:function(dat){  
+            console.log(dat);
+           
+            return  $http.post(serverConfig.url+'/addUserFb',dat)
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+                        verificarFBLog:function(dat){  
+            console.log(dat);
+           
+            return  $http.post(serverConfig.url+'/verificarFBLog',{id:dat})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
 
         
 

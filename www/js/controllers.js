@@ -1326,6 +1326,235 @@ if(tipo==1){
 }
 
 
+
+//FACEBOOK LOGIN
+
+
+
+  // This is the success callback from the login method
+  var fbLoginSuccess = function(response) {
+    if (!response.authResponse){
+      fbLoginError("Cannot find the authResponse");
+      return;
+    }
+
+    var authResponse = response.authResponse;
+
+    getFacebookProfileInfo(authResponse)
+    .then(function(profileInfo) {
+      // For the purpose of this example I will store user data on local storage
+
+              var usuario = {
+              fbId: profileInfo.id,
+              nombre: profileInfo.name,
+              email: profileInfo.email,
+              imagenFB : "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
+            };
+
+
+
+
+               api.addUserFb(usuario).then(function (events) {
+
+                    if(events.data.insertId > 0){
+
+                       api.verificarFBLog(success.authResponse.userID).then(function (events) { 
+                        if(events.data.idUsuario > 0){
+
+                        window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));            
+                        $state.go('tab.account');
+
+                        }});
+/*
+                                    if(localStorage.getItem('pushKeyUD')){
+                var pushKeyii=  localStorage.getItem('pushKeyUD');
+                var device= ionic.Platform.platform();
+                var uuid=ionic.Platform.device().uuid;
+                var logIn = Date.now();
+
+
+                var pushState = { 
+                pushK:pushKeyii, 
+                device:device,
+                deviceId:uuid,
+                login: logIn,
+                user:events.data.insertId
+                }
+
+                console.log(pushState);
+
+                api.addPush(pushState).then(function (events) {
+
+                console.log(events);
+                }).finally(function () {
+                  $ionicLoading.hide();
+                    $timeout(function() {
+   location.reload();
+});
+                });
+
+*/
+
+                
+
+
+
+                              
+             //  $scope.closeModal();
+                    }
+
+                    else{
+
+                      mensajeAlerta(1, 'Ha ocurrido un error');
+                      $ionicLoading.hide();
+                    }
+
+              }).finally(function () {
+
+             
+               });
+
+
+
+
+
+     // $ionicLoading.hide();
+    //$state.go('app.listaMascotas');
+
+
+    }, function(fail){
+      // Fail get profile info
+      console.log('profile info fail', fail);
+    });
+  };
+
+  // This is the fail callback from the login method
+  var fbLoginError = function(error){
+    console.log('fbLoginError', error);
+    mensajeAlerta(1, 'Ha ocurrido un error');
+    $ionicLoading.hide();
+  };
+
+
+
+    //This method is executed when the user press the "Login with facebook" button
+  $scope.facebookSignIn = function() {
+
+
+    facebookConnectPlugin.getLoginStatus(function(success){
+
+
+      if(success.status === 'connected'){
+        $ionicLoading.show();
+        // The user is logged in and has authenticated your app, and response.authResponse supplies
+        // the user's ID, a valid access token, a signed request, and the time the access token
+        // and signed request each expire
+        console.log('getLoginStatus', success.status);
+        console.log('getLoginStatus', success);
+
+        // Check if we have our user saved
+
+        api.verificarFBLog(success.authResponse.userID).then(function (events) { 
+        if(events.data.idUsuario > 0){
+
+            window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));            
+            $state.go('tab.account');
+
+        }
+        else{
+
+          getFacebookProfileInfo(success.authResponse).then(function(profileInfo) {
+            // For the purpose of this example I will store user data on local storage
+            var usuario = {
+              fbId: profileInfo.id,
+              nombre: profileInfo.name,
+              email: profileInfo.email,
+              imagenFB : "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
+            };
+
+               api.addUserFb(usuario).then(function (events) {
+
+                    if(events.data.insertId > 0){
+                        api.verificarFBLog(success.authResponse.userID).then(function (events) { 
+                        if(events.data.idUsuario > 0){
+
+                        window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));            
+                        $state.go('tab.account');
+
+                        }});
+  
+
+                    }
+
+                    else{
+
+                      mensajeAlerta(1, 'Usuario ya registrado');
+                    }
+
+              }).finally(function () {
+
+              //$ionicLoading.hide();
+              //$state.go('app.listaMascotas');
+               });
+    }, function(fail){
+            // Fail get profile info
+            console.log('profile info fail', fail);
+            mensajeAlerta(1, 'Ha ocurrido un error');
+          });
+         //   mensajeAlerta(1, 'Credenciales incorrectas');
+
+
+
+        }}).finally(function () {$ionicLoading.hide();});
+
+/*
+
+        if(!user.userID){
+
+
+          getFacebookProfileInfo(success.authResponse)
+          .then(function(profileInfo) {
+            // For the purpose of this example I will store user data on local storage
+            UserService.setUser({
+              authResponse: success.authResponse,
+              userID: profileInfo.id,
+              name: profileInfo.name,
+              email: profileInfo.email,
+              picture : "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
+            });
+
+            $state.go('app.home');
+          }, function(fail){
+            // Fail get profile info
+            console.log('profile info fail', fail);
+          });
+
+
+        }else{
+          $state.go('app.home');
+        }*/
+      } else {
+        // If (success.status === 'not_authorized') the user is logged in to Facebook,
+        // but has not authenticated your app
+        // Else the person is not logged into Facebook,
+        // so we're not sure if they are logged into this app or not.
+
+        console.log('getLoginStatus', success.status);
+
+        $ionicLoading.show({
+          template: 'Ingresando...'
+        });
+
+        // Ask the permissions you need. You can learn more about
+        // FB permissions here: https://developers.facebook.com/docs/facebook-login/permissions/v2.4
+        facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
+      }
+    });
+  };
+
+
+//END FACEBOOK LOGIN
+
 $scope.registrarUsuario = function(user){
 console.log('user');
 
@@ -2013,7 +2242,7 @@ if(tipo==1){
 $scope.busqueda={};
 $scope.busqueda.categoria=0;
 
-
+/*
   cordova.plugins.diagnostic.isLocationAvailable(function(available){
 
 
@@ -2030,9 +2259,9 @@ $scope.busqueda.categoria=0;
     console.error("The following error occurred: "+error);
 });
 
-      
 
-/*        cordova.dialogGPS("Para usar todas las funcionalidades Ecoven requiere que el GPS este activado", "Uso del GPS",
+
+        cordova.dialogGPS("Para usar todas las funcionalidades Ecoven requiere que el GPS este activado", "Uso del GPS",
                     function(buttonIndex){//callback 
                       switch(buttonIndex) {
                         case 0: break;//cancel 
@@ -2040,7 +2269,7 @@ $scope.busqueda.categoria=0;
                         case 2: break;//user go to configuration 
                       }},
                       "Por favor, activa el GPS",
-                      ["Cancel","No mostar mas","Ir"]);*/
+                      ["Cancel","No mostar mas","Ir"]);
 
     }  
 
@@ -2052,7 +2281,7 @@ $scope.busqueda.categoria=0;
 
 
 });
-
+*/
 
 
 
