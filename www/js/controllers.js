@@ -1329,6 +1329,24 @@ if(tipo==1){
 
 //FACEBOOK LOGIN
 
+  var getFacebookProfileInfo = function (authResponse) {
+    var info = $q.defer();
+
+    facebookConnectPlugin.api('/me?fields=email,name&access_token=' + authResponse.accessToken, null,
+      function (response) {
+        console.log(response);
+        info.resolve(response);
+      },
+      function (response) {
+        console.log(response);
+        info.reject(response);
+      }
+    );
+    return info.promise;
+  };
+
+
+
 
 
   // This is the success callback from the login method
