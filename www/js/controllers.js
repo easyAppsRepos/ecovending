@@ -1475,7 +1475,7 @@ console.log('f');
 
         api.verificarFBLog(success.authResponse.userID).then(function (events) { 
 
-          console.log(events);
+          console.log('dd33');
                     console.log(events.data.info.length);
         if(events.data.info.length > 0){
  console.log('3');
