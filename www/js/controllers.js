@@ -1175,7 +1175,7 @@ else{  $ionicLoading.hide();}
 
 })
 
-.controller('loginCtrl', function($scope, $stateParams, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
+.controller('loginCtrl', function($scope, $stateParams, $state, $q, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
 //  $scope.chat = Chats.get($stateParams.chatId);
 
 $scope.usuario={};
@@ -1487,7 +1487,7 @@ console.log('f');
  console.log('4');
           getFacebookProfileInfo(success.authResponse).then(function(profileInfo) {
             // For the purpose of this example I will store user data on local storage
-            
+
             var usuario = {
               fbId: profileInfo.id,
               nombre: profileInfo.name,
@@ -1497,7 +1497,7 @@ console.log('f');
             console.log(usuario);
 
                api.addUserFb(usuario).then(function (events) {
-  console.log('advb');
+  console.log(events);
                     if(events.data.insertId > 0){
                         api.verificarFBLog(success.authResponse.userID).then(function (events) { 
 
