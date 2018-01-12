@@ -110,15 +110,15 @@
     </config-file>
 
 
-    <plugin name="cordova-plugin-facebook4" source="npm" spec="~1.9.0">
+    <plugin name="cordova-plugin-facebook4" source="npm" spec="1.7.4">
             <param name="APP_ID" value="1957303017855019" />
             <param name="APP_NAME" value="Ecoven" />
 </plugin>
 
-<gap:plugin name="cordova-plugin-multidex" source="npm"  />
+<!--<gap:plugin name="cordova-plugin-multidex" source="npm"  />
 
-
-<!-- <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />1.7.4
+spec="~1.9.0"
+ <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />1.7.4
  -->
        <access origin="*" />
 <allow-intent href="*" />
