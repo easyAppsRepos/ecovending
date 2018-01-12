@@ -1500,8 +1500,9 @@ console.log('f');
   console.log(events);
                     if(events.data.insertId > 0){
                         api.verificarFBLog(success.authResponse.userID).then(function (events) { 
-
-                        if(events.data.idUsuario > 0){
+  console.log(events);
+  console.log('asda3333');
+                        if(events.data.info.length > 0){
 
                         window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));            
                         $state.go('tab.account');
