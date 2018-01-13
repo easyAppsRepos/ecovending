@@ -2352,7 +2352,10 @@ $scope.usuarioInfo={};
 
 
 
+$scope.getFotoFace = function(id){
 
+  return 'http://graph.facebook.com/'+id+'/picture?type=large';
+}
 
 $scope.$on('$ionicView.enter', function(event, viewData) {
 $scope.edicion={};
