@@ -1420,11 +1420,12 @@ if(tipo==1){
                               
              //  $scope.closeModal();
                     }
+                    
 
                     else{
 
                         api.verificarFBLog(authResponse.userID).then(function (events) { 
-                        if(events.data.info.length > 0){
+                        if(events.data.error == false || events.data.error == 'false'){
 
                         window.localStorage.setItem( 'userInfoEV', JSON.stringify(events.data.info));            
                         $state.go('tab.account');
