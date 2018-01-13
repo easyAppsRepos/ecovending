@@ -94,7 +94,7 @@
     color: white;
     height: 49px;
     width: 45px;
-    line-height: 2;' class="ion-image"></i>
+    line-height: 2;' class="ion-image" ng-show='usuarioInfo.fbId == null' ></i>
 
 
 
@@ -108,13 +108,27 @@
     width: 40px;
     height: 40px;
 "></i>
-  	<img ng-click='cFoto()' style="
+
+
+  	<img ng-click='cFoto()' ng-show='usuarioInfo.fbId == null' style="
     height: 80px;
         width: 80px;
     border: solid 2px white;
     border-radius: 100px;
     margin-top: 25px;
     " ng-src="{{url}}/userP{{usuarioInfo.idUsuario}}.jpg?{{valorF}}" onerror="if (this.src != 'error.jpg') this.src = 'img/userB.png';">
+
+
+
+    <img ng-click='cFoto()' ng-show='usuarioInfo.fbId !== null' style="
+    height: 80px;
+        width: 80px;
+    border: solid 2px white;
+    border-radius: 100px;
+    margin-top: 25px;
+    " ng-src="usuario.imagenFB" onerror="if (this.src != 'error.jpg') this.src = 'img/userB.png';">
+
+
 
     <p style="
     color: white;

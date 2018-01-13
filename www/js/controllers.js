@@ -1420,7 +1420,7 @@ if(tipo==1){
                               
              //  $scope.closeModal();
                     }
-                    
+
 
                     else{
 
@@ -2345,6 +2345,11 @@ $scope.usuarioInfo={};
     $scope.usuarioInfo.institucionID=  userData.institucionID;
   $scope.usuarioInfo.ranking=  userData.ranking;
    $scope.usuarioInfo.pib =userData.pib;
+
+     $scope.usuarioInfo.fbId =userData.fbId;
+          $scope.usuarioInfo.imagenFB =userData.imagenFB;
+
+
   $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
   $scope.usuarioInfo.idUsuario=  userData.idUsuario;
   $scope.url = serverConfig.imageStorageURL;
