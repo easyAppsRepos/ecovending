@@ -78,7 +78,18 @@
 <div class="item item-text-wrap" ng-class="{ 'ranking1': $index == 0,  'ranking2': $index !== 0}"  >
          <i style="font-family: UbuntuM;
           font-size: 22px;">{{$index+1}}</i>
-         <img ng-src="{{url}}/userP{{r.idUsuario}}.jpg" onerror="if (this.src != 'error.jpg') this.src = 'img/userB.png';" style="     border: solid 1px;height: 45px; width: 45px;border-radius: 55px;vertical-align: middle;margin-left: 5px;margin-right: 5px;">
+
+
+         <img ng-show='r.fbId == null' ng-src="{{url}}/userP{{r.idUsuario}}.jpg" onerror="if (this.src != 'error.jpg') this.src = 'img/userB.png';" style="     border: solid 1px;height: 45px; width: 45px;border-radius: 55px;vertical-align: middle;margin-left: 5px;margin-right: 5px;">
+
+         <img ng-show='r.fbId !== null' ng-src="{{getFotoFace(r.fbId)}}" onerror="if (this.src != 'error.jpg') this.src = 'img/userB.png';" style="     border: solid 1px;height: 45px; width: 45px;border-radius: 55px;vertical-align: middle;margin-left: 5px;margin-right: 5px;">
+
+
+
+
+      
+
+
          <i style="font-family: Ubuntu;font-size: 17px;
 
       ">{{r.nombre}}</i>

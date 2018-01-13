@@ -66,6 +66,14 @@ var acu = (ee*0.00055).toFixed(3);
  }
 
 
+$scope.getFotoFace = function(id){
+
+  return 'https://graph.facebook.com/'+id+'/picture?type=large';
+}
+
+
+
+
 
   function mensajeAlerta(tipo, mensaje){
 
@@ -805,6 +813,15 @@ $scope.noDistancia = false;
   }
 
   $scope.getEcosocios();
+
+
+$scope.openHorario = function(){
+// $scope.openModal("horario.html", "slide-in-up");
+
+mensajeAlerta(1, ' Trabajamos de Luneas a viernes de 7am a 10pm. La maquina se encuentra en el piso 2 del edificio central.');
+ 
+}
+
 
 
 
@@ -2308,7 +2325,7 @@ $scope.usuarioInfo={};
   $scope.usuarioInfo.idUsuario=  userData.idUsuario;
   $scope.url = serverConfig.imageStorageURL;
 
-/*
+
   cordova.plugins.diagnostic.isLocationAvailable(function(available){
 
 
@@ -2319,15 +2336,11 @@ $scope.usuarioInfo={};
     }
     else{
 
-      cordova.plugins.diagnostic.switchToSettings(function(){
-    console.log("Successfully switched to Settings app");
-}, function(error){
-    console.error("The following error occurred: "+error);
-});
+      mensajeAlerta(5, 'Debes activar el GPS para mejor funcionamiento del app')
 
 
 
-        cordova.dialogGPS("Para usar todas las funcionalidades Ecoven requiere que el GPS este activado", "Uso del GPS",
+/*        cordova.dialogGPS("Para usar todas las funcionalidades Ecoven requiere que el GPS este activado", "Uso del GPS",
                     function(buttonIndex){//callback 
                       switch(buttonIndex) {
                         case 0: break;//cancel 
@@ -2335,7 +2348,7 @@ $scope.usuarioInfo={};
                         case 2: break;//user go to configuration 
                       }},
                       "Por favor, activa el GPS",
-                      ["Cancel","No mostar mas","Ir"]);
+                      ["Cancel","No mostar mas","Ir"]);*/
 
     }  
 
@@ -2347,7 +2360,7 @@ $scope.usuarioInfo={};
 
 
 });
-*/
+
 
 
 
@@ -2421,9 +2434,17 @@ if(tipo==5){
         },
 
         {
-          text: 'Ok',
+          text: 'Ir a configuracion',
           type: 'button-blueCustom',
           onTap: function(e) {
+
+                cordova.plugins.diagnostic.switchToSettings(function(){
+                console.log("Successfully switched to Settings app");
+                }, function(error){
+                console.error("The following error occurred: "+error);
+                });
+                return false;
+
 
           }
            // if(borrar){ $scope.user.pin='';}

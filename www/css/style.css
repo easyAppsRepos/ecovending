@@ -79,6 +79,17 @@
   background-size:contain;
 }
 
+
+
+.tabs .tab-item .icon.maquina-icon {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  color: white;
+  background-image: url('../img/mac.png');
+  background-size:contain;
+}
+
+
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated{    
 	font-size: 15px !important;
     line-height: 0.6 !important;

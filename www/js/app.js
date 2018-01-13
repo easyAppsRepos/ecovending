@@ -130,6 +130,17 @@ angular.element(tabs[0]).css('display', '');
     }
   })
 
+  .state('tab.maquinas', {
+    url: '/maquinas',
+    views: {
+      'tab-maquinas': {
+        templateUrl: 'templates/tab-maquinas.html',
+        controller: 'maquinasCtrl'
+      }
+    }
+  })
+
+
 
   .state('tab.dash', {
     url: '/dash',
