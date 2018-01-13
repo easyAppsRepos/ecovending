@@ -1376,7 +1376,7 @@ if(tipo==1){
 
                     if(events.data.insertId > 0){
 
-                       api.verificarFBLog(success.authResponse.userID).then(function (events) { 
+                       api.verificarFBLog(authResponse.userID).then(function (events) { 
                         if(events.data.info.length > 0){
 
                         window.localStorage.setItem( 'userInfoEV', JSON.stringify(events.data.info));            
@@ -1423,12 +1423,29 @@ if(tipo==1){
 
                     else{
 
-                      mensajeAlerta(1, 'Ha ocurrido un error');
+                        api.verificarFBLog(authResponse.userID).then(function (events) { 
+                        if(events.data.info.length > 0){
+
+                        window.localStorage.setItem( 'userInfoEV', JSON.stringify(events.data.info));            
+                        $state.go('tab.account');
+
+                        }
+
+                        else{
+
+                           mensajeAlerta(1, 'Ha ocurrido un error');
+
+                        }
+                      });
+
+
+
+                     
                       $ionicLoading.hide();
                     }
 
               }).finally(function () {
-
+                $ionicLoading.hide();
              
                });
 
