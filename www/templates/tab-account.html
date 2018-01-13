@@ -120,13 +120,21 @@
 
 
 
-    <img ng-click='cFoto()' ng-show='usuarioInfo.fbId !== null' style="
+    <img  ng-show='usuarioInfo.fbId !== null' style="
     height: 80px;
         width: 80px;
     border: solid 2px white;
     border-radius: 100px;
     margin-top: 25px;
-    " ng-src="usuarioInfo.imagenFB" onerror="if (this.src != 'error.jpg') this.src = 'img/userB.png';">
+    " ng-src="{{usuarioInfo.imagenFB}}">
+
+<!--         <img  ng-show='usuarioInfo.fbId !== null' style="
+    height: 80px;
+        width: 80px;
+    border: solid 2px white;
+    border-radius: 100px;
+    margin-top: 25px;
+    " ng-src="{{usuarioInfo.imagenFB}}" onerror="if (this.src != 'error.jpg') this.src = 'img/userB.png';"> -->
 
 
 

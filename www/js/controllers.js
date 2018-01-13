@@ -2289,6 +2289,25 @@ if(tipo==1){
 $scope.busqueda={};
 $scope.busqueda.categoria=0;
 
+
+$scope.edicion={};
+$scope.usuarioInfo={};
+  var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
+
+  $scope.usuarioInfo.nombre=  userData.nombre;
+  $scope.usuarioInfo.institucion=  userData.institucion;
+    $scope.usuarioInfo.institucionID=  userData.institucionID;
+  $scope.usuarioInfo.ranking=  userData.ranking;
+   $scope.usuarioInfo.pib =userData.pib;
+
+     $scope.usuarioInfo.fbId =userData.fbId;
+          $scope.usuarioInfo.imagenFB =userData.imagenFB;
+
+
+  $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
+  $scope.usuarioInfo.idUsuario=  userData.idUsuario;
+  $scope.url = serverConfig.imageStorageURL;
+
 /*
   cordova.plugins.diagnostic.isLocationAvailable(function(available){
 
