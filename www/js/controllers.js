@@ -1366,7 +1366,7 @@ if(tipo==1){
               fbId: profileInfo.id,
               nombre: profileInfo.name,
               email: profileInfo.email,
-              imagenFB : "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
+              imagenFB : "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
             };
 
 
