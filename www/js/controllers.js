@@ -926,11 +926,11 @@ $ionicLoading.show();
 
           for(var i = 0; $scope.tickets.length > i ; i++){
 
-            if($scope.tickets[i].estado==1){
+            if($scope.tickets[i].vencido==0){
               $scope.cantCanjeables = $scope.cantCanjeables+1;
             }
 
-           if($scope.tickets[i].estado==2){
+           if($scope.tickets[i].vencido==1){
               $scope.cantHisto = $scope.cantHisto+1;
             }
 
@@ -954,22 +954,11 @@ $ionicLoading.show();
 
 $scope.generarTicket = function(item){
 
- $ionicLoading.show();
-  console.log(item);
 
-            api.usarTicket($scope.usuarioInfo.idUsuario, item.idTicket).then(function(response){
-
-          
-          $ionicLoading.hide();
-
-          if(response.status== -1){ $ionicLoading.hide();mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
-
-          if(response.data.error == false){
-console.log();
            // mensajeAlerta(2,'Codigo activado! Se te han acreditado 100 puntos'); 
-           item.fechaCanje=response.data.fechaCanje;
-           item.fechaVencimiento =   response.data.fechaVencimiento;
-           item.codigoWeb =   response.data.codigoWeb;
+         //  item.fechaCanje=response.data.fechaCanje;
+          //item.fechaVencimiento =   item.fechaCaducidad;
+         //  item.codigoWeb =   response.data.codigoWeb;
 
            
 
@@ -979,21 +968,10 @@ console.log();
 
             console.log($scope.canjeado);
             $scope.openModal();
-            getTickets();
-          }
-          else{
-             $ionicLoading.hide();
-           mensajeAlerta(1,'Ha ocurrido un error');
-         }
-          });
 
-
-
-
-}
-
-
-
+          
+    
+       }
 
     $scope.openModal = function() {
     $ionicModal.fromTemplateUrl('canjearTicket.html', {
@@ -1140,7 +1118,7 @@ if(result.cancelled == 0){
 
           if(response.data.error == false){
 
-            mensajeAlerta(2,'+'+response.data.puntos+' puntos <br><br>'+response.data.leyenda);   
+            mensajeAlerta(2,'+'+response.data.puntos+' ecopuntos <br><br>'+response.data.leyenda);   
          //  mensajeAlerta(2,' '+'+200'+' puntos <br><br>'+'Reciclar es un habito agradable, inculcale a tu familia el arte del reciclajas'); 
 
           }
@@ -1180,6 +1158,36 @@ else{  $ionicLoading.hide();}
 
     }
 
+
+
+
+})
+
+
+
+
+
+.controller('demoCtrl', function($scope, $state, $stateParams,$ionicNavBarDelegate, $ionicSideMenuDelegate, $ionicSlideBoxDelegate) {
+console.log('asddsad');
+$ionicNavBarDelegate.showBackButton(false);
+$ionicSideMenuDelegate.canDragContent(false);
+
+$scope.next = function() {
+    $ionicSlideBoxDelegate.next();
+  };
+  $scope.previous = function() {
+    $ionicSlideBoxDelegate.previous();
+  };
+
+  // Called each time the slide changes
+  $scope.slideChanged = function(index) {
+    $scope.slideIndex = index;
+  };
+
+
+  $scope.startApp = function(){
+   $state.go('tab.account');
+  }
 
 
 
@@ -1230,8 +1238,9 @@ if(response.data.info.verificado == 0){
   mensajeAlerta(1,'Debes verificar tu cuenta');
   return false;
 }
-            window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));            
-            $state.go('tab.account');
+            window.localStorage.setItem( 'userInfoEV', JSON.stringify(response.data.info));
+             $state.go('demo');            
+            //$state.go('tab.account');
 
 
           }
@@ -1397,7 +1406,8 @@ if(tipo==1){
                         if(events.data.info.length > 0){
 
                         window.localStorage.setItem( 'userInfoEV', JSON.stringify(events.data.info));            
-                        $state.go('tab.account');
+                        //$state.go('tab.account');
+                        $state.go('demo');  
 
                         }});
 /*
@@ -1445,7 +1455,8 @@ if(tipo==1){
                         if(events.data.error == false || events.data.error == 'false'){
 
                         window.localStorage.setItem( 'userInfoEV', JSON.stringify(events.data.info));            
-                        $state.go('tab.account');
+                        //$state.go('tab.account');
+                        $state.go('demo');  
 
                         }
 
@@ -1516,7 +1527,8 @@ console.log('f');
         if(events.data.error == 'false' || events.data.error == false){
  console.log('3');
             window.localStorage.setItem( 'userInfoEV', JSON.stringify(events.data.info));            
-            $state.go('tab.account');
+            //$state.go('tab.account');
+            $state.go('demo');  
 
         }
         else{
@@ -1541,7 +1553,8 @@ console.log('f');
                         if(events.data.info.length > 0){
 
                         window.localStorage.setItem( 'userInfoEV', JSON.stringify(events.data.info));            
-                        $state.go('tab.account');
+                       // $state.go('tab.account');
+                       $state.go('demo');  
 
                         }});
   
@@ -2190,7 +2203,7 @@ $scope.noDistancia = false;
 
 
 
-          $scope.showPopup = function(idProducto) {
+          $scope.showPopup = function(idProducto, idEcosocio, titulo) {
             $scope.data = {}
            var customTemplate2 ='<div style="color:white !important" >El ticket tiene fecha de expiracion, se recomienda canjear al momento de la compra <br><br>  <strong>Deseas continuar?</strong></div> ';
 
@@ -2217,7 +2230,7 @@ $scope.noDistancia = false;
 
                 if(res){
 
-                  $scope.canjearProducto(idProducto);
+                  $scope.canjearProducto(idProducto,idEcosocio,titulo);
 
 
                 }
@@ -2233,20 +2246,36 @@ $scope.noDistancia = false;
 
           };
 
-
-$scope.canjearProducto=function(idProducto){
+var item = {};
+$scope.canjearProducto=function(idProducto, idEcosocio, titulo){
 console.log(idProducto); 
 
           $ionicLoading.show();
-          api.canjearProducto($scope.usuarioInfo.idUsuario, idProducto).then(function(response){
+          api.canjearProducto2($scope.usuarioInfo.idUsuario, idProducto,idEcosocio).then(function(response){
 
           console.log(response);
           if(response.status== -1){ $ionicLoading.hide(); mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
           
           if(response.data.error == false){
             $scope.puntos = response.data.puntos;
+              $scope.idTicket = response.data.ticket;
             $ionicLoading.hide();
-             mensajeAlerta(2,'Enhorabuena!. Has adquirido un ticket! ');
+
+            item.fechaCanje=response.data.fechaCanje;
+            item.fechaVencimiento =   response.data.fechaVencimiento;
+            item.codigoWeb =   response.data.codigoWeb;
+            item.idEcosocio =   idEcosocio;
+             item.titulo =   titulo;
+            item.ticket =    response.data.ticket;
+            $scope.canjeado=item;
+
+
+            console.log($scope.canjeado);
+            $scope.openModal3();
+
+
+
+             //mensajeAlerta(2,'Enhorabuena!. Has adquirido un ticket! ');
 
           }
           else{  $ionicLoading.hide(); mensajeAlerta(1,'No tienes suficientes puntos');}
@@ -2298,6 +2327,44 @@ if(tipo==1){
 
 }
 
+
+
+
+    $scope.openModal3 = function() {
+    $ionicModal.fromTemplateUrl('canjearTicket.html', {
+      scope: $scope,
+      animation: 'fade-in-right'
+    }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.modal.show();
+    });
+  };
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+
+
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+      console.log('cerraMod');
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+
+  });
+
+
+
+
+
 })
 
 
@@ -2326,7 +2393,8 @@ $scope.usuarioInfo={};
   $scope.url = serverConfig.imageStorageURL;
 
 
-  cordova.plugins.diagnostic.isLocationAvailable(function(available){
+
+ cordova.plugins.diagnostic.isLocationAvailable(function(available){
 
 
     console.log("Location is " + (available ? "available" : "not available"));
@@ -2337,18 +2405,6 @@ $scope.usuarioInfo={};
     else{
 
       mensajeAlerta(5, 'Debes activar el GPS para mejor funcionamiento del app')
-
-
-
-/*        cordova.dialogGPS("Para usar todas las funcionalidades Ecoven requiere que el GPS este activado", "Uso del GPS",
-                    function(buttonIndex){//callback 
-                      switch(buttonIndex) {
-                        case 0: break;//cancel 
-                        case 1: break;//neutro option 
-                        case 2: break;//user go to configuration 
-                      }},
-                      "Por favor, activa el GPS",
-                      ["Cancel","No mostar mas","Ir"]);*/
 
     }  
 

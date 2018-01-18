@@ -161,11 +161,25 @@ angular.module('starter.services', [])
             });
         },
 
+         canjearProducto2:function(idUsuario, idProducto, eco){  
+
+            return  $http.post(serverConfig.url+'/canjearProducto2',{idUsuario:idUsuario, idProducto:idProducto, idEcosocio:eco})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
 
 
             getTickets:function(idUsuario){  
 
-            return  $http.post(serverConfig.url+'/getTickets',{idUsuario:idUsuario})
+            return  $http.post(serverConfig.url+'/getTickets2',{idUsuario:idUsuario})
             .then(function(response) {
             console.log(response);
             return response;

@@ -33,9 +33,13 @@
 
 </div>
                 <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >Fecha de vencimiento</h4>
-               <h4 style=" font-family: Ubuntu;text-align: center;    color: darkred"><strong>{{canjeado.fechaVencimiento}}</strong></h4>
+               <h4 style=" font-family: Ubuntu;text-align: center;    color: darkred"><strong>{{canjeado.fechaCaducidad}}</strong></h4>
+<br><br>
+<div  >
+                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" ></h4>
+               <h4 style=" font-family: Ubuntu;text-align: center;    color: darkred"><strong>{{canjeado.idTicket}}</strong></h4>
 
-
+</div>
 
 
 
@@ -79,7 +83,7 @@
     font-size: 16px;
     font-family: Ubuntu;
     color: #999;">No tienes tickets canjeables</div>
-            <div ng-repeat='t in tickets' ng-show='t.estado==1' style="        background-color: #276AB0;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
+            <div ng-repeat='t in tickets' ng-show='t.vencido==0' style="        background-color: #276AB0;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
                 <div>
                     <div class='semicirculo'></div>
 
@@ -127,7 +131,7 @@
     color: #999;">Historial vacio</div>
 
 
-            <div ng-repeat='t in tickets' ng-show='t.estado==2' style="        background-color: #fafafa;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
+            <div ng-repeat='t in tickets' ng-show='t.vencido==1' style="        background-color: #fafafa;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
                 <div>
                     <div class='semicirculo'></div>
 

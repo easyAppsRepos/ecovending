@@ -1,0 +1,210 @@
+
+
+ <ion-view view-title="" hide-nav-bar="true">
+
+
+  
+          <button  style='    position: absolute;
+    bottom: 0;
+    z-index: 22;
+    color: darkgray;
+    margin-left: 15px;' class=" button button-positive button-clear no-animation"
+                  ng-click="startApp()"  ng-cloak>
+            Saltar
+          </button>
+
+
+
+
+<!-- <img src="img/port2.jpeg"> -->
+<!-- 
+        <ion-nav-buttons side="left">
+          <button class="ng-hide button button-positive button-clear no-animation"
+                  ng-click="startApp()" ng-show="!slideIndex" ng-cloak>
+            Saltar
+          </button>
+          <button class="ng-hide button button-positive button-clear no-animation"
+                  ng-click="previous()" ng-show="slideIndex > 0" ng-cloak>
+           Anterior
+          </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right"> 
+          <button class="ng-hide button button-positive button-clear no-animation"
+                  ng-click="next()" ng-show="slideIndex != 4" ng-cloak>
+            Siguiente
+          </button>
+          <button class="ng-hide button button-positive button-clear no-animation"
+                  ng-click="startApp()" ng-show="slideIndex == 4" ng-cloak>
+            Empezar a usar
+          </button>
+        </ion-nav-buttons>
+ -->
+
+        <ion-slide-box on-slide-changed="slideChanged(index)">
+
+
+
+    <ion-slide style='       
+    background-color: #f3f3f3; '>
+
+        
+
+      <div style=" position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;">
+
+
+
+      <img style='height: 350px;
+  ' src="img/demo6.png">
+     
+
+
+      <div class ='textoDemo' >
+        <p><b>Perfil de Usuario</b></p>
+        <p>Revisa tus eco-estadisticas, mira tu actividad, edita tu perfil, personaliza tu foto </p>
+
+      </div>
+
+ </div>
+          </ion-slide>
+
+
+
+          <ion-slide style='       
+    background-color: #f3f3f3; '>
+
+        
+
+      <div style=" position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;">
+
+
+
+      <img style='height: 350px;
+  ' src="img/demo4.png">
+     
+
+
+      <div class ='textoDemo'>
+        <p><b>Busca una maquina</b></p>
+        <p>Mira todos los puntos donde tenemos maquinas y encuentra la mas cercana! Tambien puedes ver el horario y la ubicacion en el mapa.</p>
+
+      </div>
+
+ </div>
+          </ion-slide>
+
+
+
+          <ion-slide style='       
+    background-color: #f3f3f3; '>
+
+        
+
+      <div style=" position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;">
+
+
+
+      <img style='height: 350px;
+  ' src="img/demo1.png">
+     
+
+
+      <div class ='textoDemo'>
+        <p><b>ESCANEO QR</b></p>
+        <p>Escanea el código QR para obtener ecopuntos</p>
+
+      </div>
+
+ </div>
+          </ion-slide>
+
+
+
+
+
+          <ion-slide style='       
+    background-color: #f3f3f3; '>
+
+        
+
+      <div style=" position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;">
+
+
+<video  height="350" autoplay loop>
+  <source src="img/dem2.mp4" type="video/mp4">
+ 
+Error
+</video>
+
+
+<!-- 
+      <img style='height: 350px;
+  ' src="img/demo2.png">
+      -->
+
+
+      <div class ='textoDemo'>
+        <p><b>Cambia tus puntos</b></p>
+        <p>Podrás cambiar tus ecopuntos por tickets con descuentos con nuestros ecosocios. El ticket expira en 30min</p>
+
+      </div>
+
+ </div>
+          </ion-slide>
+
+
+
+          <ion-slide style='       
+    background-color: #f3f3f3; '>
+
+        
+
+      <div style=" position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;">
+
+
+<video  height="350" autoplay loop>
+  <source src="img/demo3.mp4" type="video/mp4">
+ 
+Error
+</video>
+
+
+<!-- 
+      <img style='height: 350px;
+  ' src="img/demo2.png">
+      -->
+
+
+      <div class ='textoDemo'>
+        <p><b>Tickets</b></p>
+        <p>Desde el menu puedes ingresar a la seccion Tickets, donde puedes ver los beneficios activos y el historial de canjes</p>
+
+      </div>
+
+ </div>
+          </ion-slide>
+
+
+
+        </ion-slide-box>
+      </ion-view>
+

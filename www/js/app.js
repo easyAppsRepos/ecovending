@@ -69,6 +69,14 @@ angular.element(tabs[0]).css('display', '');
       controller: 'loginCtrl'
     })
 
+        .state('demo', {
+      url: '/demo',
+      templateUrl: 'templates/demo.html',
+      controller: 'demoCtrl'
+  })
+
+        
+
   .state('misTickets', {
       url: '/misTickets',
       templateUrl: 'templates/misTickets.html',

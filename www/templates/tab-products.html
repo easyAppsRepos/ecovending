@@ -1,6 +1,55 @@
 <ion-view hide-nav-bar="true" view-title="Account">
 
 
+
+
+
+      <script id="canjearTicket.html" type="text/ng-template">
+  <ion-modal-view class="ion-nifty-modal4">
+    <div  class="ion-modal-content-custom4">
+
+      <ion-content class="padding">
+
+            <div style="text-align: center;"><img style='vertical-align: bottom;height: 50px;' src="img/tik.png"> <h3 style="display:inline-block; font-family: Ubuntu;text-align: center;color: #fafafa">Ticket canjeado</h3></div>
+            <div style="text-align:center"><img  style="    margin-top: 15px;height: 60px;
+    border-radius: 7px;"  ng-src="{{url}}/ecosocio{{canjeado.idEcosocio}}.jpg?9" >
+
+           
+
+             </div>
+             <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa"><strong>{{canjeado.titulo}}</strong></h4>
+
+
+
+
+<br>
+
+<div ng-show='canjeado.codigoWeb !== null' ng-cloak>
+                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >Codigo WEB</h4>
+               <h4 style=" font-family: Ubuntu;text-align: center;    color: darkred"><strong>{{canjeado.codigoWeb}}</strong></h4>
+
+</div>
+
+
+                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >Fecha de vencimiento</h4>
+               <h4 style=" font-family: Ubuntu;text-align: center;    color: darkred"><strong>{{canjeado.fechaVencimiento}}</strong></h4>
+
+<br><br>
+<div  >
+                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" ></h4>
+               <h4 style=" font-family: Ubuntu;text-align: center;    color: darkred"><strong>{{canjeado.ticket}}</strong></h4>
+
+</div>
+
+
+
+      </ion-content>
+    </div>
+  </ion-modal-view>
+</script>
+
+
+
 <div ng-click='openModal("menu.html", "fade-in-right")' class="perfilHead " style="
     background-image: url(img/fondo.png);
     background-size: cover;
@@ -156,7 +205,7 @@
 
     </div> 
 
-        <button ng-click='showPopup(p.idProducto)'  class='button button-energized' style="
+        <button ng-click='showPopup(p.idProducto, p.idEcosocio, p.titulo)'  class='button button-energized' style="
        
            float: right;
     min-height: 10px;
