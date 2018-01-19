@@ -41,7 +41,7 @@
       <div style="
     text-align: center;
     margin-top: 20px;
-    border-bottom: solid 1px;
+ 
     padding-bottom: 10px;
 ">
       <img ng-src="{{url}}/userP{{usuarioInfo.idUsuario}}.jpg" onerror="if (this.src != 'error.jpg') this.src = 'img/userB.png';" style="
@@ -52,6 +52,67 @@
 ">
       <p ng-show='myRank !== null' >NO. {{myRank}}</p>
       </div>
+
+
+
+
+
+
+<!-- 
+FILTRO EN HV
+-->
+
+
+
+
+<div style="text-align: center;    width: 100%;
+    height: 50px;">
+
+                    <div style="position: absolute; left: 10px;
+    margin-top:0px;display: inline-block; width:45%;text-align: center
+    ">
+<span style="color:white">Institucion</span><br>
+                    <select ng-model='filtro.maquina' style="  width:100%;color:white !important;  display: inline-block;"
+                    ng-change='selectFiltro(filtro.tiempo, filtro.maquina)' >
+                    <option  value='0' selected >Todas</option>
+  <option ng-repeat='l in maquinas' ng-value='{{l.voucherID}} '  >{{l.ubicacionNombre}}</option>
+                      
+                    </select>
+                </div>
+
+
+
+
+                    <div style="position: absolute; left: 50%;
+                    margin-top:0px;display: inline-block;
+    width:45%;text-align:center">
+
+<span style="color:white">Tiempo</span><br>
+
+                    <select  ng-model='filtro.tiempo' style="  color:white !important;  display: inline-block;width:100%" ng-change='selectFiltro(filtro.tiempo, filtro.maquina)' >
+                    <option value='900' selected>Todo</option>
+                    <option  value='182'  >Hace 6 meses</option>
+                      <option  value='30'  >Hace 1 mes</option>
+                      <option value='7' >Hace 1 semana</option>
+            
+                    </select>
+                </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<!-- 
+FILTRO EN HV END
+-->
+
 
     </div>
 <div class="lista">

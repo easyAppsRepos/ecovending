@@ -46,7 +46,7 @@ var acu = (ee*0.00055).toFixed(3);
 
 
   $scope.usuarioInfo={};
-  $scope.filtro=1;
+  $scope.filtro={tiempo:900,maquina:0};
   var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
 
   $scope.usuarioInfo.nombre=  userData.nombre;
@@ -70,6 +70,40 @@ $scope.getFotoFace = function(id){
 
   return 'https://graph.facebook.com/'+id+'/picture?type=large';
 }
+
+
+$scope.selectFiltro = function(tiempo, maquina){
+
+  if(tiempo == '900' && maquina == '0'){
+   getRanking();
+   return false;
+  }
+console.log(tiempo+'-'+maquina );
+
+    $ionicLoading.show();
+            
+            api.getRanking2({tiempo:tiempo, maquina:maquina, idUsuario:$scope.usuarioInfo.idUsuario}).then(function(response){
+
+          
+          $ionicLoading.hide();
+
+          if(response.status== -1){ $ionicLoading.hide();mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+
+          if(response.data.error == false){
+
+           // mensajeAlerta(2,'Codigo activado! Se te han acreditado 100 puntos');   
+          $scope.ranking = response.data.ranking;
+           $scope.myRank = response.data.rank;
+          $ionicLoading.hide();
+          }
+          else{
+             $ionicLoading.hide();
+           mensajeAlerta(1,'Ha ocurrido un error');
+         }
+          });
+
+}
+
 
 
 
@@ -149,6 +183,25 @@ $ionicLoading.show();
 
 
 getRanking();
+
+
+          api.getMaquinas2().then(function(response){
+
+          
+          $ionicLoading.hide();
+
+          if(response.status== -1){mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+          if(response.data.error == false){
+            console.log(response);
+            $scope.maquinas = response.data.maquinas;
+
+            console.log($scope.maquinas);
+
+          }
+          else{ mensajeAlerta(1,'Ha ocurrido un error, verifica tu conexion a internet');}
+         // $state.go('app.login');
+          });
+
 
 
 

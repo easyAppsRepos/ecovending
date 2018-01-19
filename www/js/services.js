@@ -223,6 +223,24 @@ angular.module('starter.services', [])
             });
         },
 
+
+            getRanking2:function(cata){  
+
+            return  $http.post(serverConfig.url+'/getRanking2',cata)
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
+
+
             getEcosocios:function(){  
 
             return  $http.post(serverConfig.url+'/getEcosocios')
@@ -268,6 +286,23 @@ angular.module('starter.services', [])
             return response;
             });
         },
+
+
+                getMaquinas2:function(){  
+
+            return  $http.post(serverConfig.url+'/getMaquinas2')
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
 
 
 
