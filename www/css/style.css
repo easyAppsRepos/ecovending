@@ -449,6 +449,56 @@ margin-right: 40px;float: right;margin-top: 14px;font-size: 17px;font-family: Ub
 }
 
 
+.flechaDerecha{
+
+      width: 40px;
+    position: absolute;
+    right: 0;
+    margin-top: 50%;
+    height: 50px;
+    font-size: 29px;
+    color: lightgray;
+
+
+}
+
+
+
+.flechaIzquierda{
+
+      width: 40px;
+    position: absolute;
+    left: 0;
+    margin-top: 50%;
+    height: 50px;
+    font-size: 29px;
+    color: lightgray;
+
+    
+}
+
+
+
+.buttonMenuP{
+
+   position: absolute;
+    top: 0;
+    left: 6px;
+   
+    margin-top: 6px;
+
+    min-height: 20px !important;
+    height: 28px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    line-height: 29px !important;
+    color: white !important !important;
+    border-color: white !important;
+
+
+ 
+}
+
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;

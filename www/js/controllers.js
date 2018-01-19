@@ -2394,7 +2394,7 @@ $scope.usuarioInfo={};
 
 
 
- cordova.plugins.diagnostic.isLocationAvailable(function(available){
+/* cordova.plugins.diagnostic.isLocationAvailable(function(available){
 
 
     console.log("Location is " + (available ? "available" : "not available"));
@@ -2404,7 +2404,7 @@ $scope.usuarioInfo={};
     }
     else{
 
-      mensajeAlerta(5, 'Debes activar el GPS para mejor funcionamiento del app')
+      mensajeAlerta(5, 'Debes activar el GPS, el app debe permitir acceder a la ubicacion para mejor funcionamiento')
 
     }  
 
@@ -2416,7 +2416,7 @@ $scope.usuarioInfo={};
 
 
 });
-
+*/
 
 
 

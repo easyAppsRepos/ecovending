@@ -45,6 +45,14 @@
   </feature>
 
   
+
+
+  <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+  <preference name="android-windowSoftInputMode" value="stateHidden|adjustResize" />
+  <plugin name="ionic-plugin-keyboard" version="2.2.1" src="https://github.com/driftyco/ionic-plugin-keyboard" />
+
+
+
 <!--   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature> 
