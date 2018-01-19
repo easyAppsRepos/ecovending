@@ -93,7 +93,7 @@ angular.module('starter.services', [])
 
             activarCodigo:function(codigo, usuario){  
             console.log(codigo + '- ' + usuario);
-            return  $http.post(serverConfig.url+'/activarCodigo',{codigo:codigo, idUsuario:usuario})
+            return  $http.post(serverConfig.url+'/activarCodigo2',{codigo:codigo, idUsuario:usuario})
             .then(function(response) {
             console.log(response);
             return response;
