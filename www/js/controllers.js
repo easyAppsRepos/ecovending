@@ -655,7 +655,7 @@ $scope.filtro={distancia:'10000000000000000000000', pais:'69'};
     $ionicHistory.goBack()
   }
 
-
+  $scope.url = serverConfig.imageStorageURL;
 
           api.getPaises().then(function(response){
           console.log(response);
@@ -868,10 +868,10 @@ $scope.noDistancia = false;
   $scope.getEcosocios();
 
 
-$scope.openHorario = function(){
+$scope.openHorario = function(horario){
 // $scope.openModal("horario.html", "slide-in-up");
 
-mensajeAlerta(1, ' Trabajamos de Luneas a viernes de 7am a 10pm. La maquina se encuentra en el piso 2 del edificio central.');
+mensajeAlerta(1, horario || 'Horario no especificado');
  
 }
 
@@ -2140,6 +2140,7 @@ $scope.usuarioInfo={};
   $scope.usuarioInfo.institucion=  userData.institucion;
   $scope.usuarioInfo.puntosActuales=  userData.puntosActuales;
   $scope.usuarioInfo.idUsuario=  userData.idUsuario;
+    $scope.usuarioInfo.pib=  userData.pib*1;
 
 
 //});
@@ -2301,7 +2302,18 @@ $scope.noDistancia = false;
 
 var item = {};
 $scope.canjearProducto=function(idProducto, idEcosocio, titulo){
-console.log(idProducto); 
+console.log(  $scope.usuarioInfo.pib ); 
+
+if(idEcosocio == 34){
+
+  if ($scope.usuarioInfo.pib == null || $scope.usuarioInfo.pib == undefined ||
+     $scope.usuarioInfo.pib == 'null' || $scope.usuarioInfo.pib == 'undefined' || $scope.usuarioInfo.pib == 0){
+   mensajeAlerta(1,'Debes indicar tu numero de tarjeta en la seccion Perfil/editar para poder canjear este producto');
+    return false;
+  }
+
+
+}
 
           $ionicLoading.show();
           api.canjearProducto2($scope.usuarioInfo.idUsuario, idProducto,idEcosocio).then(function(response){
@@ -2447,7 +2459,7 @@ $scope.usuarioInfo={};
 
 
 
-/* cordova.plugins.diagnostic.isLocationAvailable(function(available){
+ cordova.plugins.diagnostic.isLocationAvailable(function(available){
 
 
     console.log("Location is " + (available ? "available" : "not available"));
@@ -2469,7 +2481,7 @@ $scope.usuarioInfo={};
 
 
 });
-*/
+
 
 
 
@@ -2818,7 +2830,7 @@ var ft = new FileTransfer();
             $scope.lugares = response.data.lugares;
             console.log($scope.usuarioInfo);
            $scope.edicion.nombre=   $scope.usuarioInfo.nombre;
-           $scope.edicion.pib=   $scope.usuarioInfo.pib;
+           $scope.edicion.pib=   $scope.usuarioInfo.pib * 1; 
             $scope.edicion.lugar=   String($scope.usuarioInfo.institucionID);
            //$scope.usuarioInfo.institucionID
          // $scope.edicion.lugar = $scope.usuarioInfo.institucion;

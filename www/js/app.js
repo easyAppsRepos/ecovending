@@ -40,8 +40,8 @@ angular.element(tabs[0]).css('display', '');
 
  .constant("serverConfig", {
         //"url": "http://localhost:80",
-        "url": "http://ecoven.cl/app/v1/index.php",
-        "imageStorageURL" : 'http://ecoven.cl/app/images'
+        "url": "https://ecoven.cl/app/v1/index.php",
+        "imageStorageURL" : 'https://ecoven.cl/app/images'
         //"port": "80"
     })
 
