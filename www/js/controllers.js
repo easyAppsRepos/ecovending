@@ -1185,11 +1185,11 @@ if(result.cancelled == 0){
 else{  $ionicLoading.hide();}
 
 
-/*          alert("We got a barcode\n" +
+          alert("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
-*/
+
 
       },
       function (error) {
@@ -2469,7 +2469,7 @@ $scope.usuarioInfo={};
     }
     else{
 
-      mensajeAlerta(5, 'Debes activar el GPS, el app debe permitir acceder a la ubicacion para mejor funcionamiento')
+      mensajeAlerta(5, 'Debes activar el GPS, la app debe permitir acceder a la ubicacion para funcionar')
 
     }  
 
