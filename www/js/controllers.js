@@ -74,7 +74,7 @@ $scope.getFotoFace = function(id){
 
 $scope.selectFiltro = function(tiempo, maquina){
 
-  if(tiempo == '900' && maquina == '0'){
+  if((tiempo == '1000' || tiempo == 1000) && ( maquina == '0' ||  maquina == 0) ){
    getRanking();
    return false;
   }
@@ -82,7 +82,7 @@ console.log(tiempo+'-'+maquina );
 
     $ionicLoading.show();
             
-            api.getRanking2({tiempo:tiempo, maquina:maquina, idUsuario:$scope.usuarioInfo.idUsuario}).then(function(response){
+            api.getRanking2({tiempo:tiempo, idMaquina:maquina, idUsuario:$scope.usuarioInfo.idUsuario}).then(function(response){
 
           
           $ionicLoading.hide();

@@ -72,12 +72,24 @@ FILTRO EN HV
     margin-top:0px;display: inline-block; width:45%;text-align: center
     ">
 <span style="color:white">Institucion</span><br>
+
+    <!--                     <select ng-model='filtro.maquina' style="  white-space: nowrap;width:100%;color:white !important;  display: inline-block;"
+                        ng-change='selectFiltro(filtro.tiempo, filtro.maquina)' >
+                        <option  value='0' selected >Todas</option>
+                        <option ng-repeat='l in maquinas' ng-value='l.voucherID'>{{l.ubicacionNombre}}</option>
+                          
+                        </select>
+     -->
                     <select ng-model='filtro.maquina' style="  white-space: nowrap;width:100%;color:white !important;  display: inline-block;"
                     ng-change='selectFiltro(filtro.tiempo, filtro.maquina)' >
                     <option  value='0' selected >Todas</option>
-  <option ng-repeat='l in maquinas' ng-value='l.voucherID'  >{{l.ubicacionNombre}}</option>
+                    <option ng-repeat='l in maquinas' ng-value='l.idMaquina'>{{l.ubicacionNombre}}</option>
                       
                     </select>
+
+
+
+
                 </div>
 
 
@@ -94,7 +106,7 @@ FILTRO EN HV
                        <option value='3232' >Año en curso</option>
                     <option  value='182'  >Hace 6 meses</option>
                       <option  value='30'  >Hace 1 mes</option>
-                      <option value='7' >Hace 1 semana</option>
+                      <option value='23' >Hace 1 semana</option>
             
                     </select>
                 </div>
