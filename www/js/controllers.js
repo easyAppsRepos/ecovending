@@ -46,7 +46,7 @@ var acu = (ee*0.00055).toFixed(2);
 
 
   $scope.usuarioInfo={};
-  $scope.filtro={tiempo:900,maquina:0};
+  $scope.filtro={tiempo:'1000',maquina:'0'};
   var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
 
   $scope.usuarioInfo.nombre=  userData.nombre;
@@ -1185,10 +1185,6 @@ if(result.cancelled == 0){
 else{  $ionicLoading.hide();}
 
 
-          alert("We got a barcode\n" +
-                "Result: " + result.text + "\n" +
-                "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled);
 
 
       },
