@@ -2455,7 +2455,11 @@ $scope.usuarioInfo={};
 
 
 
- cordova.plugins.diagnostic.isLocationAvailable(function(available){
+ if (window.cordova && window.cordova.plugins && window.cordova.plugins.diagnostic) {
+
+
+
+       cordova.plugins.diagnostic.isLocationAvailable(function(available){
 
 
     console.log("Location is " + (available ? "available" : "not available"));
@@ -2477,6 +2481,13 @@ $scope.usuarioInfo={};
 
 
 });
+
+
+
+
+
+    }
+
 
 
 
