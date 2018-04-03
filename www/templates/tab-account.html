@@ -12,16 +12,16 @@
     font-size: 35px;' class=" ion-android-cancel"></i>
       <div class='' style="    margin-left: 3%;margin-right: 3%;font-family: Ubuntu;    margin-top: 3%;">
                     <div  style='      color: #1cb382;
-   border-bottom: solid 1px #1cb382;    margin-top: 15px;font-size: 17px !important;    padding-bottom: 13px;' >Editar Perfil</div>
+   border-bottom: solid 1px #1cb382;    margin-top: 15px;font-size: 17px !important;    padding-bottom: 13px;' >{{'EditarPerfil'|translate}}</div>
                     <div class="list" >
 
                         <div style="margin-top:13px"><label style="    color: darkgray;
-    font-size: 17px !important;">Nombre</label></div>
+    font-size: 17px !important;">{{'Nombre'|translate}}</label></div>
                         <input   ng-model='edicion.nombre' style='' placeholder='' type="text" class="inputRegistrar md-input">
 
 
                       <div style="margin-top:13px"><label style="    color: darkgray;
-    font-size: 17px !important;">Lugar / Institucion</label></div>
+    font-size: 17px !important;">{{'Lugar_Institucion'|translate}}</label></div>
 
     <select ng-model='edicion.lugar'  style="    margin-top: 10px;
     margin-bottom: 10px;
@@ -37,7 +37,7 @@
     font-size: 17px !important;">
 
    <!--  <img style='height: 45px;' src="img/bip.png"> -->
-   Numero de tarjeta BIP
+   {{'Lugar_Institucion'|translate}}
     </label>
     </div>
     <input   ng-model='edicion.pib' style='' placeholder='numero tarjeta BIP' type="number" class="inputRegistrar md-input">
@@ -45,13 +45,13 @@
 
 
 
-  <ion-checkbox ng-disabled='huellaCheck'  style=' border:none !important; margin-top: 23px; background-color: transparent; border:none !important, padding-left:30px'  ng-model='edicion.ranking'  ><div style="    color: darkgray;padding-left: 50px !important">Aparecer en Huella Verde? <br><br>  </div></ion-checkbox>
+  <ion-checkbox ng-disabled='huellaCheck'  style=' border:none !important; margin-top: 23px; background-color: transparent; border:none !important, padding-left:30px'  ng-model='edicion.ranking'  ><div style="    color: darkgray;padding-left: 50px !important">{{'AparecerHV'|translate}}<br><br>  </div></ion-checkbox>
 
 <div style=" color: #1cb382;
 ">
 
-<span ng-show='!huellaCheck'>Participar del ranking te permitira ganar premios</span>
-<span ng-show='huellaCheck'>Para ingresar al ranking nuevamente debes contactar al admin</span>
+<span ng-show='!huellaCheck'>{{'mensajeAc1'|translate}}</span>
+<span ng-show='huellaCheck'>{{'mensajeAc2'|translate}}</span>
 
 </div>
 
@@ -59,7 +59,7 @@
                     </div>
 
                          
-            <button ng-click='editarUsuario(edicion)' style="margin-bottom: 55px; background-color: #1cb382!important;color: white !important; font-family:UbuntuM"  class="button button-full  ink" >Guardar</button>
+            <button ng-click='editarUsuario(edicion)' style="margin-bottom: 55px; background-color: #1cb382!important;color: white !important; font-family:UbuntuM"  class="button button-full  ink" >{{'Guardar'|translate}}</button>
         
       </div> 
       <!--   <button class="button button-full button-positive" ng-click="closeModal()">Close Modal</button> -->
@@ -162,7 +162,7 @@
     padding-bottom: 20px;
     margin-bottom: 0px !important;
 "> <img style='    vertical-align: sub;
-    height: 40px;' src="img/cerdo1.png"> {{puntos}} ecopuntos</p>
+    height: 40px;' src="img/cerdo1.png"> {{puntos}} {{'ecopuntos'|translate}}</p>
   </div>
 
 
@@ -180,7 +180,7 @@
 "><a style="
     font-size: 14px;
     color: #666;
-">Huella Verde</a><br>
+">{{'HuellaVerde'|translate}}</a><br>
   	<a style="
     font-size: 20px;
     color: #888;
@@ -196,12 +196,12 @@
   	<img src="img/canje.png" style="
     vertical-align: top;height: 35px
 ">
-  	<div style="
+  	<div ng-click='cambiarLenguaje()' style="
     display: inline-block;
 "><a style="
     font-size: 14px;
     color: #666;
-">Canjes</a><br>
+">{{'Canjes'|translate}}</a><br>
   	<a style="
    font-size: 20px;
     color: #888;
@@ -271,7 +271,7 @@
     font-family: UbuntuM;
     color: darkgrey;
     margin-top: 20px;
-    margin-bottom: 30px;">Actividad</div>
+    margin-bottom: 30px;">{{'Actividad'|translate}}</div>
 
 
 
@@ -293,9 +293,9 @@
     font-size: 14px;
     font-family: UbuntuL;
 ">
-	<p ng-show='a.tipo==1' style="color: #777;"> <strong>Has activado un codigo!</strong></p>
-    <p ng-show='a.tipo==2' style="color: #777;"> <strong>Enhorabuena! Tienes un Ticket nuevo</strong></p>
-    <p ng-show='a.tipo==3' style="color: #777;"> <strong>Participaste en un evento</strong></p>
+	<p ng-show='a.tipo==1' style="color: #777;"> <strong>{{'Actividad1'|translate}}</strong></p>
+    <p ng-show='a.tipo==2' style="color: #777;"> <strong>{{'Actividad2'|translate}}</strong></p>
+    <p ng-show='a.tipo==3' style="color: #777;"> <strong>{{'Actividad3'|translate}}</strong></p>
 <br>    
 	<p style="
     color: darkgray;

@@ -106,6 +106,20 @@ angular.module('starter.services', [])
             });
         },
 
+            getIdiomas:function(){  
+
+            return  $http.get(serverConfig.url+'/getIdiomas')
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
 
 
                 recuperarContra:function(email){  

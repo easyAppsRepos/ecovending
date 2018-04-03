@@ -10,7 +10,7 @@
 
       <ion-content class="padding">
 
-            <div style="text-align: center;"><img style='vertical-align: bottom;height: 50px;' src="img/tik.png"> <h3 style="display:inline-block; font-family: Ubuntu;text-align: center;color: #fafafa">Ticket canjeado</h3></div>
+            <div style="text-align: center;"><img style='vertical-align: bottom;height: 50px;' src="img/tik.png"> <h3 style="display:inline-block; font-family: Ubuntu;text-align: center;color: #fafafa">{{'TicketCanjeado'|translate}}</h3></div>
             <div style="text-align:center"><img  style="    margin-top: 15px;height: 60px;
     border-radius: 7px;"  ng-src="{{url}}/ecosocio{{canjeado.idEcosocio}}.jpg?9" >
 
@@ -25,13 +25,13 @@
 <br>
 
 <div ng-show='canjeado.codigoWeb !== null' ng-cloak>
-                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >Codigo WEB</h4>
+                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >{{'CW'|translate}}</h4>
                <h4 style=" font-family: Ubuntu;text-align: center;    color: darkred"><strong>{{canjeado.codigoWeb}}</strong></h4>
 
 </div>
 
 
-                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >Fecha de vencimiento</h4>
+                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >{{'FechaVencimiento'|translate}}</h4>
                <h4 style=" font-family: Ubuntu;text-align: center;    color: darkred"><strong>{{canjeado.fechaVencimiento}}</strong></h4>
 
 <br><br>
@@ -75,7 +75,7 @@
     padding-bottom: 8px;">
        <img style='        margin-bottom: 5px;vertical-align: middle;
         height: 35px;' src="img/coin.png"> 
-        <div style="      display: inline-block;  font-family: UbuntuM;color: white;font-size: 22px;">{{puntos}} Ecopuntos</div>
+        <div style="      display: inline-block;  font-family: UbuntuM;color: white;font-size: 22px;">{{puntos}} {{'ecopuntos'|translate}}</div>
 
         </div>
 
@@ -89,7 +89,7 @@
 "><div style='      margin-bottom: 7px;  margin-top: 0px;' class="list list-inset">
   <label style='    padding: 0px !important;' class="item item-input">
     <i style='margin-left: 10px' class="icon ion-search placeholder-icon"></i>
-    <input type="text" placeholder="Buscar Producto" ng-model='busqueda.nombre'>
+    <input type="text" placeholder="{{'BuscarProducto'|translate}}" ng-model='busqueda.nombre'>
   </label>
 
  
@@ -103,10 +103,10 @@
                     <div style=" position:absolute; left: 0;
     margin-top:5px;display: inline-block; width:32%;text-align: center
     ">
-<span style="color:white">Pais</span><br>
+<span style="color:white">{{'Pais'|translate}}</span><br>
                     <select ng-model='filtro.pais' style="  width:100%;color:white !important;  display: inline-block;">
   <option ng-repeat='l in paises | filter:{ estado: 1 }' ng-value='l.idPais'>{{l.nombre}}</option>
-                      <option  value='69' ng-selected='{{true}}' >Todos</option>
+                      <option  value='69' ng-selected='{{true}}' >{{'Todos'|translate}}</option>
                     </select>
                 </div>
 
@@ -117,10 +117,10 @@
                     margin-top:5px;display: inline-block;
     width:32%;text-align:center">
 
-<span style="color:white">Distancia</span><br>
+<span style="color:white">{{'Distancia'|translate}}</span><br>
 
                     <select ng-disabled='noDistancia' ng-model='filtro.distancia' style="  color:white !important;  display: inline-block;width:100%" ng-change='selectDistancia(filtro.distancia)' >
-                    <option  value='10000000000000000000000' selected >Todas</option>
+                    <option  value='10000000000000000000000' selected >{{'Todas'|translate}}</option>
                       <option  value='5'  >5km</option>
                       <option value='10' >10km</option>
                       <option value='15'>15km</option>
@@ -133,10 +133,10 @@
                     margin-top:5px;display: inline-block;
     width:32%;text-align:center">
 
-<span style="color:white">Categoria</span><br>
+<span style="color:white">{{'Categoria'|translate}}</span><br>
 
                     <select  ng-model='filtro.subcategoria' style="  color:white !important;  display: inline-block; width:100%"  >
-                    <option  value='0' selected >Todas</option>
+                    <option  value='0' selected >{{'Todas'|translate}}</option>
                     <option ng-repeat='v in subcat | filter:{ estado: 1 }' ng-value='v.idSubCategoria'>{{v.nombre}}</option>
                     </select>
                 </div>
@@ -212,7 +212,7 @@
     height: 24px;
     line-height: 1px;
   
-    ">Canjear </button> 
+    ">{{'Canjear'|translate}}</button> 
 
 </div>
                   <p style="white-space:normal">{{p.descripcion}}</p>

@@ -624,7 +624,14 @@ $ionicLoading.show();
 })
 
 
-.controller('contactenosCtrl', function($scope, $stateParams, serverConfig, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
+.controller('contactenosCtrl', function($scope, $translate, $stateParams, serverConfig, $state, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
+
+
+$scope.idiomaSeleccionado={};
+
+$scope.idiomas = JSON.parse(window.localStorage.getItem('idiomasOption'));
+$scope.idiomaSeleccionado.seleccion=window.localStorage.getItem('idiomaEV');
+console.log($scope.idiomas);
 
 $scope.openPage = function(link){
 
@@ -639,6 +646,21 @@ $scope.openPage = function(link){
 $scope.goBack = function() {
     $ionicHistory.goBack()
   }
+
+
+
+
+ $scope.cambiarIdioma = function(seleccion){
+
+
+    //var lang = $translate.use(); // holds current lang
+
+window.localStorage.setItem( 'idiomaEV', seleccion);
+//console.log(lang);
+$translate.use(seleccion);  // sets lang to use
+console.log(seleccion);
+  }
+
 
 
 })
@@ -2429,7 +2451,7 @@ if(tipo==1){
 })
 
 
-.controller('AccountCtrl', function($scope, $ionicLoading, $state, $timeout, api, $ionicPopup, $ionicModal,serverConfig) {
+.controller('AccountCtrl', function($scope,  $translate, $ionicLoading, $state, $timeout, api, $ionicPopup, $ionicModal,serverConfig) {
 
 $scope.busqueda={};
 $scope.busqueda.categoria=0;
@@ -2534,6 +2556,15 @@ var acu = (ee*0.00055).toFixed(2);
  }
 
 
+ $scope.cambiarLenguaje = function(){
+
+
+    //var lang = $translate.use(); // holds current lang
+$translate.use('it');  // sets lang to use
+window.localStorage.setItem( 'idiomaEV', 'it');
+//console.log(lang);
+
+  }
 
   function mensajeAlerta(tipo, mensaje){
 

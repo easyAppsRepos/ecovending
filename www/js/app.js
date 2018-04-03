@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','pascalprecht.translate'])
 
 .run(function($ionicPlatform) {
   
@@ -44,6 +44,26 @@ angular.element(tabs[0]).css('display', '');
         "imageStorageURL" : 'https://ecoven.cl/app/images'
         //"port": "80"
     })
+
+
+
+
+.config(function($translateProvider) { 
+/*
+  $translateProvider.translations('es', translation_es); 
+  $translateProvider.translations('it', translation_it); 
+  $translateProvider.preferredLanguage('es'); */
+
+  $translateProvider.useStaticFilesLoader({
+    prefix: 'https://ecoven.cl/app/v1/index.php/getIdiomas',
+    suffix: '.json'
+});
+
+$translateProvider.preferredLanguage('es');
+
+
+})
+
 
 
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider, $httpProvider) {

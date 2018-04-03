@@ -14,7 +14,7 @@
     
      font-size: 23px;
     font-family: UbuntuM;
-">HUELLA VERDE</p>
+">{{'HuellaVerde'|translate}}</p>
     <i ng-controller='menuButtonCtrl' ng-click='openModal("menu.html", "fade-in-right")' class="ion-navicon-round" style="
        position: absolute;
     top: 0;
@@ -50,7 +50,7 @@
     border-radius: 60px;
     border: solid 2px #96ffdd;
 ">
-      <p ng-show='myRank !== null' >NO. {{myRank}}</p>
+      <p ng-show='myRank !== null' >{{'Num'|translate}} {{myRank}}</p>
       </div>
 
 
@@ -71,7 +71,7 @@ FILTRO EN HV
                     <div style="position: absolute; left: 10px;
     margin-top:0px;display: inline-block; width:45%;text-align: center
     ">
-<span style="color:white">Institucion</span><br>
+<span style="color:white">{{'Institucion'|translate}}</span><br>
 
     <!--                     <select ng-model='filtro.maquina' style="  white-space: nowrap;width:100%;color:white !important;  display: inline-block;"
                         ng-change='selectFiltro(filtro.tiempo, filtro.maquina)' >
@@ -82,7 +82,7 @@ FILTRO EN HV
      -->
                     <select ng-model='filtro.maquina' style="  white-space: nowrap;width:100%;color:white !important;  display: inline-block;"
                     ng-change='selectFiltro(filtro.tiempo, filtro.maquina)' >
-                    <option  value='0' selected >Todas</option>
+                    <option  value='0' selected >{{'Todas'|translate}}</option>
                     <option ng-repeat='l in maquinas' ng-value='l.idMaquina'>{{l.ubicacionNombre}}</option>
                       
                     </select>
@@ -99,14 +99,14 @@ FILTRO EN HV
                     margin-top:0px;display: inline-block;
     width:45%;text-align:center">
 
-<span style="color:white">Tiempo</span><br>
+<span style="color:white">{{'Tiempo'|translate}}</span><br>
 
                     <select  ng-model='filtro.tiempo' style="  white-space: nowrap;color:white !important;  display: inline-block;width:100%" ng-change='selectFiltro(filtro.tiempo, filtro.maquina)' >
-                    <option value='1000' selected>Todo</option>
-                       <option value='3232' >Año en curso</option>
-                    <option  value='182'  >Hace 6 meses</option>
-                      <option  value='30'  >Hace 1 mes</option>
-                      <option value='23' >Hace 1 semana</option>
+                    <option value='1000' selected>{{'Todo'|translate}}</option>
+                       <option value='3232' >{{'AEC'|translate}}</option>
+                    <option  value='182'  >{{'A6M'|translate}}</option>
+                      <option  value='30'  >{{'A1M'|translate}}</option>
+                      <option value='23' >{{'A1S'|translate}}</option>
             
                     </select>
                 </div>

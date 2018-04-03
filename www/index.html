@@ -33,13 +33,29 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-    <!-- cordova script (this will be a 404 during development) -->
+    <!-- cordova script (this will be a 404 during development)
+     <link href="http://lib/ionic/js/angular/angular-translate.js" rel="javascript">
+
+
+ -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
 
     <script src="js/app.js"></script>
     <script src="js/slidingTabsDirective.js"></script>
+
+
+
+    <script src="js/angular-translate.js"></script>
+
+            <script src="js/angular-translate-loader-static-files.js"></script>
+
+
+    <script src="lang/translation_es.js"></script>
+        <script src="lang/translation_it.js"></script>
+
+
 
     <script src="js/controllers.js"></script>
 
@@ -67,23 +83,23 @@
       <div class='menuOpciones'>
       
     
-      <div ng-click='closeModal()' ui-sref="misTickets" ><i style="font-size: 21px;margin-right: 10px;" class='ion-star' ></i> Mis Tickets</div>
+      <div ng-click='closeModal()' ui-sref="misTickets" ><i style="font-size: 21px;margin-right: 10px;" class='ion-star' ></i> {{'MisTickets'|translate}}</div>
 
 <!--             <div ng-click='closeModal()' ui-sref="maquinas" ><img style='height: 24px;
     margin-right: 4px;' src="img/machine3.png"> Maquinas</div>
  -->
 
-      <div ng-click='closeModal()' ui-sref="ecosocios" ><i style="font-size: 21px;margin-right: 10px;" class='ion-leaf' ></i> Ecosocios</div>
+      <div ng-click='closeModal()' ui-sref="ecosocios" ><i style="font-size: 21px;margin-right: 10px;" class='ion-leaf' ></i> {{'Ecosocios'|translate}}</div>
 <!--       <div ng-click='closeModal()' ui-sref="ubicaciones">  <i style="font-size: 21px;margin-right: 10px;" class='ion-ios-location' ></i>Ubicaciones</div> -->
 
-     <div ng-click='closeModal()' ui-sref="eventos"> <i style="font-size: 21px;margin-right: 10px;" class='ion-calendar' ></i>Eventos</div>
+     <div ng-click='closeModal()' ui-sref="eventos"> <i style="font-size: 21px;margin-right: 10px;" class='ion-calendar' ></i>{{'Eventos'|translate}}</div>
 
 
 
-      <div ng-click='closeModal()' ui-sref="contactenos"> <i style="font-size: 21px;margin-right: 10px;" class='ion-ios-information' ></i>Contactenos</div>
+      <div ng-click='closeModal()' ui-sref="contactenos"> <i style="font-size: 21px;margin-right: 10px;" class='ion-ios-information' ></i>{{'Contactenos'|translate}}</div>
 
       
-       <div ng-click='cerrarSesion()' > <i style="font-size: 21px;margin-right: 10px;" class='ion-log-out' ></i>Cerrar Sesion</div>
+       <div ng-click='cerrarSesion()' > <i style="font-size: 21px;margin-right: 10px;" class='ion-log-out' ></i>{{'CerrarSesion'|translate}}</div>
       </div> 
       <!--   <button class="button button-full button-positive" ng-click="closeModal()">Close Modal</button> -->
       </ion-content>

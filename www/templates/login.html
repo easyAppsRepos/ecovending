@@ -10,28 +10,28 @@
     font-size: 35px;' class=" ion-android-cancel"></i>
       <div class='' style="    margin-left: 3%;margin-right: 3%;font-family: Ubuntu;    margin-top: 3%;">
                     <div  style='      color: #1cb382;
-   border-bottom: solid 1px #1cb382;    margin-top: 15px;font-size: 17px !important;    padding-bottom: 13px;' >Crear Usuario</div>
+   border-bottom: solid 1px #1cb382;    margin-top: 15px;font-size: 17px !important;    padding-bottom: 13px;' >{{'CrearUsuario'|translate}}</div>
                     <div class="list" >
 
                         <div style="margin-top:13px"><label style="    color: darkgray;
-    font-size: 17px !important;">Email *</label></div>
+    font-size: 17px !important;"> Email *</label></div>
                         <input   ng-model='usuario.email' style='' placeholder='' type="text" class="inputRegistrar md-input">
 
 
     <div style="margin-top:13px"><label style="    color: darkgray;
-    font-size: 17px !important;">Confirmar Email *</label></div>
+    font-size: 17px !important;">{{'CE'|translate}} *</label></div>
                         <input   ng-model='usuario.email2' style='' placeholder='repetir email' type="text" class="inputRegistrar md-input">
 
 
 
 
                       <div style="margin-top:13px"><label style="    color: darkgray;
-    font-size: 17px !important;">Nombre *</label></div>
+    font-size: 17px !important;">{{'Nombre'|translate}} *</label></div>
                         <input ng-model='usuario.nombre' placeholder='' type="text" class="inputRegistrar md-input">
 
 
     <div style="margin-top:13px"><label style="    color: darkgray;
-    font-size: 17px !important;">Pais</label></div>
+    font-size: 17px !important;">{{'Pais'|translate}}</label></div>
 
 
     <select ng-model='usuario.idPais'  style="    margin-top: 10px;
@@ -48,7 +48,7 @@
 
 
                       <div style="margin-top:13px"><label style="    color: darkgray;
-    font-size: 17px !important;">Lugar / Institucion</label></div>
+    font-size: 17px !important;">{{'Lugar_Institucion'|translate}}</label></div>
 
 
     <select ng-model='usuario.lugar'  style="    margin-top: 10px;
@@ -65,7 +65,7 @@
 
 
                       <div style="margin-top:13px"><label style="    color: darkgray;
-    font-size: 17px !important;">Contraseña *</label></div>
+    font-size: 17px !important;">{{'Contra'|translate}} *</label></div>
                         <input ng-model='usuario.contra' placeholder='' type="text" class="inputRegistrar md-input" autocapitalize="off">
 
             
@@ -77,7 +77,7 @@
                     </div>
 
                          
-            <button ng-click='registrarUsuario(usuario)' style="margin-bottom: 55px; background-color: #1cb382!important;color: white !important; font-family:UbuntuM"  class="button button-full  ink" >Registrar</button>
+            <button ng-click='registrarUsuario(usuario)' style="margin-bottom: 55px; background-color: #1cb382!important;color: white !important; font-family:UbuntuM"  class="button button-full  ink" >{{'Registrar'|translate}}</button>
         
       </div> 
       <!--   <button class="button button-full button-positive" ng-click="closeModal()">Close Modal</button> -->
@@ -114,11 +114,11 @@
             <button style="color: #1cb382!important;     min-height: 15px !important; 
     height: 36px !important; 
     border-radius: 3px !important; 
-    line-height: 0 !important; " ng-click='doLogin(login)'  class="button button-full  ink" >Login</button>
+    line-height: 0 !important; " ng-click='doLogin(login)'  class="button button-full  ink" >{{'Login'|translate}} </button>
 
               <div style="margin-bottom:20px; margin-top:20px;text-align:center">
 <button style='text-align: center' ng-click="facebookSignIn()" class="loginBtn button-full loginBtn--facebook">
-  Login con Facebook
+  {{'LF'|translate}} 
 </button>
   </div>
 
@@ -132,9 +132,9 @@
     margin-top:5px">
         <a ng-click='newUser()' style="    color: white;
     font-weight: 600;
-    font-size: 18px;">¿Aun no eres usuario? <b> Registrate </b> </a><br><br>
+    font-size: 18px;">{{'NoUser'|translate}}   <b> {{'Registrate'|translate}}  </b> </a><br><br>
 
-        <a ng-click='olvide()' style="color:white;font-size: 15px;" >¿Olvidaste tu contraseña?</a>
+        <a ng-click='olvide()' style="color:white;font-size: 15px;" >{{'OlvidePass'|translate}}</a>
 
         </div>
 

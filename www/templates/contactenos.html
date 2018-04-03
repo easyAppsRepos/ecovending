@@ -18,11 +18,15 @@
     padding-left: 8px;
     margin-top: 5px;' class="ion-ios-arrow-back" ng-click='goBack()'></i>
 
-    <h4 style="    margin-left: 44px;color:white">Contactenos</h4>
+    <h4 style="    margin-left: 44px;color:white">{{'Contactenos'|translate}}</h4>
 </div>
 
 
     <ion-content style="top: 45px; background: #E1F1F1; font-family:Ubuntu" >
+
+
+
+
 
 
 <div style="   padding-top:25px;background-color: white; text-align: center;
@@ -56,12 +60,37 @@
    
 </div>
  </div>
+
+
+ <div class="list">
+
+  <label  style='background: transparent;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: none !important;' class="item item-input item-select">
+    <div class="input-label">
+     {{'Idioma'|translate}}  
+    </div>
+    <select  ng-model='idiomaSeleccionado.seleccion'   ng-change='cambiarIdioma(idiomaSeleccionado.seleccion)' style='background: transparent;' >
+        <option ng-repeat='l in idiomas' ng-value='l.abreviatura'   >{{l.abreviatura}}</option>
+    </select>
+  </label>
+
+
+</div>
+
+
+              
+
+
+
 <div style="    width: 100%;
     text-align: center;">
 <button style="background: #1cb382;
     margin-top: 20px;
     color: white;
-" ui-sref='demo'>Aprende a usar la app</button>
+" ui-sref='demo'>{{'AprendeAUsar'|translate}} </button>
 
 </div>
 
@@ -71,7 +100,7 @@ color: #777;
 width: 80%;
 margin-left: 10%;
 margin-top: 25px;">
-        <p> <strong> Queremos saber tu opinion! </strong><br> <br>  Has experimentado algun error o sientes que algo no esta bien? No dudes en contactarnos, simplemente envia un email a <br><br> <strong> contacto@ecoven.cl </strong><br><br> Muchas Gracias, esperamos poder ayudarte! </p>
+        <p> <strong>{{'info1'|translate}}</strong><br> <br> {{'info2'|translate}}  <br><br> <strong>{{'info3'|translate}}  </strong><br><br> {{'info4'|translate}}  </p>
 
     </div>
 

@@ -13,7 +13,7 @@
 
       <ion-content class="padding">
 
-            <div style="text-align: center;"><img style='vertical-align: bottom;height: 50px;' src="img/tik.png"> <h3 style="display:inline-block; font-family: Ubuntu;text-align: center;color: #fafafa">Ticket canjeado</h3></div>
+            <div style="text-align: center;"><img style='vertical-align: bottom;height: 50px;' src="img/tik.png"> <h3 style="display:inline-block; font-family: Ubuntu;text-align: center;color: #fafafa">{{'TicketCanjeado'|translate}}</h3></div>
             <div style="text-align:center"><img  style="height: 60px;
     border-radius: 7px;"  ng-src="{{url}}/ecosocio{{canjeado.idEcosocio}}.jpg?9" >
 
@@ -28,11 +28,11 @@
 <br>
 
 <div ng-show='canjeado.tipo == 3' >
-                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >Codigo WEB</h4>
+                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >{{'CW'|translate}}</h4>
                <h4 style=" font-family: Ubuntu;text-align: center;    color: darkred"><strong>{{canjeado.codigoWeb}}</strong></h4>
 
 </div>
-                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >Fecha de vencimiento</h4>
+                <h4 style="font-family: Ubuntu;text-align: center;color: #fafafa" >{{'FechaVencimiento'|translate}}</h4>
                <h4 style=" font-family: Ubuntu;text-align: center;    color: darkred"><strong>{{canjeado.fechaCaducidad}}</strong></h4>
 <br><br>
 <div  >
@@ -66,7 +66,7 @@
     padding-left: 8px;
     margin-top: 5px;' class="ion-ios-arrow-back" ng-click='goBack()'></i>
 
-    <h4 style="    margin-left: 44px;color:white">Mis Tickets</h4>
+    <h4 style="    margin-left: 44px;color:white">{{'MisTickets'|translate}}</h4>
 </div>
 
 
@@ -82,7 +82,7 @@
     margin-top: 40px;
     font-size: 16px;
     font-family: Ubuntu;
-    color: #999;">No tienes tickets vigentes</div>
+    color: #999;">{{'NoVigentes'|translate}}</div>
             <div ng-repeat='t in tickets' ng-show='t.vencido==0' style="        background-color: #276AB0;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
                 <div>
                     <div class='semicirculo'></div>
@@ -101,11 +101,11 @@
                             <div style="    color: white;
     font-size: 12px;
     padding-left: 5px;
-    padding-right: 5px;">*Este ticket no es acumulables con otro descuento o promocion <br> </div>
+    padding-right: 5px;">{{'Alert1T'|translate}}  <br> </div>
 
                                 <button ng-click='generarTicket(t)'  style='     border-top: dashed 3px darkgray;
     border-bottom: dashed 3px darkgray;   font-family: UbuntuM;' class="button button-full button-light">
-                            Ver Ticket
+                           {{'VerTicket'|translate}}  
                             </button>
 
 
@@ -128,7 +128,7 @@
     margin-top: 40px;
     font-size: 16px;
     font-family: Ubuntu;
-    color: #999;">Historial vacio</div>
+    color: #999;">{{'Historialvacio'|translate}}</div>
 
 
             <div ng-repeat='t in tickets | orderBy:"-"' ng-show='t.vencido==1' style="        background-color: #fafafa;margin-left: 10px; margin-right: 10px;text-align: center;margin-top: 20px;border-radius: 8px;">
@@ -143,7 +143,7 @@
 
                 <div style="     padding-bottom: 14px;   text-align: left;font-size: 21px;margin-top: 15px;    color: lightgray;
     margin-left: 12px;">
-                     Activado el {{t.fechaCanje}}
+                     {{'Activadoel'|translate}} {{t.fechaCanje}}
                 </div>
 
                </div>
