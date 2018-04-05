@@ -1271,11 +1271,25 @@ $scope.next = function() {
 
 })
 
-.controller('loginCtrl', function($scope, $stateParams, $state, $q, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
+.controller('loginCtrl', function($scope, $translate, $stateParams, $state, $q, $ionicHistory, api, $ionicLoading, $ionicPopup, $ionicModal) {
 //  $scope.chat = Chats.get($stateParams.chatId);
 
 $scope.usuario={};
 $scope.login={};
+$scope.idiomas = JSON.parse(window.localStorage.getItem('idiomasOption'));
+
+$scope.someModel={};
+
+
+    $scope.$watch('someModel.seleccion', function() {
+
+        console.log($scope.someModel.seleccion.abreviatura);
+          window.localStorage.setItem( 'idiomaEV', $scope.someModel.seleccion.abreviatura);
+          $translate.use($scope.someModel.seleccion.abreviatura); 
+
+
+    });
+
 
 
 $scope.$on('$ionicView.enter', function(event, viewData) {
@@ -1800,8 +1814,13 @@ $scope.newUser = function(){
     });
   };
 
+
+
   $scope.closeModal = function() {
+
     $scope.modal.hide();
+
+
   };
   //Cleanup the modal when we're done with it!
   $scope.$on('$destroy', function() {
@@ -2476,6 +2495,15 @@ $scope.usuarioInfo={};
   $scope.url = serverConfig.imageStorageURL;
 
 
+$scope.idiomas = JSON.parse(window.localStorage.getItem('idiomasOption'));
+console.log($scope.idiomas);
+  $scope.selectableNames =  [
+    { name : "Mauro", role : "black hat"}, 
+    { name : "Silvia", role : "pineye"},
+    { name : "Merlino", role : "little canaglia"},
+  ];
+
+
 
  if (window.cordova && window.cordova.plugins && window.cordova.plugins.diagnostic) {
 
@@ -2509,9 +2537,6 @@ $scope.usuarioInfo={};
 
 
     }
-
-
-
 
 
 
@@ -2556,15 +2581,39 @@ var acu = (ee*0.00055).toFixed(2);
  }
 
 
- $scope.cambiarLenguaje = function(){
+
+$scope.cambiarLenguaje = function(){
+console.log('clengua');
+ // return 'https://graph.facebook.com/'+id+'/picture?type=large';
+}
+
+$scope.someModel={};
 
 
+    $scope.$watch('someModel.seleccion', function() {
+
+        console.log($scope.someModel.seleccion.abreviatura);
+          window.localStorage.setItem( 'idiomaEV', $scope.someModel.seleccion.abreviatura);
+          $translate.use($scope.someModel.seleccion.abreviatura); 
+
+
+    });
+
+
+
+
+ $scope.cambiarIdioma = function(seleccion){
+
+console.log(seleccion);
     //var lang = $translate.use(); // holds current lang
-$translate.use('it');  // sets lang to use
-window.localStorage.setItem( 'idiomaEV', 'it');
+/*
+window.localStorage.setItem( 'idiomaEV', seleccion);
 //console.log(lang);
-
+$translate.use(seleccion);  // sets lang to use
+console.log(seleccion);*/
   }
+
+
 
   function mensajeAlerta(tipo, mensaje){
 

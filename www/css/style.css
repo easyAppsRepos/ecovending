@@ -5,6 +5,14 @@
          
 }
 
+.bar.bar-stable {
+
+    background-color: #1cb382 !important;
+
+    color: white;
+}
+
+
 
 @media (min-width: 680px){
 .modal {

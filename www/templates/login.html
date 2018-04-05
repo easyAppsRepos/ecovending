@@ -6,8 +6,30 @@
   <ion-modal-view class="ion-nifty-modal2">
     <div  class="ion-modal-content-custom2">
       <ion-content class="padding">
+
   <i ng-click='closeModal()' style='    color: #1cb382;
     font-size: 35px;' class=" ion-android-cancel"></i>
+
+    <button class="button" style='background-color: transparent;
+    position: absolute;
+    right: -5px;
+    margin-top: 2px;
+    border: none !important;'   modal-select ng-model="someModel.seleccion" options="idiomas" modal-title="Idiomas" hide-reset='true' cancel-button='cancelar'>
+ <img  style='height: 37px;' src="img/lenguajeV.png">
+    <div class="option">
+        {{option.abreviatura}}
+    </div>
+</button>
+<div style="    position: absolute;
+    right: 0;
+    margin-top: 93px;
+    margin-right: 18px;">
+{{someModel.seleccion.abreviatura}}
+</div>
+
+
+
+
       <div class='' style="    margin-left: 3%;margin-right: 3%;font-family: Ubuntu;    margin-top: 3%;">
                     <div  style='      color: #1cb382;
    border-bottom: solid 1px #1cb382;    margin-top: 15px;font-size: 17px !important;    padding-bottom: 13px;' >{{'CrearUsuario'|translate}}</div>
