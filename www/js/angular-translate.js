@@ -2335,7 +2335,9 @@ var e= [];
                for (var i = 0; i < translation.length; i++) {
                 console.log(translation[i].keyAbreviatura, translation[i]);
                 translations(translation[i].keyAbreviatura, translation[i]);
-                e.push({abreviatura:translation[i].keyAbreviatura});
+                e.push({abreviatura:translation[i].keyAbreviatura, 
+                        nombre:translation[i].keyNombreIdioma,
+                       imagen:translation[i].keyLinkImagen});
 
                }
 

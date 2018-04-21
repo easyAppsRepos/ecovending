@@ -4,7 +4,8 @@
     src: url('../lib/ionic/fonts/UbuntuRegular.ttf') format('truetype')
          
 }
-
+.sss{color: white !important;
+    font-size: 25px !important;}
 .bar.bar-stable {
 
     background-color: #1cb382 !important;

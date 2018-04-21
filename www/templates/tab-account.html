@@ -21,15 +21,15 @@
 
 
                       <div style="margin-top:13px"><label style="    color: darkgray;
-    font-size: 17px !important;">{{'Lugar_Institucion'|translate}}</label></div>
+    font-size: 17px !important;">{{'Pais'|translate}}</label></div>
 
-    <select ng-model='edicion.lugar'  style="    margin-top: 10px;
+    <select ng-model='edicion.idPais'  style="    margin-top: 10px;
     margin-bottom: 10px;
     font-size: 17px;
     color: darkgray;
     font-family: Ubuntu; ">
 
-      <option ng-repeat='l in lugares' value='{{l.idLugar}}' >{{l.nombre}}</option>
+      <option ng-repeat='l in lugares' value='{{l.idPais}}' >{{l.nombre}}</option>
 
     </select>
 
@@ -37,10 +37,10 @@
     font-size: 17px !important;">
 
    <!--  <img style='height: 45px;' src="img/bip.png"> -->
-   {{'Lugar_Institucion'|translate}}
+   {{'NumeroTarjetaBIP'|translate}}
     </label>
     </div>
-    <input   ng-model='edicion.pib' style='' placeholder='numero tarjeta BIP' type="number" class="inputRegistrar md-input">
+    <input   ng-model='edicion.pib' style='' placeholder='' type="number" class="inputRegistrar md-input">
 
 
 
@@ -109,7 +109,11 @@
     margin-top: 50px;'   modal-select ng-model="someModel.seleccion" options="idiomas" modal-title="Idiomas" hide-reset='true' cancel-button='cancelar'>
  <img  style='height: 37px;' src="img/lenguaje.png">
     <div class="option">
-        {{option.abreviatura}}
+        <img style='width: 40px;
+    vertical-align: middle;
+    height: 40px;
+    margin-right: 10px;
+    margin-left: 10px;' ng-src="{{option.imagen}}"> {{option.nombre}}
     </div>
 </button>
 <div style="    position: absolute;

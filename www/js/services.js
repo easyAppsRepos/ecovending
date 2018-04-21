@@ -224,7 +224,7 @@ angular.module('starter.services', [])
 
             getRanking:function(filtro,idUsuario){  
 
-            return  $http.post(serverConfig.url+'/getRanking',{filtro:filtro, idUsuario:idUsuario})
+            return  $http.post(serverConfig.url+'/getRankingee',{filtro:filtro, idUsuario:idUsuario})
             .then(function(response) {
             console.log(response);
             return response;
@@ -316,6 +316,22 @@ angular.module('starter.services', [])
             return response;
             });
         },
+
+                        getMaquinas3:function(idUsuario){  
+
+            return  $http.post(serverConfig.url+'/getMaquinas3',{idUsuario:idUsuario})
+            .then(function(response) {
+            console.log(response);
+            return response;
+            }, function(response) {
+            // something went wrong
+            console.log('error');
+             console.log(response);
+
+            return response;
+            });
+        },
+
 
 
 

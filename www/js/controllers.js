@@ -185,7 +185,7 @@ $ionicLoading.show();
 getRanking();
 
 
-          api.getMaquinas2().then(function(response){
+          api.getMaquinas3($scope.usuarioInfo.idUsuario).then(function(response){
 
           
           $ionicLoading.hide();
@@ -509,7 +509,7 @@ $ionicLoading.show();
           if(response.data.error == false){
 
             $ionicLoading.hide(); 
-            mensajeAlerta(2, 'Te has anotado exitosamente');
+          //  mensajeAlerta(2, 'Te has anotado exitosamente');
             $scope.getEventos();
             //$scope.eventos = response.data.eventos;
           }
@@ -1277,6 +1277,7 @@ $scope.next = function() {
 $scope.usuario={};
 $scope.login={};
 $scope.idiomas = JSON.parse(window.localStorage.getItem('idiomasOption'));
+ console.log($scope.idiomas);
 
 $scope.someModel={};
 
@@ -2483,6 +2484,7 @@ $scope.usuarioInfo={};
   $scope.usuarioInfo.nombre=  userData.nombre;
   $scope.usuarioInfo.institucion=  userData.institucion;
     $scope.usuarioInfo.institucionID=  userData.institucionID;
+     $scope.usuarioInfo.idPais=  userData.idPais;
   $scope.usuarioInfo.ranking=  userData.ranking;
    $scope.usuarioInfo.pib =userData.pib;
 
@@ -2549,9 +2551,10 @@ $scope.$on('$ionicView.enter', function(event, viewData) {
 $scope.edicion={};
 $scope.usuarioInfo={};
   var userData = JSON.parse(window.localStorage.getItem('userInfoEV'));
-
+console.log(userData);
   $scope.usuarioInfo.nombre=  userData.nombre;
   $scope.usuarioInfo.institucion=  userData.institucion;
+    $scope.usuarioInfo.idPais=  userData.idPais;
     $scope.usuarioInfo.institucionID=  userData.institucionID;
   $scope.usuarioInfo.ranking=  userData.ranking;
    $scope.usuarioInfo.pib =userData.pib;
@@ -2785,6 +2788,7 @@ $scope.modalClasses = ['slide-in-up', 'slide-in-down', 'fade-in-scale', 'fade-in
              $scope.huella = response.data.huella;
              $scope.canjes = response.data.canjes;
              $scope.edicion.ranking = response.data.ranking;
+
              $scope.oldRank = response.data.ranking;
             $ionicLoading.hide();
 
@@ -2914,9 +2918,10 @@ var ft = new FileTransfer();
 
 
             console.log(response);
-            $scope.lugares = response.data.lugares;
+            $scope.lugares = response.data.paises;
             console.log($scope.usuarioInfo);
            $scope.edicion.nombre=   $scope.usuarioInfo.nombre;
+               $scope.edicion.idPais=   String($scope.usuarioInfo.idPais);
            $scope.edicion.pib=   $scope.usuarioInfo.pib * 1; 
             $scope.edicion.lugar=   String($scope.usuarioInfo.institucionID);
            //$scope.usuarioInfo.institucionID
@@ -2959,7 +2964,7 @@ var ft = new FileTransfer();
 
 
 
-      if( user.pib == $scope.usuarioInfo.pib && user.ranking == $scope.oldRank && user.nombre==$scope.usuarioInfo.nombre && user.lugar == $scope.usuarioInfo.institucionID){
+      if( user.pib == $scope.usuarioInfo.pib && user.ranking == $scope.oldRank && user.nombre==$scope.usuarioInfo.nombre && user.idPais == $scope.usuarioInfo.idPais){
 
         mensajeAlerta(1,'No has actualizado ningun dato');
         return true;

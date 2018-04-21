@@ -53,19 +53,7 @@
 
 
 
-                      <div style="margin-top:13px"><label style="    color: darkgray;
-    font-size: 17px !important;">{{'Lugar_Institucion'|translate}}</label></div>
 
-
-    <select ng-model='usuario.lugar'  style="    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 17px;
-    color: darkgray;
-    font-family: Ubuntu; ">
-
-      <option ng-repeat='l in lugares' ng-value='l.idLugar' >{{l.nombre}}</option>
-
-    </select>
 
 
 
@@ -97,7 +85,7 @@
 <ion-content style="background-color: #1cb382; font-family:Ubuntu" >
 
 
-
+<!-- 
 
     <button class="button" style='background-color: transparent;
     position: absolute;
@@ -106,23 +94,47 @@
     border: none !important;'   modal-select ng-model="someModel.seleccion" options="idiomas" modal-title="Idiomas" hide-reset='true' cancel-button='cancelar'>
  <img  style='height: 37px;' src="img/lenguajeV.png">
     <div class="option">
-        {{option.abreviatura}}
+        <img style='width: 40px;
+    vertical-align: middle;
+    height: 40px;
+    margin-right: 10px;
+    margin-left: 10px;' ng-src="{{option.imagen}}"> {{option.nombre}}
     </div>
 </button>
-<div style="    position: absolute;
-    right: 0;
-    margin-top: 40px;
-    margin-right: 18px;
-    color: lightgray;">
-{{someModel.seleccion.abreviatura}}
-</div>
+ -->
 
 
         <div class="" style="text-align:center; background-color: white;    height: 213px;">
 
                 <img style="    margin-top: 45px;" src="img/logoEcoven.jpg">
                
-            
+
+<!--           <div style="    margin: 15px;
+          color: #666;
+          font-size: 15px;"> <img  style='    height: 30px;
+          vertical-align: middle;
+          margin-right: 10px;
+          opacity: 0.7;' src="img/lenguajeV.png">{{someModel.seleccion.nombre || 'Idioma'}}
+          </div> -->
+
+    <button  style='margin: 15px;
+          color: #666;
+          font-size: 15px;'   modal-select ng-model="someModel.seleccion" options="idiomas" modal-title="Idiomas" hide-reset='true' cancel-button='cancelar'>
+          <img  style='    height: 30px;
+          vertical-align: middle;
+          margin-right: 10px;
+          opacity: 0.7;' src="img/lenguajeV.png">{{someModel.seleccion.nombre || 'Idioma'}}
+
+    <div class="option">
+        <img style='width: 40px;
+    vertical-align: middle;
+    height: 40px;
+    margin-right: 10px;
+    margin-left: 10px;' ng-src="{{option.imagen}}"> {{option.nombre}}
+    </div>
+</button>
+
+
 
         </div>
 
