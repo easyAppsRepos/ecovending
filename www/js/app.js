@@ -32,12 +32,7 @@ angular.element(tabs[0]).css('display', '');
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
      // StatusBar.styleDefault();
-     // StatusBar.overlaysWebView(false);
-
-         StatusBar.overlaysWebView(true);
-    StatusBar.styleLightContent();
-    StatusBar.backgroundColorByHexString('#14c1f3');
-    
+      StatusBar.overlaysWebView(false);
     }
   });
 })
