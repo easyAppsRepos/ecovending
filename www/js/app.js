@@ -31,7 +31,8 @@ angular.element(tabs[0]).css('display', '');
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
+     // StatusBar.styleDefault();
+      StatusBar.overlaysWebView(false);
     }
   });
 })
